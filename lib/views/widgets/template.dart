@@ -50,7 +50,7 @@ class TemplatePage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             Container(
-                              color: Colors.blue.shade200,
+                              color: Colors.green.shade200,
                               height: 60,
                               child: Row(
                                 children: [

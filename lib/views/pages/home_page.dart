@@ -118,12 +118,103 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      appBarTitle: 'Spark Tile Lite',
+      appBarTitle: 'SANAD',
       index: 0,
-      body: Text(
-        'Spark Tile Lite',
-        style: TextStyle(
-            color: Colors.blue, fontSize: 28, fontWeight: FontWeight.bold),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(70.0),
+              child: Card(
+                elevation: 5,
+                color: Colors.green,
+                shadowColor: Colors.indigo.shade900,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 50, 10, 50),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(children: [
+                            TextSpan(
+                              text: 'Governmental Services',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 26),
+                            ),
+                          ])),
+                      const SizedBox(
+                        height: 15,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(70.0),
+              child: Card(
+                elevation: 5,
+                color: Colors.green,
+                shadowColor: Colors.indigo.shade900,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 50, 10, 50),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(children: [
+                            TextSpan(
+                              text: 'Medical Services',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 26),
+                            ),
+                          ])),
+                      const SizedBox(
+                        height: 15,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(70.0),
+              child: Card(
+                elevation: 5,
+                color: Colors.green,
+                shadowColor: Colors.indigo.shade900,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 50, 10, 50),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(children: [
+                            TextSpan(
+                              text: 'Job Services',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 26),
+                            ),
+                          ])),
+                      const SizedBox(
+                        height: 15,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
       // body: _postController.postsList == null
       //     ? const Center(

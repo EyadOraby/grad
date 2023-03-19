@@ -30,15 +30,15 @@ class _BottomNavBarState extends State<BottomNavBar> {
         BottomNavigationBarItem(
             icon: Icon(Icons.home_rounded),
             label: 'Home',
-            backgroundColor: Colors.blue),
+            backgroundColor: Colors.green),
         BottomNavigationBarItem(
             icon: Icon(Icons.photo_album_outlined),
             label: 'Albums',
-            backgroundColor: Colors.blue),
+            backgroundColor: Colors.green),
         BottomNavigationBarItem(
             icon: Icon(Icons.task_rounded),
             label: 'ToDo',
-            backgroundColor: Colors.blue),
+            backgroundColor: Colors.green),
       ],
       type: BottomNavigationBarType.shifting,
       selectedItemColor: Colors.grey.shade800,
