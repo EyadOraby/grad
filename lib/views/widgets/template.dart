@@ -31,7 +31,27 @@ class TemplatePage extends StatelessWidget {
         appBar: MediaQuery.of(context).size.width > 600
             ? null
             : AppBar(
-                title: Text(appBarTitle),
+                elevation: 15,
+                backgroundColor: Color.fromRGBO(55, 131, 88, 1),
+                leading: IconButton(
+                  icon: Icon(Icons.arrow_back_rounded),
+                  onPressed: () {},
+                ),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Image.asset(
+                      'sanad.JPG',
+                      fit: BoxFit.fitHeight,
+                      height: 50,
+                      colorBlendMode: BlendMode.multiply,
+                      color: Color.fromRGBO(55, 131, 88, 1),
+                    ),
+                    SizedBox(
+                      width: 145,
+                    )
+                  ],
+                ),
               ),
         body: MediaQuery.of(context).size.width > 600
             ? Row(

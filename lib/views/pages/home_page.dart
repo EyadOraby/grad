@@ -6,6 +6,7 @@ import 'package:future_loading_dialog/future_loading_dialog.dart';
 
 import '../../main.dart';
 import '../widgets/bottom_nav_bar_widget.dart';
+import '../widgets/services_button.dart';
 import '../widgets/template.dart';
 
 class HomePage extends StatefulWidget {
@@ -123,127 +124,21 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(70.0),
-              child: Card(
-                elevation: 5,
-                color: Colors.green,
-                shadowColor: Colors.indigo.shade900,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 50, 10, 50),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      RichText(
-                          textAlign: TextAlign.center,
-                          text: TextSpan(children: [
-                            TextSpan(
-                              text: 'Governmental Services',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 26),
-                            ),
-                          ])),
-                      const SizedBox(
-                        height: 15,
-                      )
-                    ],
-                  ),
-                ),
-              ),
+            ServicesButton(
+              serviceTitle: "Governmental \n Services",
+              serviceImage: "document-icon-19-removebg-preview.png",
             ),
-            Padding(
-              padding: const EdgeInsets.all(70.0),
-              child: Card(
-                elevation: 5,
-                color: Colors.green,
-                shadowColor: Colors.indigo.shade900,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 50, 10, 50),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      RichText(
-                          textAlign: TextAlign.center,
-                          text: TextSpan(children: [
-                            TextSpan(
-                              text: 'Medical Services',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 26),
-                            ),
-                          ])),
-                      const SizedBox(
-                        height: 15,
-                      )
-                    ],
-                  ),
-                ),
-              ),
+            ServicesButton(
+              serviceTitle: "Medical \n Services",
+              serviceImage: "health-services-icon-png-removebg-preview.png",
             ),
-            Padding(
-              padding: const EdgeInsets.all(70.0),
-              child: Card(
-                elevation: 5,
-                color: Colors.green,
-                shadowColor: Colors.indigo.shade900,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 50, 10, 50),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      RichText(
-                          textAlign: TextAlign.center,
-                          text: TextSpan(children: [
-                            TextSpan(
-                              text: 'Job Services',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 26),
-                            ),
-                          ])),
-                      const SizedBox(
-                        height: 15,
-                      )
-                    ],
-                  ),
-                ),
-              ),
+            ServicesButton(
+              serviceTitle: "Job \n Services",
+              serviceImage: "job_application-removebg-preview.png",
             ),
           ],
         ),
       ),
-      // body: _postController.postsList == null
-      //     ? const Center(
-      //         child: CircularProgressIndicator(),
-      //       )
-      //     : _postController.postsList?.isEmpty ?? false
-      //         ? const Center(
-      //             child: Text('No Data'),
-      //           )
-      //         : ListView.builder(
-      //             itemCount: _postController.postsList?.length,
-      //             itemBuilder: (context, index) {
-      //               return Padding(
-      //                 padding: const EdgeInsets.fromLTRB(10, 10, 15, 5),
-      //                 child: PostWidget(
-      //                   post: _postController.postsList![index],
-      //                   onCommentClicked: () {},
-      //                   onPostClicked: () {
-      //                     Navigator.push(
-      //                         context,
-      //                         MaterialPageRoute(
-      //                             builder: (_) => PostDetails(
-      //                                 post:
-      //                                     _postController.postsList![index])));
-      //                   },
-      //                 ),
-      //               );
-      //             }),
-
       bottomNavBar: BottomNavBar(
         index: 0,
       ),

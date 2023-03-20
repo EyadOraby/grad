@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'SANAD',
       theme: ThemeData(
+          fontFamily: 'Montserrat-VariableFont_wght.ttf',
           primarySwatch: Colors.green,
           scaffoldBackgroundColor: Colors.grey.shade200),
       home: LoginPage(),
