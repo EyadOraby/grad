@@ -3,11 +3,13 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:grad/views/pages/splash_page.dart';
 import 'package:future_loading_dialog/future_loading_dialog.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 import '../../main.dart';
 import '../widgets/bottom_nav_bar_widget.dart';
 import '../widgets/services_button.dart';
 import '../widgets/template.dart';
+import 'gov_services_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,6 +19,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _currentSliderIndex = 0;
+
   @override
   void initState() {}
 
@@ -27,6 +31,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext scontext) {
+    final deviceSize = MediaQuery.of(context).size;
+
     return TemplatePage(
       drawerMobile: Drawer(
         child: ListView(
@@ -124,17 +130,146 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "What's New!!",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              child: CarouselSlider(
+                items: [
+                  for (int i = 0; i < 4; i++)
+                    Card(
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      color: Colors.blueGrey,
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Stack(
+                        children: [
+                          Container(
+                            alignment: Alignment.bottomCenter,
+                            width: deviceSize.width,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                  fit: BoxFit.contain,
+                                  image: AssetImage("e-gov_pic.png")),
+                            ),
+                            child: Container(
+                              width: deviceSize.width,
+                              height: 40,
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.only(
+                                    bottomLeft: Radius.circular(10),
+                                    bottomRight: Radius.circular(10)),
+                                color: Color.fromARGB(150, 76, 175, 80),
+                              ),
+                              child: Text(
+                                "Governmental Services",
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  height: 1,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 10,
+                            right: 20,
+                            child: Image.asset(
+                              "new_logo_hq-removebg-preview.png",
+                              width: 70,
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                ],
+                options: CarouselOptions(
+                  height: 180,
+                  //aspectRatio: 16 / 9,
+                  viewportFraction: 1,
+                  initialPage: 0,
+                  enableInfiniteScroll: false,
+                  autoPlay: true,
+                  enlargeCenterPage: true,
+                  onPageChanged: (index, _) {
+                    setState(() {
+                      _currentSliderIndex = index;
+                    });
+                  },
+                  scrollDirection: Axis.horizontal,
+                ),
+              ),
+            ),
+            // if (homeViewModel.highlights.isNotEmpty)
+            //   createSliderIndicator(
+            //     _currentSliderIndex,
+            //     homeViewModel.highlights.length,
+            //     AppColors.greyColor,
+            //     AppColors.secondaryColor,
+            //   ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Choose from the different services we offer!",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
             ServicesButton(
-              serviceTitle: "Governmental \n Services",
+              click: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => GovServicesPage()));
+              },
+              serviceTitle: "Governmental Services",
               serviceImage: "document-icon-19-removebg-preview.png",
+              serviceDescription:
+                  "This Service is designed to provide citizens with a fast, convenient, and secure way to apply for an integrated services card or renew their national ID card from the comfort of their own homes. With the click of a button, you can apply for the card or renew your ID card, without the need to visit government offices or stand in long queues.",
             ),
             ServicesButton(
-              serviceTitle: "Medical \n Services",
+              click: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => GovServicesPage()));
+              },
+              serviceTitle: "Medical Services",
               serviceImage: "health-services-icon-png-removebg-preview.png",
+              serviceDescription:
+                  "Our medical service is dedicated to providing personalized care for individuals with disabilities. We understand that finding the right doctor, medical center, or hospital can be challenging and time-consuming. That's why we offer a comprehensive platform that matches patients with the right medical professionals based on their disability type and preferred location. Our team of medical experts is trained to work with individuals with disabilities and provides the highest quality of care. Whether you are looking for a primary care physician, specialist, or hospital, we can connect you with the right provider.",
             ),
             ServicesButton(
-              serviceTitle: "Job \n Services",
+              click: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => GovServicesPage()));
+              },
+              serviceTitle: "Job Services",
               serviceImage: "job_application-removebg-preview.png",
+              serviceDescription:
+                  "Our job service is committed to helping individuals with disabilities find meaningful employment opportunities. We understand that finding the right job can be challenging, especially when you have unique needs and requirements. That's why we offer a comprehensive platform that matches job seekers with the right positions based on their disability type and preferred location. Our team of job placement experts works closely with employers to create inclusive work environments that prioritize accessibility and accommodation. We work with a wide range of industries and job types, so whether you are looking for part-time or full-time work, we can help you find the right fit.",
             ),
           ],
         ),

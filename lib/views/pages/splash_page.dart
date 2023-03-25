@@ -38,7 +38,7 @@ class _SplashPageState extends State<SplashPage> {
           children: [
             Image(
               image: AssetImage(
-                'assets/sparkLogo-.png',
+                'new_logo_hq-removebg-preview.png',
               ),
               height: 250,
               width: 250,

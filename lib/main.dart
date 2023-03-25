@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:grad/views/pages/gov_services_page.dart';
+import 'package:grad/views/pages/home_page.dart';
 import 'package:grad/views/pages/login_page.dart';
+import 'package:grad/views/pages/sign_up_page.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -22,7 +25,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Montserrat-VariableFont_wght.ttf',
           primarySwatch: Colors.green,
           scaffoldBackgroundColor: Colors.grey.shade200),
-      home: LoginPage(),
+      home: GovServicesPage(),
     );
   }
 }

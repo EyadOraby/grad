@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:grad/views/widgets/form_text_field_widget.dart';
+import 'package:grad/views/pages/sign_up_page.dart';
+import 'package:grad/views/widgets/custom_text_field.dart';
 
 import 'home_page.dart';
 
@@ -15,6 +16,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController nationalController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  String errorMessage = '';
 
   // late UserController _userController;
   // late final User user;
@@ -26,6 +28,17 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       obsecureText = !obsecureText;
     });
+  }
+
+  void validateInput() {
+    if (nationalController.text.isEmpty) {
+      setState(() {
+        errorMessage = 'Input cannot be empty';
+      });
+    } else {
+      // do something with the entered text
+      print(nationalController.text);
+    }
   }
 
   @override
@@ -87,6 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(10),
@@ -96,82 +110,208 @@ class _LoginPageState extends State<LoginPage> {
                                 key: _formKey,
                                 child: Column(
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          65, 15, 65, 15),
-                                      child: CustomTextField(
-                                        deviceSize: deviceSize,
-                                        width: 0.85,
-                                        name: "National ID Number..",
-                                        controller: nationalController,
-                                        keyboardType: TextInputType.number,
-                                        obsecure: obsecureText,
-                                        textInputAction: TextInputAction.next,
-                                        icon: IconButton(
-                                          icon: Icon(obsecureText
-                                              ? Icons.visibility_rounded
-                                              : Icons.visibility_off_rounded),
-                                          onPressed: () {
-                                            toggle();
-                                          },
-                                        ),
-                                        autovalidateMode:
-                                            AutovalidateMode.onUserInteraction,
-                                        validator: (value) {
-                                          if (value == '') {
-                                            return 'Please Enter your Password';
-                                          }
-                                          return null;
-                                        },
-                                        onEditingComplete: () {
-                                          node.nextFocus();
-                                        },
+                                    // Padding(
+                                    //   padding: const EdgeInsets.fromLTRB(
+                                    //       65, 15, 65, 15),
+                                    //   child: CustomTextField(
+                                    //     name: "National ID Number..",
+                                    //     controller: nationalController,
+                                    //     keyboardType: TextInputType.number,
+                                    //     obsecure: obsecureText,
+                                    //     textInputAction: TextInputAction.next,
+                                    //     icon: IconButton(
+                                    //       icon: Icon(obsecureText
+                                    //           ? Icons.visibility_rounded
+                                    //           : Icons.visibility_off_rounded),
+                                    //       onPressed: () {
+                                    //         toggle();
+                                    //       },
+                                    //     ),
+                                    //     autovalidateMode:
+                                    //         AutovalidateMode.onUserInteraction,
+                                    //     validator: (value) {
+                                    //       if (value == '') {
+                                    //         return 'Please Enter your Password';
+                                    //       }
+                                    //       return null;
+                                    //     },
+                                    //     onEditingComplete: () {
+                                    //       node.nextFocus();
+                                    //     },
+                                    //     deviceSize: deviceSize,
+                                    //     errorMessage: errorMessage,
+                                    //   ),
+                                    // ),
+                                    Container(
+                                      width: 550,
+                                      child: Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            65, 15, 65, 15),
+                                        child: TextFormField(
+                                            autovalidateMode: AutovalidateMode
+                                                .onUserInteraction,
+                                            obscureText: false,
+                                            validator: (value) {
+                                              if (value == '') {
+                                                return 'Enter your National ID Number';
+                                              }
+                                              return null;
+                                            },
+                                            onEditingComplete: () {
+                                              node.nextFocus();
+                                            },
+                                            controller: nationalController,
+                                            textInputAction:
+                                                TextInputAction.next,
+                                            keyboardType: TextInputType.number,
+                                            cursorColor: Colors.black,
+                                            decoration: InputDecoration(
+                                                // suffixIcon: IconButton(
+                                                //   icon: Icon(
+                                                //     obsecureText
+                                                //         ? Icons
+                                                //             .visibility_rounded
+                                                //         : Icons
+                                                //             .visibility_off_rounded,
+                                                //     color: Colors.black,
+                                                //   ),
+                                                //   onPressed: () {
+                                                //     toggle();
+                                                //   },
+                                                // ),
+                                                border: OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                15))),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                            color:
+                                                                Colors.black),
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius.circular(
+                                                                    15))),
+                                                hintText: 'National ID...')),
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          65, 15, 65, 15),
-                                      child: TextFormField(
-                                          autovalidateMode: AutovalidateMode
-                                              .onUserInteraction,
-                                          validator: (value) {
-                                            if (value == '') {
-                                              return 'Please Enter your Password';
-                                            }
-                                            return null;
-                                          },
-                                          controller: passwordController,
-                                          keyboardType:
-                                              TextInputType.visiblePassword,
-                                          decoration: InputDecoration(
-                                              border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(15))),
-                                              hintText: 'Password...')),
+                                    Container(
+                                      width: 550,
+                                      child: Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            65, 15, 65, 15),
+                                        child: TextFormField(
+                                            autovalidateMode: AutovalidateMode
+                                                .onUserInteraction,
+                                            obscureText: obsecureText,
+                                            validator: (value) {
+                                              if (value == '') {
+                                                return 'Please Enter your Password';
+                                              }
+                                              return null;
+                                            },
+                                            onEditingComplete: () {
+                                              node.unfocus();
+                                            },
+                                            controller: passwordController,
+                                            textInputAction:
+                                                TextInputAction.done,
+                                            keyboardType:
+                                                TextInputType.visiblePassword,
+                                            cursorColor: Colors.black,
+                                            decoration: InputDecoration(
+                                                suffixIcon: IconButton(
+                                                  icon: Icon(
+                                                    obsecureText
+                                                        ? Icons
+                                                            .visibility_rounded
+                                                        : Icons
+                                                            .visibility_off_rounded,
+                                                    color: Colors.black,
+                                                  ),
+                                                  onPressed: () {
+                                                    toggle();
+                                                  },
+                                                ),
+                                                border: OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                15))),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                            color:
+                                                                Colors.black),
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius.circular(
+                                                                    15))),
+                                                hintText: 'Password...')),
+                                      ),
                                     )
+                                    // Padding(
+                                    //   padding: const EdgeInsets.fromLTRB(
+                                    //       65, 15, 65, 15),
+                                    //   child: CustomTextField(
+                                    //     deviceSize: deviceSize,
+                                    //     width: 0.85,
+                                    //     name: "Password..",
+                                    //     controller: passwordController,
+                                    //     keyboardType: TextInputType.number,
+                                    //     obsecure: obsecureText,
+                                    //     textInputAction: TextInputAction.done,
+                                    //     icon: IconButton(
+                                    //       icon: Icon(obsecureText
+                                    //           ? Icons.visibility_rounded
+                                    //           : Icons.visibility_off_rounded),
+                                    //       onPressed: () {
+                                    //         toggle();
+                                    //       },
+                                    //     ),
+                                    //     autovalidateMode:
+                                    //         AutovalidateMode.onUserInteraction,
+                                    //     validator: (value) {
+                                    //       if (value == '') {
+                                    //         return 'Please Enter your Password';
+                                    //       }
+                                    //       return null;
+                                    //     },
+                                    //     onEditingComplete: () {
+                                    //       node.unfocus();
+                                    //     },
+                                    //   ),
+                                    // ),
                                   ],
                                 )),
                             Padding(
                               padding: const EdgeInsets.fromLTRB(10, 8, 25, 30),
-                              child: Container(
-                                alignment: Alignment.bottomRight,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    // Handle click event
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      'Forgot Password?',
-                                      style: TextStyle(
-                                        decoration: TextDecoration.underline,
-                                        fontSize: 17,
-                                        color: Colors.black,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(250, 0, 0, 0),
+                                    alignment: Alignment.bottomRight,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        // Handle click event
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          'Forgot Password?',
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            fontSize: 17,
+                                            color: Colors.black,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
+                                ],
                               ),
                             ),
                             // Row(
@@ -203,6 +343,9 @@ class _LoginPageState extends State<LoginPage> {
                             //   ],
                             // ),
                             InkWell(
+                              onTap: () {
+                                validateInput();
+                              },
                               child: Container(
                                 height: 40,
                                 width: 350,
@@ -247,8 +390,10 @@ class _LoginPageState extends State<LoginPage> {
                             Padding(
                               padding: const EdgeInsets.all(25.0),
                               child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Expanded(
+                                  Container(
+                                    width: 195,
                                     child: Divider(
                                       color: Colors.black,
                                       height: 1,
@@ -268,7 +413,8 @@ class _LoginPageState extends State<LoginPage> {
                                       ),
                                     ),
                                   ),
-                                  Expanded(
+                                  Container(
+                                    width: 195,
                                     child: Divider(
                                       color: Colors.black,
                                       height: 1,
@@ -281,6 +427,12 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => SignUpPage()));
+                              },
                               child: Container(
                                 height: 40,
                                 width: 350,

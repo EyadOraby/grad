@@ -33,17 +33,18 @@ class TemplatePage extends StatelessWidget {
             : AppBar(
                 elevation: 15,
                 backgroundColor: Color.fromRGBO(55, 131, 88, 1),
-                leading: IconButton(
-                  icon: Icon(Icons.arrow_back_rounded),
-                  onPressed: () {},
-                ),
+                // leading:
+                // // IconButton(
+                // //   icon: Icon(Icons.arrow_back_rounded),
+                // //   onPressed: () {},
+                // // ),
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Image.asset(
                       'sanad.JPG',
                       fit: BoxFit.fitHeight,
-                      height: 50,
+                      height: 45,
                       colorBlendMode: BlendMode.multiply,
                       color: Color.fromRGBO(55, 131, 88, 1),
                     ),
@@ -89,7 +90,15 @@ class TemplatePage extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            Expanded(child: body)
+                            Expanded(
+                                child: SingleChildScrollView(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  body,
+                                ],
+                              ),
+                            ))
                           ],
                         ),
                       ))
