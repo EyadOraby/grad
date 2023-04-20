@@ -123,22 +123,24 @@ class _GovServicesPageState extends State<GovServicesPage> {
       ),
       appBarTitle: 'SANAD',
       index: 0,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                GovServicesButton(
-                  serviceTitle:
-                      "Integrated \n Services \n Card \n Applications",
-                ),
-                GovServicesButton(
-                    serviceTitle: "National ID \n Card \n Renewal"),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  GovServicesButton(
+                    serviceTitle:
+                        "Integrated \n Services \n Card \n Applications",
+                  ),
+                  GovServicesButton(
+                      serviceTitle: "National ID \n Card \n Renewal"),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       bottomNavBar: BottomNavBar(
         index: 1,

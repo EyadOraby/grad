@@ -13,7 +13,7 @@ class GovServicesButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(150, 30, 150, 30),
+        padding: const EdgeInsets.fromLTRB(30, 30, 30, 30),
         child: Card(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20))),

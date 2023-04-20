@@ -31,8 +31,10 @@ class TemplatePage extends StatelessWidget {
         appBar: MediaQuery.of(context).size.width > 600
             ? null
             : AppBar(
-                elevation: 15,
-                backgroundColor: Color.fromRGBO(55, 131, 88, 1),
+                elevation: 0,
+                iconTheme: IconThemeData(color: Colors.black),
+                backgroundColor: Colors.grey.shade200,
+                //backgroundColor: Color.fromRGBO(55, 131, 88, 1),
                 // leading:
                 // // IconButton(
                 // //   icon: Icon(Icons.arrow_back_rounded),
@@ -42,14 +44,14 @@ class TemplatePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Image.asset(
-                      'sanad.JPG',
+                      'assets/sanad.JPG',
                       fit: BoxFit.fitHeight,
                       height: 45,
                       colorBlendMode: BlendMode.multiply,
-                      color: Color.fromRGBO(55, 131, 88, 1),
+                      color: Colors.grey.shade200,
                     ),
                     SizedBox(
-                      width: 145,
+                      width: 75,
                     )
                   ],
                 ),

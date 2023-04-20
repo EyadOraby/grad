@@ -32,6 +32,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext scontext) {
     final deviceSize = MediaQuery.of(context).size;
+    var highlights_array = [
+      "assets/e-gov_pic.png",
+      "assets/medical-service.jpeg",
+      "assets/job-services.jpg",
+      "assets/ALLY.png"
+    ];
 
     return TemplatePage(
       drawerMobile: Drawer(
@@ -167,8 +173,8 @@ class _HomePageState extends State<HomePage> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               image: DecorationImage(
-                                  fit: BoxFit.contain,
-                                  image: AssetImage("e-gov_pic.png")),
+                                  fit: BoxFit.fill,
+                                  image: AssetImage(highlights_array[i])),
                             ),
                             child: Container(
                               width: deviceSize.width,
@@ -194,7 +200,7 @@ class _HomePageState extends State<HomePage> {
                             top: 10,
                             right: 20,
                             child: Image.asset(
-                              "new_logo_hq-removebg-preview.png",
+                              "assets/new_logo_hq-removebg-preview.png",
                               width: 70,
                             ),
                           )
@@ -246,20 +252,21 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (_) => GovServicesPage()));
               },
-              serviceTitle: "Governmental Services",
-              serviceImage: "document-icon-19-removebg-preview.png",
+              serviceTitle: "Governmental \nServices",
+              serviceImage: "assets/document-icon-19-removebg-preview.png",
               serviceDescription:
-                  "This Service is designed to provide citizens with a fast, convenient, and secure way to apply for an integrated services card or renew their national ID card from the comfort of their own homes. With the click of a button, you can apply for the card or renew your ID card, without the need to visit government offices or stand in long queues.",
+                  "A fast, convenient, and secure way to apply for an integrated services card or access other governmental services from the comfort of your homes.",
             ),
             ServicesButton(
               click: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (_) => GovServicesPage()));
               },
-              serviceTitle: "Medical Services",
-              serviceImage: "health-services-icon-png-removebg-preview.png",
+              serviceTitle: "Medical \n Services",
+              serviceImage:
+                  "assets/health-services-icon-png-removebg-preview.png",
               serviceDescription:
-                  "Our medical service is dedicated to providing personalized care for individuals with disabilities. We understand that finding the right doctor, medical center, or hospital can be challenging and time-consuming. That's why we offer a comprehensive platform that matches patients with the right medical professionals based on their disability type and preferred location. Our team of medical experts is trained to work with individuals with disabilities and provides the highest quality of care. Whether you are looking for a primary care physician, specialist, or hospital, we can connect you with the right provider.",
+                  "Our medical service is dedicated to providing personalized care for individuals with disabilities. We offer a comprehensive platform that matches patients with the right medical professionals based on their disability type and preferred location.",
             ),
             ServicesButton(
               click: () {
@@ -267,9 +274,9 @@ class _HomePageState extends State<HomePage> {
                     MaterialPageRoute(builder: (_) => GovServicesPage()));
               },
               serviceTitle: "Job Services",
-              serviceImage: "job_application-removebg-preview.png",
+              serviceImage: "assets/job_application-removebg-preview.png",
               serviceDescription:
-                  "Our job service is committed to helping individuals with disabilities find meaningful employment opportunities. We understand that finding the right job can be challenging, especially when you have unique needs and requirements. That's why we offer a comprehensive platform that matches job seekers with the right positions based on their disability type and preferred location. Our team of job placement experts works closely with employers to create inclusive work environments that prioritize accessibility and accommodation. We work with a wide range of industries and job types, so whether you are looking for part-time or full-time work, we can help you find the right fit.",
+                  "We offer a comprehensive platform that matches job seekers with the right positions based on their disability type and preferred location. We work with a wide range of industries and job types, so whether you are looking for part-time or full-time work, we can help you find the right fit.",
             ),
           ],
         ),

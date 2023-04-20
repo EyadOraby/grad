@@ -8,8 +8,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 SharedPreferences? prefs;
 
-void main() async {
-  prefs = await SharedPreferences.getInstance();
+void main() {
+  //prefs = await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
 
