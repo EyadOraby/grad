@@ -65,10 +65,13 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image(
-              image: AssetImage('new_logo_hq-removebg-preview.png'),
-              height: 150,
-              width: 300,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: Image(
+                image: AssetImage('assets/new_logo_hq-removebg-preview.png'),
+                height: 150,
+                width: 270,
+              ),
             ),
             Text(
               'Sign In',
@@ -99,385 +102,338 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          children: [
-                            Form(
-                                key: _formKey,
-                                child: Column(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              Form(
+                                  key: _formKey,
+                                  child: Column(
+                                    children: [
+                                      // Container(
+                                      //   width: 550,
+                                      //   child: Padding(
+                                      //     padding: const EdgeInsets.fromLTRB(
+                                      //         20, 15, 20, 15),
+                                      //     child: TextFormField(
+                                      //         autovalidateMode: AutovalidateMode
+                                      //             .onUserInteraction,
+                                      //         obscureText: false,
+                                      //         validator: (value) {
+                                      //           if (value == '') {
+                                      //             return 'Enter your National ID Number';
+                                      //           }
+                                      //           return null;
+                                      //         },
+                                      //         onEditingComplete: () {
+                                      //           node.nextFocus();
+                                      //         },
+                                      //         controller: nationalController,
+                                      //         textInputAction:
+                                      //             TextInputAction.next,
+                                      //         keyboardType:
+                                      //             TextInputType.number,
+                                      //         cursorColor: Colors.black,
+                                      //         decoration: InputDecoration(
+                                      //             border: OutlineInputBorder(
+                                      //                 borderRadius:
+                                      //                     BorderRadius.all(
+                                      //                         Radius.circular(
+                                      //                             15))),
+                                      //             focusedBorder: OutlineInputBorder(
+                                      //                 borderSide: BorderSide(
+                                      //                     color: Colors.black),
+                                      //                 borderRadius:
+                                      //                     BorderRadius.all(
+                                      //                         Radius.circular(
+                                      //                             15))),
+                                      //             hintText: 'National ID...')),
+                                      //   ),
+                                      // ),
+                                      CustomTextField(
+                                          deviceSize: deviceSize,
+                                          width: 0.95,
+                                          hintText: 'National ID...',
+                                          controller: nationalController,
+                                          textInputAction: TextInputAction.next,
+                                          keyboardType: TextInputType.number,
+                                          obsecure: false,
+                                          validator: (value) {
+                                            if (value == '') {
+                                              return 'Enter your National ID Number';
+                                            }
+                                            return null;
+                                          },
+                                          onEditingComplete: () {
+                                            node.nextFocus();
+                                          },
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
+                                          cursorColor: Colors.black),
+                                      // Container(
+                                      //   width: 550,
+                                      //   child: Padding(
+                                      //     padding: const EdgeInsets.fromLTRB(
+                                      //         20, 15, 20, 15),
+                                      //     child: TextFormField(
+                                      //         autovalidateMode: AutovalidateMode
+                                      //             .onUserInteraction,
+                                      //         obscureText: obsecureText,
+                                      //         validator: (value) {
+                                      //           if (value == '') {
+                                      //             return 'Please Enter your Password';
+                                      //           }
+                                      //           return null;
+                                      //         },
+                                      //         onEditingComplete: () {
+                                      //           node.unfocus();
+                                      //         },
+                                      //         controller: passwordController,
+                                      //         textInputAction: TextInputAction
+                                      //             .done,
+                                      //         keyboardType: TextInputType
+                                      //             .visiblePassword,
+                                      //         cursorColor: Colors.black,
+                                      //         decoration: InputDecoration(
+                                      //             suffixIcon: IconButton(
+                                      //               icon: Icon(
+                                      //                 obsecureText
+                                      //                     ? Icons
+                                      //                         .visibility_rounded
+                                      //                     : Icons
+                                      //                         .visibility_off_rounded,
+                                      //                 color: Colors.black,
+                                      //               ),
+                                      //               onPressed: () {
+                                      //                 toggle();
+                                      //               },
+                                      //             ),
+                                      //             border: OutlineInputBorder(
+                                      //                 borderRadius: BorderRadius
+                                      //                     .all(Radius.circular(
+                                      //                         15))),
+                                      //             focusedBorder:
+                                      //                 OutlineInputBorder(
+                                      //                     borderSide:
+                                      //                         BorderSide(
+                                      //                             color: Colors
+                                      //                                 .black),
+                                      //                     borderRadius:
+                                      //                         BorderRadius.all(
+                                      //                             Radius
+                                      //                                 .circular(
+                                      //                                     15))),
+                                      //             hintText: 'Password...')),
+                                      //   ),
+                                      // )
+                                      CustomTextField(
+                                          deviceSize: deviceSize,
+                                          width: 0.95,
+                                          hintText: 'Password...',
+                                          controller: passwordController,
+                                          textInputAction: TextInputAction.done,
+                                          keyboardType:
+                                              TextInputType.visiblePassword,
+                                          obsecure: obsecureText,
+                                          validator: (value) {
+                                            if (value == '') {
+                                              return 'Please Enter your Password';
+                                            }
+                                            return null;
+                                          },
+                                          onEditingComplete: () {
+                                            node.unfocus();
+                                          },
+                                          icon: IconButton(
+                                            icon: Icon(
+                                              obsecureText
+                                                  ? Icons.visibility_rounded
+                                                  : Icons
+                                                      .visibility_off_rounded,
+                                              color: Colors.black,
+                                            ),
+                                            onPressed: () {
+                                              toggle();
+                                            },
+                                          ),
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
+                                          cursorColor: Colors.black)
+                                    ],
+                                  )),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(10, 8, 0, 30),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    // Padding(
-                                    //   padding: const EdgeInsets.fromLTRB(
-                                    //       65, 15, 65, 15),
-                                    //   child: CustomTextField(
-                                    //     name: "National ID Number..",
-                                    //     controller: nationalController,
-                                    //     keyboardType: TextInputType.number,
-                                    //     obsecure: obsecureText,
-                                    //     textInputAction: TextInputAction.next,
-                                    //     icon: IconButton(
-                                    //       icon: Icon(obsecureText
-                                    //           ? Icons.visibility_rounded
-                                    //           : Icons.visibility_off_rounded),
-                                    //       onPressed: () {
-                                    //         toggle();
-                                    //       },
-                                    //     ),
-                                    //     autovalidateMode:
-                                    //         AutovalidateMode.onUserInteraction,
-                                    //     validator: (value) {
-                                    //       if (value == '') {
-                                    //         return 'Please Enter your Password';
-                                    //       }
-                                    //       return null;
-                                    //     },
-                                    //     onEditingComplete: () {
-                                    //       node.nextFocus();
-                                    //     },
-                                    //     deviceSize: deviceSize,
-                                    //     errorMessage: errorMessage,
-                                    //   ),
-                                    // ),
                                     Container(
-                                      width: 550,
-                                      child: Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            65, 15, 65, 15),
-                                        child: TextFormField(
-                                            autovalidateMode: AutovalidateMode
-                                                .onUserInteraction,
-                                            obscureText: false,
-                                            validator: (value) {
-                                              if (value == '') {
-                                                return 'Enter your National ID Number';
-                                              }
-                                              return null;
-                                            },
-                                            onEditingComplete: () {
-                                              node.nextFocus();
-                                            },
-                                            controller: nationalController,
-                                            textInputAction:
-                                                TextInputAction.next,
-                                            keyboardType: TextInputType.number,
-                                            cursorColor: Colors.black,
-                                            decoration: InputDecoration(
-                                                // suffixIcon: IconButton(
-                                                //   icon: Icon(
-                                                //     obsecureText
-                                                //         ? Icons
-                                                //             .visibility_rounded
-                                                //         : Icons
-                                                //             .visibility_off_rounded,
-                                                //     color: Colors.black,
-                                                //   ),
-                                                //   onPressed: () {
-                                                //     toggle();
-                                                //   },
-                                                // ),
-                                                border: OutlineInputBorder(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                15))),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            color:
-                                                                Colors.black),
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    15))),
-                                                hintText: 'National ID...')),
-                                      ),
-                                    ),
-                                    Container(
-                                      width: 550,
-                                      child: Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            65, 15, 65, 15),
-                                        child: TextFormField(
-                                            autovalidateMode: AutovalidateMode
-                                                .onUserInteraction,
-                                            obscureText: obsecureText,
-                                            validator: (value) {
-                                              if (value == '') {
-                                                return 'Please Enter your Password';
-                                              }
-                                              return null;
-                                            },
-                                            onEditingComplete: () {
-                                              node.unfocus();
-                                            },
-                                            controller: passwordController,
-                                            textInputAction:
-                                                TextInputAction.done,
-                                            keyboardType:
-                                                TextInputType.visiblePassword,
-                                            cursorColor: Colors.black,
-                                            decoration: InputDecoration(
-                                                suffixIcon: IconButton(
-                                                  icon: Icon(
-                                                    obsecureText
-                                                        ? Icons
-                                                            .visibility_rounded
-                                                        : Icons
-                                                            .visibility_off_rounded,
-                                                    color: Colors.black,
-                                                  ),
-                                                  onPressed: () {
-                                                    toggle();
-                                                  },
-                                                ),
-                                                border: OutlineInputBorder(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                15))),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            color:
-                                                                Colors.black),
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    15))),
-                                                hintText: 'Password...')),
-                                      ),
-                                    )
-                                    // Padding(
-                                    //   padding: const EdgeInsets.fromLTRB(
-                                    //       65, 15, 65, 15),
-                                    //   child: CustomTextField(
-                                    //     deviceSize: deviceSize,
-                                    //     width: 0.85,
-                                    //     name: "Password..",
-                                    //     controller: passwordController,
-                                    //     keyboardType: TextInputType.number,
-                                    //     obsecure: obsecureText,
-                                    //     textInputAction: TextInputAction.done,
-                                    //     icon: IconButton(
-                                    //       icon: Icon(obsecureText
-                                    //           ? Icons.visibility_rounded
-                                    //           : Icons.visibility_off_rounded),
-                                    //       onPressed: () {
-                                    //         toggle();
-                                    //       },
-                                    //     ),
-                                    //     autovalidateMode:
-                                    //         AutovalidateMode.onUserInteraction,
-                                    //     validator: (value) {
-                                    //       if (value == '') {
-                                    //         return 'Please Enter your Password';
-                                    //       }
-                                    //       return null;
-                                    //     },
-                                    //     onEditingComplete: () {
-                                    //       node.unfocus();
-                                    //     },
-                                    //   ),
-                                    // ),
-                                  ],
-                                )),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(10, 8, 25, 30),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(250, 0, 0, 0),
-                                    alignment: Alignment.bottomRight,
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        // Handle click event
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'Forgot Password?',
-                                          style: TextStyle(
-                                            decoration:
-                                                TextDecoration.underline,
-                                            fontSize: 17,
-                                            color: Colors.black,
+                                      margin: EdgeInsets.fromLTRB(162, 0, 0, 0),
+                                      alignment: Alignment.bottomRight,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          // Handle click event
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            'Forgot Password?',
+                                            style: TextStyle(
+                                              decoration:
+                                                  TextDecoration.underline,
+                                              fontSize: 17,
+                                              color: Colors.black,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            // Row(
-                            //   children: [
-                            //     Expanded(
-                            //         child: Padding(
-                            //       padding:
-                            //           const EdgeInsets.fromLTRB(65, 15, 65, 15),
-                            //       child: OutlinedButton(
-                            //           onPressed: () {
-                            //             // if (formKey.currentState!.validate()) {
-                            //             //   _userController.onClickAction(
-                            //             //       email: nationalController);
-                            //             // }
-                            //             Navigator.pushAndRemoveUntil(
-                            //                 context,
-                            //                 MaterialPageRoute(
-                            //                     builder: (_) => HomePage()),
-                            //                 (route) => false);
-                            //           },
-                            //           child: Padding(
-                            //             padding: const EdgeInsets.all(10.0),
-                            //             child: Text('Sign In',
-                            //                 style: TextStyle(
-                            //                     fontSize: 18,
-                            //                     fontWeight: FontWeight.bold)),
-                            //           )),
-                            //     ))
-                            //   ],
-                            // ),
-                            InkWell(
-                              onTap: () {
-                                validateInput();
-                              },
-                              child: Container(
-                                height: 40,
-                                width: 350,
-                                decoration: BoxDecoration(
-                                  color: Colors.green,
-                                  borderRadius: BorderRadius.circular(15),
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black.withOpacity(0.3),
-                                        offset: Offset(0, -2),
-                                        blurRadius: 8,
-                                        blurStyle: BlurStyle.inner,
-                                        spreadRadius: 1),
-                                    BoxShadow(
-                                        color: Colors.black.withOpacity(0.3),
-                                        offset: Offset(0, -2),
-                                        blurRadius: 8,
-                                        blurStyle: BlurStyle.inner,
-                                        spreadRadius: 1),
                                   ],
                                 ),
-                                child: Center(
-                                  child: Text(
-                                    'Sign In',
-                                    style: TextStyle(
-                                      letterSpacing: 1,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      shadows: [
-                                        Shadow(
-                                          offset: Offset(1, 1),
-                                          blurRadius: 1.0,
-                                          color: Colors.black.withOpacity(0.3),
-                                        ),
-                                      ],
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(25.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: 195,
-                                    child: Divider(
-                                      color: Colors.black,
-                                      height: 1,
-                                      thickness: 0.7,
-                                      indent: 20,
-                                      endIndent: 20,
-                                    ),
+                              InkWell(
+                                onTap: () {
+                                  validateInput();
+                                },
+                                child: Container(
+                                  height: 45,
+                                  width: 300,
+                                  decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(15),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.3),
+                                          offset: Offset(0, -2),
+                                          blurRadius: 8,
+                                          blurStyle: BlurStyle.inner,
+                                          spreadRadius: 1),
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.3),
+                                          offset: Offset(0, -2),
+                                          blurRadius: 8,
+                                          blurStyle: BlurStyle.inner,
+                                          spreadRadius: 1),
+                                    ],
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10),
+                                  child: Center(
                                     child: Text(
-                                      'Or',
+                                      'Sign In',
                                       style: TextStyle(
-                                        color: Colors.black,
+                                        letterSpacing: 1,
+                                        color: Colors.white,
                                         fontWeight: FontWeight.bold,
+                                        shadows: [
+                                          Shadow(
+                                            offset: Offset(1, 1),
+                                            blurRadius: 1.0,
+                                            color:
+                                                Colors.black.withOpacity(0.3),
+                                          ),
+                                        ],
+                                        fontSize: 18,
                                       ),
                                     ),
                                   ),
-                                  Container(
-                                    width: 195,
-                                    child: Divider(
-                                      color: Colors.black,
-                                      height: 1,
-                                      thickness: 0.7,
-                                      indent: 20,
-                                      endIndent: 20,
-                                    ),
-                                  ),
-                                ],
+                                ),
                               ),
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => SignUpPage()));
-                              },
-                              child: Container(
-                                height: 40,
-                                width: 350,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(15),
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black.withOpacity(0.3),
-                                        offset: Offset(0, -2),
-                                        blurRadius: 8,
-                                        blurStyle: BlurStyle.inner,
-                                        spreadRadius: 1),
-                                    BoxShadow(
-                                        color: Colors.black.withOpacity(0.3),
-                                        offset: Offset(0, -2),
-                                        blurRadius: 8,
-                                        blurStyle: BlurStyle.inner,
-                                        spreadRadius: 1),
+                              Padding(
+                                padding: const EdgeInsets.all(25.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: 125,
+                                      child: Divider(
+                                        color: Colors.black,
+                                        height: 1,
+                                        thickness: 0.7,
+                                        indent: 5,
+                                        endIndent: 20,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10),
+                                      child: Text(
+                                        'Or',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 125,
+                                      child: Divider(
+                                        color: Colors.black,
+                                        height: 1,
+                                        thickness: 0.7,
+                                        indent: 20,
+                                        endIndent: 5,
+                                      ),
+                                    ),
                                   ],
                                 ),
-                                child: Center(
-                                  child: Text(
-                                    'Sign Up',
-                                    style: TextStyle(
-                                      letterSpacing: 1,
-                                      color: Colors.green,
-                                      fontWeight: FontWeight.bold,
-                                      shadows: [
-                                        Shadow(
-                                          offset: Offset(1, 1),
-                                          blurRadius: 1.0,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) => SignUpPage()));
+                                },
+                                child: Container(
+                                  height: 45,
+                                  width: 300,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(15),
+                                    boxShadow: [
+                                      BoxShadow(
                                           color: Colors.black.withOpacity(0.3),
-                                        ),
-                                      ],
-                                      fontSize: 18,
+                                          offset: Offset(0, -2),
+                                          blurRadius: 8,
+                                          blurStyle: BlurStyle.inner,
+                                          spreadRadius: 1),
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.3),
+                                          offset: Offset(0, -2),
+                                          blurRadius: 8,
+                                          blurStyle: BlurStyle.inner,
+                                          spreadRadius: 1),
+                                    ],
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Sign Up',
+                                      style: TextStyle(
+                                        letterSpacing: 1,
+                                        color: Colors.green,
+                                        fontWeight: FontWeight.bold,
+                                        shadows: [
+                                          Shadow(
+                                            offset: Offset(1, 1),
+                                            blurRadius: 1.0,
+                                            color:
+                                                Colors.black.withOpacity(0.3),
+                                          ),
+                                        ],
+                                        fontSize: 18,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

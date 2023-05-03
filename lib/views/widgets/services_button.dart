@@ -9,6 +9,7 @@ class ServicesButton extends StatelessWidget {
   final String serviceTitle;
   final String? serviceImage;
   final String? serviceDescription;
+  final Color color;
 
   final VoidCallback click;
 
@@ -17,6 +18,7 @@ class ServicesButton extends StatelessWidget {
       required this.serviceTitle,
       this.serviceImage,
       required this.click,
+      required this.color,
       required this.serviceDescription})
       : super(key: key);
 
@@ -25,7 +27,7 @@ class ServicesButton extends StatelessWidget {
     final deviceSize = MediaQuery.of(context).size;
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+      padding: const EdgeInsets.fromLTRB(15, 5, 15, 20),
       child: Card(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -33,32 +35,25 @@ class ServicesButton extends StatelessWidget {
         shadowColor: Colors.black87,
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20.0),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromRGBO(94, 216, 147, 1),
-                Color.fromRGBO(55, 131, 88, 1),
-              ],
-            ),
-          ),
+              borderRadius: BorderRadius.circular(20.0),
+              // gradient: LinearGradient(
+              //   begin: Alignment.topCenter,
+              //   end: Alignment.bottomCenter,
+              //   colors: [
+              //     Color.fromRGBO(94, 216, 147, 1),
+              //     Color.fromRGBO(55, 131, 88, 1),
+              //   ],
+              // ),
+              color: color
+              //  Color.fromARGB(255, 139, 185, 111)
+              ),
           child: InkWell(
             onTap: click,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 10, 0, 10),
+              padding: const EdgeInsets.fromLTRB(20, 25, 0, 25),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image(
-                    alignment: Alignment.topLeft,
-                    image: AssetImage(serviceImage!),
-                    height: 60,
-                    width: 60,
-                  ),
-                  SizedBox(
-                    width: 25,
-                  ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -93,9 +88,15 @@ class ServicesButton extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 5,
-                  )
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Image(
+                    alignment: Alignment.center,
+                    image: AssetImage(serviceImage!),
+                    height: 80,
+                    width: 80,
+                  ),
                 ],
               ),
             ),

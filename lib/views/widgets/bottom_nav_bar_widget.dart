@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:grad/views/pages/gov_services_page.dart';
+import 'package:grad/views/pages/medical_services_page.dart';
 
 import '../pages/home_page.dart';
 
@@ -31,20 +32,21 @@ class _BottomNavBarState extends State<BottomNavBar> {
         BottomNavigationBarItem(
             icon: Icon(Icons.home_rounded),
             label: 'Home',
-            backgroundColor: Color.fromRGBO(55, 131, 88, 1)),
+            backgroundColor: Colors.white),
         BottomNavigationBarItem(
             icon: Icon(Icons.document_scanner_rounded),
-            label: 'Gov. Services',
-            backgroundColor: Color.fromRGBO(55, 131, 88, 1)),
+            label: 'Govornmnetal Services',
+            backgroundColor: Colors.white),
         BottomNavigationBarItem(
-            icon: Icon(Icons.task_rounded),
-            label: 'ToDo',
-            backgroundColor: Color.fromRGBO(55, 131, 88, 1)),
+            icon: Icon(Icons.medical_services_rounded),
+            label: 'Medical Services',
+            backgroundColor: Colors.white),
       ],
       type: BottomNavigationBarType.shifting,
-      selectedItemColor: Colors.grey.shade800,
+      selectedItemColor: Color.fromARGB(255, 139, 185, 111),
+      unselectedItemColor: Colors.black45,
       currentIndex: widget.index,
-      iconSize: 22,
+      iconSize: 26,
       onTap: (index) {
         switch (index) {
           case 0:
@@ -57,15 +59,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 context, MaterialPageRoute(builder: (_) => GovServicesPage()));
 
             break;
-          // case 2:
-          //   Navigator.push(
-          //       context,
-          //       MaterialPageRoute(
-          //           builder: (_) => ToDoPage(
-          //                 todo: _toDoController.toDoList,
-          //               )));
+          case 2:
+            Navigator.push(context,
+                MaterialPageRoute(builder: (_) => MedicalServicesPage()));
 
-          //   break;
+            break;
           default:
             Navigator.push(
                 context, MaterialPageRoute(builder: (_) => HomePage()));

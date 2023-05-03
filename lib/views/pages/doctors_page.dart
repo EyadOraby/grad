@@ -1,0 +1,141 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/key.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:grad/views/pages/home_page.dart';
+import 'package:grad/views/pages/splash_page.dart';
+import 'package:future_loading_dialog/future_loading_dialog.dart';
+import 'package:grad/views/widgets/appointments_card.dart';
+import 'package:grad/views/widgets/doctor_card.dart';
+import 'package:grad/views/widgets/drawer_mobile.dart';
+import 'package:grad/views/widgets/gov_services_buttton.dart';
+import 'package:grad/views/widgets/ic_services_button.dart';
+import 'package:grad/views/widgets/medical_cat_services_button.dart';
+
+import '../../main.dart';
+import '../widgets/bottom_nav_bar_widget.dart';
+import '../widgets/custom_text_field.dart';
+import '../widgets/services_button.dart';
+import '../widgets/template.dart';
+
+class DoctorsPage extends StatefulWidget {
+  const DoctorsPage({Key? key}) : super(key: key);
+
+  @override
+  State<DoctorsPage> createState() => _DoctorsPageState();
+}
+
+class _DoctorsPageState extends State<DoctorsPage> {
+  TextEditingController formNumberController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
+  @override
+  void initState() {}
+
+  @override
+  void dispose() {
+    formNumberController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext scontext) {
+    final deviceSize = MediaQuery.of(context).size;
+    final node = FocusScope.of(context);
+    return TemplatePage(
+      drawerMobile: DrawerMobile(),
+      appBarTitle: 'SANAD',
+      index: 2,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // SizedBox(
+            //   height: 15,
+            // ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+              alignment: Alignment.center,
+              child: Text(
+                "Doctors",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color.fromARGB(255, 11, 129, 62),
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Hi.. Aly, based on your condition here are the doctors we found near you.",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    DoctorCard(
+                      firstName: "Mohamed",
+                      lastName: "Abdallah",
+                      specialization: "Neurology",
+                      location: "Giza, Egypt",
+                      workinDays: "Sun - Thu",
+                      workingHours: "6 - 10 PM",
+                      rating: "4.2",
+                      gender: "Male",
+                    ),
+                    DoctorCard(
+                      firstName: "Hassan",
+                      lastName: "Omar",
+                      specialization: "Rheumatologist",
+                      location: "Cairo, Egypt",
+                      workinDays: "Thu - Sat",
+                      workingHours: "8 - 12 AM",
+                      rating: "4.0",
+                      gender: "Male",
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    DoctorCard(
+                      firstName: "Aly",
+                      lastName: "Ahmed",
+                      specialization: "Osteopaths",
+                      location: "Giza, Egypt",
+                      workinDays: "Sun - Wed",
+                      workingHours: "2 - 7 PM",
+                      rating: "5.0",
+                      gender: "Male",
+                    ),
+                    DoctorCard(
+                      firstName: "Hana",
+                      lastName: "Mohamed",
+                      specialization: "Neurology",
+                      location: "Cairo, Egypt",
+                      workinDays: "Tue - Thu",
+                      workingHours: "1 - 5 PM",
+                      rating: "4.6",
+                      gender: "Female",
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      bottomNavBar: BottomNavBar(
+        index: 2,
+      ),
+    );
+  }
+}

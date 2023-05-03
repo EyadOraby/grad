@@ -1,0 +1,143 @@
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/key.dart';
+import 'package:flutter/src/widgets/framework.dart';
+
+import '../pages/home_page.dart';
+
+class MedicalCategoryServicesButton extends StatelessWidget {
+  final String serviceTitle;
+  final String serviceImage;
+  final Color color;
+  final VoidCallback click;
+
+  const MedicalCategoryServicesButton({
+    Key? key,
+    required this.serviceTitle,
+    required this.serviceImage,
+    required this.color,
+    required this.click,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final deviceSize = MediaQuery.of(context).size;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(2, 2, 2, 2),
+      child: Container(
+        width: deviceSize.width * 0.46,
+        height: deviceSize.height * 0.281,
+        child: Card(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          elevation: 5,
+          shadowColor: Colors.black87,
+          child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.0),
+                // gradient: LinearGradient(
+                //   begin: Alignment.topCenter,
+                //   end: Alignment.bottomCenter,
+                //   colors: [
+                //     Color.fromRGBO(94, 216, 147, 1),
+                //     Color.fromRGBO(55, 131, 88, 1),
+                //   ],
+                // ),
+                color: color
+                //  Color.fromARGB(255, 139, 185, 111)
+                ),
+            child: InkWell(
+              onTap: click,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 30, 0, 30),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(children: [
+                              TextSpan(
+                                text: serviceTitle,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 23,
+                                ),
+                              ),
+                            ])),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Container(
+                          // width: deviceSize.width * 0.3,
+                          child: Image(
+                            alignment: Alignment.center,
+                            image: AssetImage(serviceImage),
+                            height: 80,
+                            width: 80,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    // Image(
+                    //   alignment: Alignment.center,
+                    //   image: AssetImage(serviceImage!),
+                    //   height: 120,
+                    //   width: 115,
+                    // ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+    // InkWell(
+    //   child: Padding(
+    //     padding: const EdgeInsets.fromLTRB(30, 30, 30, 30),
+    //     child: Card(
+    //       shape: RoundedRectangleBorder(
+    //           borderRadius: BorderRadius.all(Radius.circular(20))),
+    //       elevation: 15,
+    //       shadowColor: Colors.black87,
+    //       child: Container(
+    //         decoration: BoxDecoration(
+    //           borderRadius: BorderRadius.circular(20.0),
+    //           color: Color.fromARGB(255, 139, 185, 111),
+    //         ),
+    //         child: Padding(
+    //           padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+    //           child: Column(
+    //             crossAxisAlignment: CrossAxisAlignment.stretch,
+    //             children: [
+    //               RichText(
+    //                   textAlign: TextAlign.center,
+    //                   text: TextSpan(children: [
+    //                     TextSpan(
+    //                       text: serviceTitle,
+    //                       style: TextStyle(
+    //                           color: Colors.white,
+    //                           fontWeight: FontWeight.bold,
+    //                           fontSize: 26),
+    //                     ),
+    //                   ])),
+    //               const SizedBox(
+    //                 height: 15,
+    //               )
+    //             ],
+    //           ),
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    // );
+  }
+}

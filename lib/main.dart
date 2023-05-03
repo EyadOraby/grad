@@ -23,9 +23,9 @@ class MyApp extends StatelessWidget {
       title: 'SANAD',
       theme: ThemeData(
           fontFamily: 'Montserrat-VariableFont_wght.ttf',
-          primarySwatch: Colors.green,
+          primarySwatch: Colors.lightGreen,
           scaffoldBackgroundColor: Colors.grey.shade200),
-      home: GovServicesPage(),
+      home: HomePage(),
     );
   }
 }
