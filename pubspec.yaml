@@ -34,10 +34,21 @@ dependencies:
   future_loading_dialog: ^0.2.3
   email_validator: ^2.1.17
   carousel_slider: ^4.1.1
+  toggle_switch: ^2.1.0
+  booking_calendar: ^1.1.6
+  day_picker: ^2.1.1
+  flutter_datetime_picker: ^1.5.1
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  flutterfire_cli: ^0.2.7
+  firebase_core: ^2.8.0
+  cloud_firestore: ^4.4.5
+
+
+  #gsform: ^0.2.0
 
 dev_dependencies:
   flutter_test:

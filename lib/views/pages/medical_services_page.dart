@@ -3,6 +3,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:grad/views/pages/doctors_page.dart';
 import 'package:grad/views/pages/home_page.dart';
+import 'package:grad/views/pages/hospitals_page.dart';
 import 'package:grad/views/pages/splash_page.dart';
 import 'package:future_loading_dialog/future_loading_dialog.dart';
 import 'package:grad/views/widgets/appointments_card.dart';
@@ -108,7 +109,12 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
                         serviceTitle: "Hospitals ",
                         serviceImage: "assets/hospital-icon.png",
                         color: Color.fromARGB(255, 139, 185, 111),
-                        click: () {}),
+                        click: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => HospitalsPage()));
+                        }),
                   ],
                 ),
                 Row(

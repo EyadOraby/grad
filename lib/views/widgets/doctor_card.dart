@@ -216,7 +216,7 @@ class DoctorCard extends StatelessWidget {
                               width: 85,
                               decoration: BoxDecoration(
                                 color: Colors.green.shade900,
-                                borderRadius: BorderRadius.circular(15),
+                                borderRadius: BorderRadius.circular(10),
                                 boxShadow: [
                                   BoxShadow(
                                       color: Colors.black.withOpacity(0.3),
