@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:grad/views/pages/home_page.dart';
+import 'package:grad/views/pages/medical_services/hospitals/hospitals_form_page.dart';
 import 'package:grad/views/pages/splash_page.dart';
 import 'package:future_loading_dialog/future_loading_dialog.dart';
 import 'package:grad/views/widgets/appointments_card.dart';
@@ -12,11 +13,11 @@ import 'package:grad/views/widgets/hospital_card.dart';
 import 'package:grad/views/widgets/ic_services_button.dart';
 import 'package:grad/views/widgets/medical_cat_services_button.dart';
 
-import '../../main.dart';
-import '../widgets/bottom_nav_bar_widget.dart';
-import '../widgets/custom_text_field.dart';
-import '../widgets/services_button.dart';
-import '../widgets/template.dart';
+import '../../../../main.dart';
+import '../../../widgets/bottom_nav_bar_widget.dart';
+import '../../../widgets/custom_text_field.dart';
+import '../../../widgets/services_button.dart';
+import '../../../widgets/template.dart';
 
 class HospitalsPage extends StatefulWidget {
   const HospitalsPage({Key? key}) : super(key: key);
@@ -56,7 +57,7 @@ class _HospitalsPageState extends State<HospitalsPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               alignment: Alignment.center,
               child: Text(
-                "Doctors",
+                "Hospitals",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color.fromARGB(255, 11, 129, 62),
@@ -88,7 +89,19 @@ class _HospitalsPageState extends State<HospitalsPage> {
                       workinDays: "All Week",
                       workingHours: 'All Day',
                       rating: "4.6",
-                      click: () {},
+                      click: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => HospitalsFormPage(
+                                      name: 'Dar El-Fouad',
+                                      about:
+                                          'About the hospitalllldsfkbdf fffffffffffffffff ffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffff f',
+                                      address: 'Hospital Address',
+                                      workinDays: 'Sun / ',
+                                      workingHours: '',
+                                    )));
+                      },
                     ),
                     HospitalCard(
                       location: "Cario, Egypt",

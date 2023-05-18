@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:grad/views/pages/medical_services_page.dart';
+import 'package:grad/views/pages/medical_services/medical_services_page.dart';
 import 'package:grad/views/pages/splash_page.dart';
 import 'package:future_loading_dialog/future_loading_dialog.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -11,7 +11,7 @@ import '../../main.dart';
 import '../widgets/bottom_nav_bar_widget.dart';
 import '../widgets/services_button.dart';
 import '../widgets/template.dart';
-import 'gov_services_page.dart';
+import 'gov_services/gov_services_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

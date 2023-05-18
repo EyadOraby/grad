@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:grad/views/pages/doctors_form_page.dart';
+import 'package:grad/views/pages/medical_services/doctors/doctors_form_page.dart';
 
 import '../pages/home_page.dart';
 

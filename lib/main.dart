@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grad/views/pages/gov_services_page.dart';
+import 'package:grad/views/pages/gov_services/gov_services_page.dart';
 import 'package:grad/views/pages/home_page.dart';
-import 'package:grad/views/pages/hospitals_page.dart';
+import 'package:grad/views/pages/medical_services/hospitals/hospitals_page.dart';
 import 'package:grad/views/pages/login_page.dart';
 import 'package:grad/views/pages/sign_up_page.dart';
 

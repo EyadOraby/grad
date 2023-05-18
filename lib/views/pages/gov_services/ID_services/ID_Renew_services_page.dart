@@ -8,11 +8,11 @@ import 'package:grad/views/widgets/drawer_mobile.dart';
 import 'package:grad/views/widgets/gov_services_buttton.dart';
 import 'package:grad/views/widgets/ic_services_button.dart';
 
-import '../../main.dart';
-import '../widgets/bottom_nav_bar_widget.dart';
-import '../widgets/custom_text_field.dart';
-import '../widgets/services_button.dart';
-import '../widgets/template.dart';
+import '../../../../main.dart';
+import '../../../widgets/bottom_nav_bar_widget.dart';
+import '../../../widgets/custom_text_field.dart';
+import '../../../widgets/services_button.dart';
+import '../../../widgets/template.dart';
 
 class IDServicesPage extends StatefulWidget {
   const IDServicesPage({Key? key}) : super(key: key);

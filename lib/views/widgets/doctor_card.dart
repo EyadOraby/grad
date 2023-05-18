@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:grad/views/pages/doctors_form_page.dart';
+import 'package:grad/views/pages/medical_services/doctors/doctors_form_page.dart';
 
 import '../pages/home_page.dart';
 
@@ -16,6 +16,7 @@ class DoctorCard extends StatelessWidget {
   final String workingHours;
   final String rating;
   final String? gender;
+  final VoidCallback click;
 
   const DoctorCard({
     Key? key,
@@ -26,6 +27,7 @@ class DoctorCard extends StatelessWidget {
     required this.workinDays,
     required this.workingHours,
     required this.rating,
+    required this.click,
     this.gender,
   }) : super(key: key);
 
@@ -205,12 +207,14 @@ class DoctorCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => DoctorsFormPage()));
-                            },
+                            onTap: click,
+
+                            // () {
+                            //   Navigator.push(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //           builder: (_) => DoctorsFormPage()));
+                            // },
                             child: Container(
                               height: 30,
                               width: 85,

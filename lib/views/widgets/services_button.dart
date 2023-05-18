@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:grad/views/pages/gov_services_page.dart';
+import 'package:grad/views/pages/gov_services/gov_services_page.dart';
 
 import '../pages/home_page.dart';
 

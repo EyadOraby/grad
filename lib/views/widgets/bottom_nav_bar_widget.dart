@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:grad/views/pages/gov_services_page.dart';
-import 'package:grad/views/pages/medical_services_page.dart';
+import 'package:grad/views/pages/gov_services/gov_services_page.dart';
+import 'package:grad/views/pages/jobs_services/jobs_page.dart';
+import 'package:grad/views/pages/medical_services/medical_services_page.dart';
 
 import '../pages/home_page.dart';
 
@@ -41,6 +42,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
             icon: Icon(Icons.medical_services_rounded),
             label: 'Medical Services',
             backgroundColor: Colors.white),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.work_rounded),
+            label: 'Job Services',
+            backgroundColor: Colors.white),
       ],
       type: BottomNavigationBarType.shifting,
       selectedItemColor: Color.fromARGB(255, 139, 185, 111),
@@ -62,6 +67,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
           case 2:
             Navigator.push(context,
                 MaterialPageRoute(builder: (_) => MedicalServicesPage()));
+
+            break;
+          case 3:
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => JobsPage()),
+            );
 
             break;
           default:
