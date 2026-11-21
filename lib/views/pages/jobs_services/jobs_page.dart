@@ -17,8 +17,6 @@ class JobsPage extends StatefulWidget {
 class _JobsPageState extends State<JobsPage> {
   TextEditingController formNumberController = TextEditingController();
 
-  final _formKey = GlobalKey<FormState>();
-
   @override
   void dispose() {
     formNumberController.dispose();
@@ -27,8 +25,6 @@ class _JobsPageState extends State<JobsPage> {
 
   @override
   Widget build(BuildContext scontext) {
-    final deviceSize = MediaQuery.of(context).size;
-    final node = FocusScope.of(context);
     return TemplatePage(
       drawerMobile: DrawerMobile(),
       appBarTitle: context.t('SANAD'),
@@ -56,7 +52,8 @@ class _JobsPageState extends State<JobsPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               alignment: Alignment.centerLeft,
               child: Text(
-                context.t("Hi Aly, these are Jobs near you, and suitable for your condition."),
+                context.t(
+                    "Hi Aly, these are Jobs near you, and suitable for your condition."),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -70,7 +67,7 @@ class _JobsPageState extends State<JobsPage> {
                   location: "Giza, Egypt",
                   name: "ON",
                   jobTitle: "Content Writer",
-                  jobTime: "Full Time",
+                  jobTime: context.t("Full Time"),
                   applicants: "12",
                   salary: "5.5K" "/Month",
                   click: () {},
@@ -80,7 +77,7 @@ class _JobsPageState extends State<JobsPage> {
                   location: "Giza, Egypt",
                   name: "Orange",
                   jobTitle: "Data Entry",
-                  jobTime: "Part Time",
+                  jobTime: context.t("Part Time"),
                   applicants: "19",
                   salary: "3K" "/Month",
                   click: () {},
@@ -90,7 +87,7 @@ class _JobsPageState extends State<JobsPage> {
                   location: "Cairo, Egypt",
                   name: "Pepsi",
                   jobTitle: "Office Assistant",
-                  jobTime: "Part Time",
+                  jobTime: context.t("Part Time"),
                   applicants: "12",
                   salary: "4.5K" "/Month",
                   click: () {},

@@ -7,7 +7,11 @@ import 'package:grad/theme/sanad_colors.dart';
 
 /// A white, softly shadowed surface with rounded corners.
 class SanadCard extends StatelessWidget {
-  const SanadCard({super.key, required this.child, this.onTap, this.padding = const EdgeInsets.all(16)});
+  const SanadCard(
+      {super.key,
+      required this.child,
+      this.onTap,
+      this.padding = const EdgeInsets.all(16)});
 
   final Widget child;
   final VoidCallback? onTap;
@@ -22,7 +26,10 @@ class SanadCard extends StatelessWidget {
         border: sanadStore.settings.highContrast
             ? Border.all(color: Colors.black, width: 1.5)
             : Border.all(color: SanadColors.line),
-        boxShadow: const [BoxShadow(color: Color(0x0F0F5C4A), blurRadius: 24, offset: Offset(0, 10))],
+        boxShadow: const [
+          BoxShadow(
+              color: Color(0x0F0F5C4A), blurRadius: 24, offset: Offset(0, 10))
+        ],
       ),
       child: Material(
         type: MaterialType.transparency,
@@ -53,10 +60,11 @@ class InfoRow extends StatelessWidget {
           const SizedBox(width: 6),
           Expanded(
             child: Text(
-              text,
+              context.t(text),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontSize: 12.5, color: SanadColors.inkMuted),
+              style:
+                  const TextStyle(fontSize: 12.5, color: SanadColors.inkMuted),
             ),
           ),
         ],
@@ -84,7 +92,11 @@ class RatingChip extends StatelessWidget {
         children: [
           const Icon(Icons.star_rounded, size: 15, color: SanadColors.gold),
           const SizedBox(width: 3),
-          Text(rating, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: SanadColors.ink)),
+          Text(rating,
+              style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                  color: SanadColors.ink)),
         ],
       ),
     );
@@ -117,7 +129,8 @@ class ProviderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Two per row on phones, capped on wide screens.
-    final width = ((MediaQuery.sizeOf(context).width - 36) / 2).clamp(140.0, 280.0);
+    final width =
+        ((MediaQuery.sizeOf(context).width - 36) / 2).clamp(140.0, 280.0);
     return Container(
       width: width,
       padding: const EdgeInsets.all(6),
@@ -148,12 +161,18 @@ class ProviderCard extends StatelessWidget {
               title,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: SanadColors.ink, height: 1.25),
+              style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: SanadColors.ink,
+                  height: 1.25),
             ),
             if (subtitle != null)
               Padding(
                 padding: const EdgeInsets.only(top: 2),
-                child: Text(context.t(subtitle!), style: TextStyle(fontSize: 12.5, color: SanadColors.primary)),
+                child: Text(context.t(subtitle!),
+                    style:
+                        TextStyle(fontSize: 12.5, color: SanadColors.primary)),
               ),
             const SizedBox(height: 6),
             InfoRow(icon: Icons.location_on_outlined, text: location),
@@ -166,9 +185,11 @@ class ProviderCard extends StatelessWidget {
                 onPressed: onBook,
                 style: FilledButton.styleFrom(
                   backgroundColor: SanadColors.primary,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14)),
                 ),
-                child: Text(context.t('Book'), style: TextStyle(fontWeight: FontWeight.w700)),
+                child: Text(context.t('Book'),
+                    style: TextStyle(fontWeight: FontWeight.w700)),
               ),
             ),
           ],

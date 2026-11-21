@@ -37,10 +37,18 @@ class _StaffPortalState extends State<StaffPortal> {
           Semantics(
             header: true,
             child: Text(context.t(_tabs[_index].$2),
-                style: TextStyle(fontSize: wide ? 30 : 24, fontWeight: FontWeight.w800, color: SanadColors.ink)),
+                style: TextStyle(
+                    fontSize: wide ? 30 : 24,
+                    fontWeight: FontWeight.w800,
+                    color: SanadColors.ink)),
           ),
           const SizedBox(height: 18),
-          [const _Overview(), const _Requests(), const _Appointments(), const _Applications()][_index],
+          [
+            const _Overview(),
+            const _Requests(),
+            const _Appointments(),
+            const _Applications()
+          ][_index],
         ],
       ),
     );
@@ -53,15 +61,22 @@ class _StaffPortalState extends State<StaffPortal> {
           const Icon(Icons.account_balance_outlined, color: Colors.white),
           const SizedBox(width: 10),
           Expanded(
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(context.t('SANAD Staff Portal'), style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 17)),
-              Text(context.t('Citizen services · Giza office'), style: TextStyle(color: Colors.white70, fontSize: 12.5)),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(context.t('SANAD Staff Portal'),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 17)),
+              Text(context.t('Citizen services · Giza office'),
+                  style: TextStyle(color: Colors.white70, fontSize: 12.5)),
             ]),
           ),
           IconButton(
             tooltip: context.t('Accessibility settings'),
             color: Colors.white,
-            onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AccessibilityPage())),
+            onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const AccessibilityPage())),
             icon: const Icon(Icons.accessibility_new_rounded),
           ),
         ]),
@@ -81,7 +96,9 @@ class _StaffPortalState extends State<StaffPortal> {
                     backgroundColor: Colors.white,
                     indicatorColor: SanadColors.primary.withValues(alpha: 0.12),
                     destinations: [
-                      for (final (icon, label) in _tabs) NavigationRailDestination(icon: Icon(icon), label: Text(context.t(label))),
+                      for (final (icon, label) in _tabs)
+                        NavigationRailDestination(
+                            icon: Icon(icon), label: Text(context.t(label))),
                     ],
                   ),
                   const VerticalDivider(width: 1),
@@ -95,14 +112,19 @@ class _StaffPortalState extends State<StaffPortal> {
           : NavigationBar(
               selectedIndex: _index,
               onDestinationSelected: (i) => setState(() => _index = i),
-              destinations: [for (final (icon, label) in _tabs) NavigationDestination(icon: Icon(icon), label: context.t(label))],
+              destinations: [
+                for (final (icon, label) in _tabs)
+                  NavigationDestination(
+                      icon: Icon(icon), label: context.t(label))
+              ],
             ),
     );
   }
 }
 
 class _Kpi extends StatelessWidget {
-  const _Kpi(this.icon, this.label, this.value, [this.color = SanadColors.primary]);
+  const _Kpi(this.icon, this.label, this.value,
+      [this.color = SanadColors.primary]);
   final IconData icon;
   final String label;
   final String value;
@@ -113,15 +135,23 @@ class _Kpi extends StatelessWidget {
         label: '$label: $value',
         excludeSemantics: true,
         child: SanadCard(
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Container(
               padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(color: color.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(12)),
+              decoration: BoxDecoration(
+                  color: color.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(12)),
               child: Icon(icon, color: color),
             ),
             const SizedBox(height: 12),
-            Text(value, style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: SanadColors.ink)),
-            Text(context.t(label), style: TextStyle(color: SanadColors.inkMuted)),
+            Text(value,
+                style: const TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w800,
+                    color: SanadColors.ink)),
+            Text(context.t(label),
+                style: TextStyle(color: SanadColors.inkMuted)),
           ]),
         ),
       );
@@ -133,10 +163,21 @@ class _Overview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = sanadStore;
-    final open = s.requests.where((r) => r.status != RequestStatus.readyForPickup && r.status != RequestStatus.rejected).length;
-    final booked = s.appointments.where((a) => a.status == AppointmentStatus.booked).length;
-    final newApps = s.applications.where((a) => a.status == ApplicationStatus.applied).length;
-    final byStatus = {for (final st in RequestStatus.values) st: s.requests.where((r) => r.status == st).length};
+    final open = s.requests
+        .where((r) =>
+            r.status != RequestStatus.readyForPickup &&
+            r.status != RequestStatus.rejected)
+        .length;
+    final booked = s.appointments
+        .where((a) => a.status == AppointmentStatus.booked)
+        .length;
+    final newApps = s.applications
+        .where((a) => a.status == ApplicationStatus.applied)
+        .length;
+    final byStatus = {
+      for (final st in RequestStatus.values)
+        st: s.requests.where((r) => r.status == st).length
+    };
     final max = byStatus.values.fold<int>(1, (m, v) => v > m ? v : m);
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       LayoutBuilder(builder: (context, c) {
@@ -144,16 +185,24 @@ class _Overview extends StatelessWidget {
         final w = (c.maxWidth - (cols - 1) * 14) / cols;
         return Wrap(spacing: 14, runSpacing: 14, children: [
           for (final k in [
-            _Kpi(Icons.pending_actions_outlined, context.t('Open requests'), '$open', SanadColors.gold),
-            _Kpi(Icons.event_available_outlined, context.t('Booked appointments'), '$booked'),
-            _Kpi(Icons.work_outline_rounded, context.t('New job applications'), '$newApps', Color(0xFF2F6FB0)),
-            _Kpi(Icons.check_circle_outline, context.t('Ready for pickup'), '${byStatus[RequestStatus.readyForPickup]}', SanadColors.mint),
+            _Kpi(Icons.pending_actions_outlined, context.t('Open requests'),
+                '$open', SanadColors.gold),
+            _Kpi(Icons.event_available_outlined,
+                context.t('Booked appointments'), '$booked'),
+            _Kpi(Icons.work_outline_rounded, context.t('New job applications'),
+                '$newApps', Color(0xFF2F6FB0)),
+            _Kpi(Icons.check_circle_outline, context.t('Ready for pickup'),
+                '${byStatus[RequestStatus.readyForPickup]}', SanadColors.mint),
           ])
             SizedBox(width: w, child: k),
         ]);
       }),
       const SizedBox(height: 22),
-      Text(context.t('Requests by status'), style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: SanadColors.ink)),
+      Text(context.t('Requests by status'),
+          style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w800,
+              color: SanadColors.ink)),
       const SizedBox(height: 10),
       SanadCard(
         child: Column(children: [
@@ -164,19 +213,26 @@ class _Overview extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 6),
                 child: Row(children: [
-                  SizedBox(width: 130, child: Text(context.t(e.key.label), style: TextStyle(fontWeight: FontWeight.w600))),
+                  SizedBox(
+                      width: 130,
+                      child: Text(context.t(e.key.label),
+                          style: TextStyle(fontWeight: FontWeight.w600))),
                   Expanded(
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(6),
                       child: LinearProgressIndicator(
                         value: e.value / max,
                         minHeight: 12,
-                        color: e.key == RequestStatus.rejected ? const Color(0xFFB3261E) : SanadColors.primary,
+                        color: e.key == RequestStatus.rejected
+                            ? const Color(0xFFB3261E)
+                            : SanadColors.primary,
                         backgroundColor: SanadColors.surface,
                       ),
                     ),
                   ),
-                  SizedBox(width: 36, child: Text('${e.value}', textAlign: TextAlign.end)),
+                  SizedBox(
+                      width: 36,
+                      child: Text('${e.value}', textAlign: TextAlign.end)),
                 ]),
               ),
             ),
@@ -191,7 +247,8 @@ class _Requests extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final list = [...sanadStore.requests]..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+    final list = [...sanadStore.requests]
+      ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
     return Column(children: [
       for (final r in list)
         Padding(
@@ -225,7 +282,8 @@ class _Appointments extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final list = [...sanadStore.appointments]..sort((a, b) => a.when.compareTo(b.when));
+    final list = [...sanadStore.appointments]
+      ..sort((a, b) => a.when.compareTo(b.when));
     String status(Appointment a) => switch (a.status) {
           AppointmentStatus.booked => 'Booked',
           AppointmentStatus.completed => 'Completed',
@@ -238,17 +296,29 @@ class _Appointments extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 10),
             child: SanadCard(
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(a.citizen, style: const TextStyle(fontWeight: FontWeight.w700, color: SanadColors.ink)),
-                Text('${a.provider} · ${formatSlot(a.when)}', style: const TextStyle(color: SanadColors.inkMuted)),
-                const SizedBox(height: 8),
-                Row(children: [
-                  Text(status(a), style: const TextStyle(color: SanadColors.primary, fontWeight: FontWeight.w700)),
-                  const Spacer(),
-                  if (a.status == AppointmentStatus.booked)
-                    TextButton(onPressed: () => sanadStore.completeAppointment(a.id), child: Text(context.t('Mark attended'))),
-                ]),
-              ]),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(a.citizen,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w700,
+                            color: SanadColors.ink)),
+                    Text('${a.provider} · ${formatSlot(a.when)}',
+                        style: const TextStyle(color: SanadColors.inkMuted)),
+                    const SizedBox(height: 8),
+                    Row(children: [
+                      Text(context.t(status(a)),
+                          style: const TextStyle(
+                              color: SanadColors.primary,
+                              fontWeight: FontWeight.w700)),
+                      const Spacer(),
+                      if (a.status == AppointmentStatus.booked)
+                        TextButton(
+                            onPressed: () =>
+                                sanadStore.completeAppointment(a.id),
+                            child: Text(context.t('Mark attended'))),
+                    ]),
+                  ]),
             ),
           ),
       ]);
@@ -271,13 +341,15 @@ class _Appointments extends StatelessWidget {
                 DataCell(Text(a.citizen)),
                 DataCell(Text(a.provider)),
                 DataCell(Text(formatSlot(a.when))),
-                DataCell(Text(switch (a.status) {
+                DataCell(Text(context.t(switch (a.status) {
                   AppointmentStatus.booked => 'Booked',
                   AppointmentStatus.completed => 'Completed',
                   AppointmentStatus.cancelled => 'Cancelled',
-                })),
+                }))),
                 DataCell(a.status == AppointmentStatus.booked
-                    ? TextButton(onPressed: () => sanadStore.completeAppointment(a.id), child: Text(context.t('Mark attended')))
+                    ? TextButton(
+                        onPressed: () => sanadStore.completeAppointment(a.id),
+                        child: Text(context.t('Mark attended')))
                     : const SizedBox()),
               ]),
           ],
@@ -305,18 +377,29 @@ class _Applications extends StatelessWidget {
               children: [
                 ConstrainedBox(
                   constraints: const BoxConstraints(minWidth: 220),
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Text('${a.jobTitle} · ${a.company}', style: const TextStyle(fontWeight: FontWeight.w700, color: SanadColors.ink)),
-                    Text('${a.citizen} · ${a.status.label}', style: const TextStyle(color: SanadColors.inkMuted)),
-                  ]),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('${a.jobTitle} · ${a.company}',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: SanadColors.ink)),
+                        Text('${a.citizen} · ${a.status.label}',
+                            style:
+                                const TextStyle(color: SanadColors.inkMuted)),
+                      ]),
                 ),
                 if (a.status.next != null)
                   Wrap(spacing: 8, children: [
                     FilledButton(
                       onPressed: () => sanadStore.advanceApplication(a.id),
-                      child: Text(a.status.next == ApplicationStatus.shortlisted ? context.t('Shortlist') : context.t('Invite to interview')),
+                      child: Text(a.status.next == ApplicationStatus.shortlisted
+                          ? context.t('Shortlist')
+                          : context.t('Invite to interview')),
                     ),
-                    OutlinedButton(onPressed: () => sanadStore.rejectApplication(a.id), child: Text(context.t('Decline'))),
+                    OutlinedButton(
+                        onPressed: () => sanadStore.rejectApplication(a.id),
+                        child: Text(context.t('Decline'))),
                   ]),
               ],
             ),

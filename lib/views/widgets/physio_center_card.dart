@@ -3,7 +3,6 @@ import 'package:grad/theme/sanad_colors.dart';
 
 import 'package:flutter/material.dart';
 
-
 class PhysioCenterCard extends StatelessWidget {
   final String name;
   final String location;
@@ -29,7 +28,6 @@ class PhysioCenterCard extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
       child: SizedBox(
         width: deviceSize.width * 0.92,
-        height: deviceSize.height * 0.3,
         child: Card(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -41,6 +39,7 @@ class PhysioCenterCard extends StatelessWidget {
               color: SanadColors.primarySoft,
             ),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
@@ -89,7 +88,8 @@ class PhysioCenterCard extends StatelessWidget {
                     SizedBox(
                       width: 5,
                     ),
-                    Padding(
+                    Expanded(
+                        child: Padding(
                       padding: const EdgeInsets.fromLTRB(0, 25, 0, 20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,26 +115,27 @@ class PhysioCenterCard extends StatelessWidget {
                             children: [
                               Image(
                                 alignment: Alignment.center,
-                                image: AssetImage(
-                                    "assets/location-pin-icon.png"),
+                                image:
+                                    AssetImage("assets/location-pin-icon.png"),
                                 height: 18,
                                 width: 18,
                               ),
                               SizedBox(
                                 width: 5,
                               ),
-                              RichText(
-                                  textAlign: TextAlign.left,
-                                  text: TextSpan(children: [
-                                    TextSpan(
-                                      text: location,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 19,
-                                      ),
-                                    ),
-                                  ])),
+                              Flexible(
+                                  child: RichText(
+                                      textAlign: TextAlign.left,
+                                      text: TextSpan(children: [
+                                        TextSpan(
+                                          text: location,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 19,
+                                          ),
+                                        ),
+                                      ]))),
                             ],
                           ),
                           // SizedBox(
@@ -169,7 +170,7 @@ class PhysioCenterCard extends StatelessWidget {
                           //     ])),
                         ],
                       ),
-                    ),
+                    )),
                   ],
                 ),
                 Padding(
@@ -192,18 +193,19 @@ class PhysioCenterCard extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(children: [
-                                TextSpan(
-                                  text: workinDays,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 19,
-                                  ),
-                                ),
-                              ])),
+                          Flexible(
+                              child: RichText(
+                                  textAlign: TextAlign.left,
+                                  text: TextSpan(children: [
+                                    TextSpan(
+                                      text: workinDays,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 19,
+                                      ),
+                                    ),
+                                  ]))),
                         ],
                       ),
                       SizedBox(
@@ -221,18 +223,19 @@ class PhysioCenterCard extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(children: [
-                                TextSpan(
-                                  text: workingHours,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 19,
-                                  ),
-                                ),
-                              ])),
+                          Flexible(
+                              child: RichText(
+                                  textAlign: TextAlign.left,
+                                  text: TextSpan(children: [
+                                    TextSpan(
+                                      text: workingHours,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 19,
+                                      ),
+                                    ),
+                                  ]))),
                         ],
                       ),
                     ],

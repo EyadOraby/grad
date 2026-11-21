@@ -89,7 +89,8 @@ class AppointmentsCard extends StatelessWidget {
                 SizedBox(
                   width: 5,
                 ),
-                Padding(
+                Expanded(
+                    child: Padding(
                   padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,7 +140,7 @@ class AppointmentsCard extends StatelessWidget {
                           ])),
                     ],
                   ),
-                ),
+                )),
               ],
             ),
           ),

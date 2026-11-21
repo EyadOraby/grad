@@ -4,7 +4,6 @@ import 'package:grad/theme/sanad_colors.dart';
 
 import 'package:flutter/material.dart';
 
-
 class JobCard extends StatelessWidget {
   final String name;
   final String jobTitle;
@@ -29,8 +28,8 @@ class JobCard extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) =>
-      ListenableBuilder(listenable: sanadStore, builder: (context, _) => _card(context));
+  Widget build(BuildContext context) => ListenableBuilder(
+      listenable: sanadStore, builder: (context, _) => _card(context));
 
   Widget _card(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
@@ -67,7 +66,8 @@ class JobCard extends StatelessWidget {
                     SizedBox(
                       width: 5,
                     ),
-                    Padding(
+                    Expanded(
+                        child: Padding(
                       padding: const EdgeInsets.fromLTRB(5, 20, 10, 0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,7 +101,7 @@ class JobCard extends StatelessWidget {
                               ])),
                         ],
                       ),
-                    )
+                    ))
                   ],
                 ),
                 Padding(
@@ -191,12 +191,13 @@ class JobCard extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(10, 8, 0, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  child: Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       InkWell(
                         onTap: () {
-                          final applied = sanadStore.apply(jobTitle: jobTitle, company: name);
+                          final applied = sanadStore.apply(
+                              jobTitle: jobTitle, company: name);
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             behavior: SnackBarBehavior.floating,
                             content: Text(applied == null
@@ -227,7 +228,9 @@ class JobCard extends StatelessWidget {
                           ),
                           child: Center(
                             child: Text(
-                              sanadStore.hasApplied(jobTitle, name) ? context.t('Applied') : context.t('Apply'),
+                              sanadStore.hasApplied(jobTitle, name)
+                                  ? context.t('Applied')
+                                  : context.t('Apply'),
                               style: TextStyle(
                                 letterSpacing: 1,
                                 color: Colors.white,

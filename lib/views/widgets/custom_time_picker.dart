@@ -104,7 +104,8 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
                       primary: SanadColors.primary,
                       onPrimary: Colors.black,
                       brightness: Brightness.light,
-                    ).copyWith(secondary: Colors.black), dialogTheme: DialogThemeData(backgroundColor: Colors.white),
+                    ).copyWith(secondary: Colors.black),
+                    dialogTheme: DialogThemeData(backgroundColor: Colors.white),
                   ),
                   child: child!,
                 );

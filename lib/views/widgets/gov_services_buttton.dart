@@ -1,7 +1,4 @@
-import 'package:grad/theme/sanad_colors.dart';
-
 import 'package:flutter/material.dart';
-
 
 class GovServicesButton extends StatelessWidget {
   final String serviceTitle;
@@ -21,7 +18,6 @@ class GovServicesButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final deviceSize = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.fromLTRB(15, 5, 15, 20),
       child: Card(
@@ -46,11 +42,12 @@ class GovServicesButton extends StatelessWidget {
           child: InkWell(
             onTap: click,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 30, 0, 30),
+              padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Column(
+                  Expanded(
+                      child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       RichText(
@@ -69,7 +66,7 @@ class GovServicesButton extends StatelessWidget {
                         height: 5,
                       ),
                       SizedBox(
-                        width: deviceSize.width * 0.8,
+                        width: double.infinity,
                         child: RichText(
                             textAlign: TextAlign.center,
                             text: TextSpan(children: [
@@ -93,7 +90,7 @@ class GovServicesButton extends StatelessWidget {
                         width: 80,
                       ),
                     ],
-                  ),
+                  )),
                 ],
               ),
             ),

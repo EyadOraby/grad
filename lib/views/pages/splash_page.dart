@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grad/views/pages/login_page.dart';
 
-
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
 
@@ -21,8 +20,10 @@ class _SplashPageState extends State<SplashPage> {
       //       MaterialPageRoute(builder: (_) => LoginPage()), (route) => false);
       // }
       if (!mounted) return;
-      Navigator.pushAndRemoveUntil(context,
-          MaterialPageRoute(builder: (_) => const LoginPage()), (route) => false);
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (_) => const LoginPage()),
+          (route) => false);
     });
     super.initState();
   }

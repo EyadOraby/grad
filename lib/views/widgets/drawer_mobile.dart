@@ -26,41 +26,59 @@ class DrawerMobile extends StatelessWidget {
       }
     }
 
-    final active = sanadStore.myRequests.where((r) => r.status != RequestStatus.readyForPickup).length;
+    final active = sanadStore.myRequests
+        .where((r) => r.status != RequestStatus.readyForPickup)
+        .length;
     return ListView(
       padding: EdgeInsets.zero,
       children: [
         Container(
           padding: const EdgeInsets.fromLTRB(20, 36, 20, 20),
           decoration: const BoxDecoration(
-            gradient: LinearGradient(colors: [SanadColors.primary, SanadColors.primaryDark]),
+            gradient: LinearGradient(
+                colors: [SanadColors.primary, SanadColors.primaryDark]),
           ),
           child: Row(children: [
             const CircleAvatar(
               radius: 26,
               backgroundColor: Colors.white,
-              child: Icon(Icons.person_rounded, color: SanadColors.primary, size: 30),
+              child: Icon(Icons.person_rounded,
+                  color: SanadColors.primary, size: 30),
             ),
             const SizedBox(width: 12),
             Expanded(
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(context.t('Demo citizen'), style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 17)),
-                Text('$active ${context.t('open requests')}', style: TextStyle(color: Colors.white70, fontSize: 13)),
-              ]),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(context.t('Demo citizen'),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 17)),
+                    Text('$active ${context.t('open requests')}',
+                        style: TextStyle(color: Colors.white70, fontSize: 13)),
+                  ]),
             ),
           ]),
         ),
         Container(height: 3, color: SanadColors.gold),
         const SizedBox(height: 8),
         _Item(Icons.home_outlined, context.t('Home'), () => open(HomePage())),
-        _Item(Icons.badge_outlined, context.t('Government services'), () => open(GovServicesPage())),
-        _Item(Icons.medical_services_outlined, context.t('Medical services'), () => open(MedicalServicesPage())),
-        _Item(Icons.work_outline_rounded, context.t('Jobs'), () => open(JobsPage())),
-        _Item(Icons.inbox_outlined, context.t('Activity'), () => open(ActivityPage())),
+        _Item(Icons.badge_outlined, context.t('Government services'),
+            () => open(GovServicesPage())),
+        _Item(Icons.medical_services_outlined, context.t('Medical services'),
+            () => open(MedicalServicesPage())),
+        _Item(Icons.work_outline_rounded, context.t('Jobs'),
+            () => open(JobsPage())),
+        _Item(Icons.inbox_outlined, context.t('Activity'),
+            () => open(ActivityPage())),
         const Divider(indent: 16, endIndent: 16),
-        _Item(Icons.translate_rounded, context.isArabic ? 'English' : 'العربية', sanadStore.toggleLanguage),
-        _Item(Icons.accessibility_new_rounded, context.t('Accessibility'), () => open(AccessibilityPage(), replace: false)),
-        _Item(Icons.account_balance_outlined, context.t('Staff portal'), () => open(StaffPortal(), replace: false)),
+        _Item(Icons.translate_rounded, context.isArabic ? 'English' : 'العربية',
+            sanadStore.toggleLanguage),
+        _Item(Icons.accessibility_new_rounded, context.t('Accessibility'),
+            () => open(AccessibilityPage(), replace: false)),
+        _Item(Icons.account_balance_outlined, context.t('Staff portal'),
+            () => open(StaffPortal(), replace: false)),
         _Item(
           Icons.logout_rounded,
           context.t('Sign out'),
@@ -89,7 +107,8 @@ class _Item extends StatelessWidget {
     return ListTile(
       minTileHeight: 52,
       leading: Icon(icon, color: danger ? color : SanadColors.primary),
-      title: Text(context.t(label), style: TextStyle(fontWeight: FontWeight.w600, color: color)),
+      title: Text(context.t(label),
+          style: TextStyle(fontWeight: FontWeight.w600, color: color)),
       onTap: onTap,
     );
   }

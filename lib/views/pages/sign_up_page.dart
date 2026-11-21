@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:grad/views/pages/login_page.dart';
 import 'package:grad/views/widgets/custom_text_field.dart';
 
-
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
@@ -117,7 +116,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       //         obscureText: false,
                                       //         validator: (value) {
                                       //           if (value == '') {
-                                      //             return 'Enter your National ID Number';
+                                      //             return context.t('Enter your National ID Number');
                                       //           }
                                       //           return null;
                                       //         },
@@ -156,7 +155,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                           obsecure: false,
                                           validator: (value) {
                                             if (value == '') {
-                                              return 'Enter your National ID Number';
+                                              return context.t(
+                                                  'Enter your National ID Number');
                                             }
                                             return null;
                                           },
@@ -177,7 +177,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                           obsecure: obsecureText,
                                           validator: (value) {
                                             if (value == '') {
-                                              return 'Please Enter your Password';
+                                              return context.t(
+                                                  'Please Enter your Password');
                                             }
                                             return null;
                                           },
@@ -210,7 +211,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       //         obscureText: obsecureText,
                                       //         validator: (value) {
                                       //           if (value == '') {
-                                      //             return 'Please Enter your Password';
+                                      //             return context.t('Please Enter your Password');
                                       //           }
                                       //           return null;
                                       //         },
@@ -315,7 +316,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                       CustomTextField(
                                           deviceSize: deviceSize,
                                           width: 0.95,
-                                          hintText: context.t('Re-Enter Password...'),
+                                          hintText:
+                                              context.t('Re-Enter Password...'),
                                           controller: re_passwordController,
                                           textInputAction: TextInputAction.next,
                                           keyboardType:
@@ -323,7 +325,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                           obsecure: obsecureText,
                                           validator: (value) {
                                             if (value == '') {
-                                              return 'Please Enter Matching Password';
+                                              return context.t(
+                                                  'Please Enter Matching Password');
                                             }
                                             return null;
                                           },
@@ -356,7 +359,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                           obsecure: false,
                                           validator: (value) {
                                             if (value == '') {
-                                              return 'Please Enter your Email';
+                                              return context
+                                                  .t('Please Enter your Email');
                                             }
                                             return null;
                                           },
@@ -377,7 +381,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       //         obscureText: false,
                                       //         validator: (value) {
                                       //           if (value == '') {
-                                      //             return 'Please Enter your Email';
+                                      //             return context.t('Please Enter your Email');
                                       //           }
                                       //           return null;
                                       //         },
@@ -427,15 +431,15 @@ class _SignUpPageState extends State<SignUpPage> {
                                       borderRadius: BorderRadius.circular(15),
                                       boxShadow: [
                                         BoxShadow(
-                                            color:
-                                                Colors.black.withValues(alpha: 0.3),
+                                            color: Colors.black
+                                                .withValues(alpha: 0.3),
                                             offset: Offset(0, -2),
                                             blurRadius: 8,
                                             blurStyle: BlurStyle.inner,
                                             spreadRadius: 1),
                                         BoxShadow(
-                                            color:
-                                                Colors.black.withValues(alpha: 0.3),
+                                            color: Colors.black
+                                                .withValues(alpha: 0.3),
                                             offset: Offset(0, -2),
                                             blurRadius: 8,
                                             blurStyle: BlurStyle.inner,
@@ -453,8 +457,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                             Shadow(
                                               offset: Offset(1, 1),
                                               blurRadius: 1.0,
-                                              color:
-                                                  Colors.black.withValues(alpha: 0.3),
+                                              color: Colors.black
+                                                  .withValues(alpha: 0.3),
                                             ),
                                           ],
                                           fontSize: 18,
@@ -512,13 +516,15 @@ class _SignUpPageState extends State<SignUpPage> {
                                     borderRadius: BorderRadius.circular(15),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Colors.black.withValues(alpha: 0.3),
+                                          color: Colors.black
+                                              .withValues(alpha: 0.3),
                                           offset: Offset(0, -2),
                                           blurRadius: 8,
                                           blurStyle: BlurStyle.inner,
                                           spreadRadius: 1),
                                       BoxShadow(
-                                          color: Colors.black.withValues(alpha: 0.3),
+                                          color: Colors.black
+                                              .withValues(alpha: 0.3),
                                           offset: Offset(0, -2),
                                           blurRadius: 8,
                                           blurStyle: BlurStyle.inner,
@@ -536,8 +542,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                           Shadow(
                                             offset: Offset(1, 1),
                                             blurRadius: 1.0,
-                                            color:
-                                                Colors.black.withValues(alpha: 0.3),
+                                            color: Colors.black
+                                                .withValues(alpha: 0.3),
                                           ),
                                         ],
                                         fontSize: 18,

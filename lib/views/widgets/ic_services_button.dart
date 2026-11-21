@@ -2,7 +2,6 @@ import 'package:grad/theme/sanad_colors.dart';
 
 import 'package:flutter/material.dart';
 
-
 class ICServicesButton extends StatelessWidget {
   final String serviceTitle;
   final String serviceImage;
@@ -18,7 +17,9 @@ class ICServicesButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
-    return Padding(
+    // Always placed in a Row: shrink rather than overflow when the content column is narrower than the window.
+    return Flexible(
+        child: Padding(
       padding: const EdgeInsets.fromLTRB(10, 5, 10, 20),
       child: SizedBox(
         width: deviceSize.width * 0.43,
@@ -88,7 +89,7 @@ class ICServicesButton extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ));
     // InkWell(
     //   child: Padding(
     //     padding: const EdgeInsets.fromLTRB(30, 30, 30, 30),

@@ -108,7 +108,9 @@ class ModalSheetButton extends StatelessWidget {
       child: Container(
         height: 48,
         decoration: BoxDecoration(
-          color: selected ? Colors.green.withValues(alpha: 0.15) : Colors.transparent,
+          color: selected
+              ? Colors.green.withValues(alpha: 0.15)
+              : Colors.transparent,
           border: !isLast
               ? const Border(
                   bottom: BorderSide(

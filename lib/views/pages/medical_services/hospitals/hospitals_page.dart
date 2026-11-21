@@ -18,8 +18,6 @@ class HospitalsPage extends StatefulWidget {
 class _HospitalsPageState extends State<HospitalsPage> {
   TextEditingController formNumberController = TextEditingController();
 
-  final _formKey = GlobalKey<FormState>();
-
   @override
   void dispose() {
     formNumberController.dispose();
@@ -28,8 +26,6 @@ class _HospitalsPageState extends State<HospitalsPage> {
 
   @override
   Widget build(BuildContext scontext) {
-    final deviceSize = MediaQuery.of(context).size;
-    final node = FocusScope.of(context);
     return TemplatePage(
       drawerMobile: DrawerMobile(),
       appBarTitle: context.t('SANAD'),
@@ -57,7 +53,8 @@ class _HospitalsPageState extends State<HospitalsPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               alignment: Alignment.centerLeft,
               child: Text(
-                context.t("Hi Aly, these are hospitals near you, which provide medical services for your condition."),
+                context.t(
+                    "Hi Aly, these are hospitals near you, which provide medical services for your condition."),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -73,8 +70,8 @@ class _HospitalsPageState extends State<HospitalsPage> {
                     HospitalCard(
                       location: "Giza, Egypt",
                       name: "Dar El-Fouad",
-                      workinDays: "All Week",
-                      workingHours: 'All Day',
+                      workinDays: context.t("All Week"),
+                      workingHours: context.t('All Day'),
                       rating: "4.6",
                       click: () {
                         Navigator.push(
@@ -82,9 +79,9 @@ class _HospitalsPageState extends State<HospitalsPage> {
                             MaterialPageRoute(
                                 builder: (_) => HospitalsFormPage(
                                       name: 'Dar El-Fouad',
-                                      about:
-                                          'About the hospitalllldsfkbdf fffffffffffffffff ffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffff f',
-                                      address: 'Hospital Address',
+                                      about: context.t(
+                                          'A general hospital with emergency, outpatient and rehabilitation services.'),
+                                      address: context.t('Hospital Address'),
                                       workinDays: 'Sun / ',
                                       workingHours: '',
                                     )));
@@ -93,8 +90,8 @@ class _HospitalsPageState extends State<HospitalsPage> {
                     HospitalCard(
                       location: "Cairo, Egypt",
                       name: "Cleopatra",
-                      workinDays: "All Week",
-                      workingHours: 'All Day',
+                      workinDays: context.t("All Week"),
+                      workingHours: context.t('All Day'),
                       rating: "3.7",
                       click: () {},
                     ),
@@ -106,15 +103,15 @@ class _HospitalsPageState extends State<HospitalsPage> {
                     HospitalCard(
                       location: "Giza, Egypt",
                       name: "Agooza",
-                      workinDays: "Sun - Thu",
-                      workingHours: 'All Day',
+                      workinDays: context.t("Sun - Thu"),
+                      workingHours: context.t('All Day'),
                       rating: "4.0",
                       click: () {},
                     ),
                     HospitalCard(
                       location: "Cairo, Egypt",
                       name: "Alzahara",
-                      workinDays: "All Week",
+                      workinDays: context.t("All Week"),
                       workingHours: '7 AM - 2 AM',
                       rating: "4.2",
                       click: () {},

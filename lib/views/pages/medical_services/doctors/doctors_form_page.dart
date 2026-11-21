@@ -18,16 +18,6 @@ class _DoctorsFormPageState extends State<DoctorsFormPage> {
   TextEditingController timeController = TextEditingController();
   TextEditingController formNumberController = TextEditingController();
 
-  static String? validateEmptyText(
-      String text, String validationMessage, BuildContext context) {
-    if (text.isEmpty) {
-      return validationMessage;
-    }
-    return null;
-  }
-
-  final _formKey = GlobalKey<FormState>();
-
   @override
   void dispose() {
     formNumberController.dispose();
@@ -38,8 +28,6 @@ class _DoctorsFormPageState extends State<DoctorsFormPage> {
 
   @override
   Widget build(BuildContext scontext) {
-    final deviceSize = MediaQuery.of(context).size;
-    final node = FocusScope.of(context);
     return TemplatePage(
       drawerMobile: DrawerMobile(),
       appBarTitle: context.t('SANAD'),
@@ -50,7 +38,7 @@ class _DoctorsFormPageState extends State<DoctorsFormPage> {
         about:
             "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-",
         address: "El-Gabal El-Akhdar Bldgs. 17, Nasr City",
-        workinDays: "Sunday - Wednesday",
+        workinDays: context.t("Sunday - Wednesday"),
         workingHours: "02:00 - 07:00 PM",
         dateController: dateController,
         timeController: timeController,

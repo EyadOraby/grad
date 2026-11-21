@@ -37,7 +37,9 @@ class ServicesButton extends StatelessWidget {
                 color: SanadColors.primary.withValues(alpha: 0.08),
                 borderRadius: BorderRadius.circular(18),
               ),
-              child: serviceImage == null ? null : Image.asset(serviceImage!, fit: BoxFit.contain),
+              child: serviceImage == null
+                  ? null
+                  : Image.asset(serviceImage!, fit: BoxFit.contain),
             ),
             const SizedBox(width: 14),
             Expanded(
@@ -45,8 +47,14 @@ class ServicesButton extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    serviceTitle.replaceAll('\n', '').replaceAll(RegExp(r'\s+'), ' ').trim(),
-                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: SanadColors.ink),
+                    context.t(serviceTitle
+                        .replaceAll('\n', '')
+                        .replaceAll(RegExp(r'\s+'), ' ')
+                        .trim()),
+                    style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: SanadColors.ink),
                   ),
                   if (serviceDescription != null) ...[
                     const SizedBox(height: 4),
@@ -54,7 +62,10 @@ class ServicesButton extends StatelessWidget {
                       context.t(serviceDescription!),
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 12.5, height: 1.45, color: SanadColors.inkMuted),
+                      style: const TextStyle(
+                          fontSize: 12.5,
+                          height: 1.45,
+                          color: SanadColors.inkMuted),
                     ),
                   ],
                 ],

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-
 class ReadOnlyTextFiled extends StatelessWidget {
   final TextEditingController controller;
   final String? Function(String?)? validate;
   final String label;
-  Function? onTap;
+  final Function? onTap;
   ReadOnlyTextFiled(
       {super.key,
       required this.controller,

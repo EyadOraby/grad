@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:grad/views/widgets/custom_date_picker.dart';
 import 'package:grad/views/widgets/custom_time_picker.dart';
 
-
 class PhysioCenterFormWidget extends StatelessWidget {
   final TextEditingController dateController;
   final TextEditingController timeController;
@@ -322,10 +321,10 @@ class PhysioCenterFormWidget extends StatelessWidget {
                                 deviceSize: deviceSize,
                                 controller: dateController,
                                 initialDate: DateTime.now(),
-                                title: "Date",
+                                title: context.t("Date"),
                                 validate: (_) {
                                   return validateEmptyText(dateController.text,
-                                      "Please choose date", context);
+                                      context.t("Please choose date"), context);
                                 },
                               ),
                               CustomTimePicker(
@@ -336,7 +335,7 @@ class PhysioCenterFormWidget extends StatelessWidget {
                                 width: 0.9,
                                 validate: (_) {
                                   return validateEmptyText(timeController.text,
-                                      "Please choose date", context);
+                                      context.t("Please choose date"), context);
                                 },
                               ),
                               Padding(
@@ -358,15 +357,15 @@ class PhysioCenterFormWidget extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(10),
                                       boxShadow: [
                                         BoxShadow(
-                                            color:
-                                                Colors.black.withValues(alpha: 0.3),
+                                            color: Colors.black
+                                                .withValues(alpha: 0.3),
                                             offset: Offset(0, -2),
                                             blurRadius: 8,
                                             blurStyle: BlurStyle.inner,
                                             spreadRadius: 1),
                                         BoxShadow(
-                                            color:
-                                                Colors.black.withValues(alpha: 0.3),
+                                            color: Colors.black
+                                                .withValues(alpha: 0.3),
                                             offset: Offset(0, -2),
                                             blurRadius: 8,
                                             blurStyle: BlurStyle.inner,

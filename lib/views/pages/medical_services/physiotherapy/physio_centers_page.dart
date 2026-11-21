@@ -18,8 +18,6 @@ class PhysioCentersPage extends StatefulWidget {
 class _PhysioCentersPageState extends State<PhysioCentersPage> {
   TextEditingController formNumberController = TextEditingController();
 
-  final _formKey = GlobalKey<FormState>();
-
   @override
   void dispose() {
     formNumberController.dispose();
@@ -28,8 +26,6 @@ class _PhysioCentersPageState extends State<PhysioCentersPage> {
 
   @override
   Widget build(BuildContext scontext) {
-    final deviceSize = MediaQuery.of(context).size;
-    final node = FocusScope.of(context);
     return TemplatePage(
       drawerMobile: DrawerMobile(),
       appBarTitle: context.t('SANAD'),
@@ -57,7 +53,8 @@ class _PhysioCentersPageState extends State<PhysioCentersPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               alignment: Alignment.centerLeft,
               child: Text(
-                context.t("Hi Aly, these are Physiotherapy Centers near you, which provide medical services for your condition."),
+                context.t(
+                    "Hi Aly, these are Physiotherapy Centers near you, which provide medical services for your condition."),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -70,7 +67,7 @@ class _PhysioCentersPageState extends State<PhysioCentersPage> {
                 PhysioCenterCard(
                     location: "Cairo, Egypt",
                     name: "Cairo Physiotherapy",
-                    workinDays: "Sun / Tues / Thu / Sat",
+                    workinDays: context.t("Sun / Tues / Thu / Sat"),
                     workingHours: "10 AM - 10 PM",
                     rating: "4.6",
                     click: () {
@@ -79,10 +76,12 @@ class _PhysioCentersPageState extends State<PhysioCentersPage> {
                           MaterialPageRoute(
                               builder: (_) => PhysioCenterFormPage(
                                     name: 'Cairo Physiotherapy',
-                                    about:
-                                        'About the hospitalllldsfkbdf fffffffffffffffff ffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffff f',
-                                    address: 'Physiotherapy Center Address',
-                                    workinDays: 'Sun / Tues / Thu / Sat',
+                                    about: context.t(
+                                        'A general hospital with emergency, outpatient and rehabilitation services.'),
+                                    address: context
+                                        .t('Physiotherapy Center Address'),
+                                    workinDays:
+                                        context.t('Sun / Tues / Thu / Sat'),
                                     workingHours: '10 AM - 10 PM',
                                   )));
                     })

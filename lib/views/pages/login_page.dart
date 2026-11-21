@@ -12,7 +12,8 @@ import 'package:grad/views/widgets/sanad_ui.dart';
 String? validateNationalId(String? v) {
   final digits = (v ?? '').trim();
   if (digits.isEmpty) return 'Please enter your national ID';
-  if (!RegExp(r'^\d{14}$').hasMatch(digits)) return 'A national ID is 14 digits';
+  if (!RegExp(r'^\d{14}$').hasMatch(digits))
+    return 'A national ID is 14 digits';
   return null;
 }
 
@@ -37,13 +38,14 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
-  void _go(Widget page) =>
-      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => page), (route) => false);
+  void _go(Widget page) => Navigator.pushAndRemoveUntil(
+      context, MaterialPageRoute(builder: (_) => page), (route) => false);
 
   @override
   Widget build(BuildContext context) {
     final wide = MediaQuery.sizeOf(context).width >= 900;
-    final form = ConstrainedBox(constraints: const BoxConstraints(maxWidth: 440), child: _formColumn());
+    final form = ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 440), child: _formColumn());
     return Scaffold(
       backgroundColor: SanadColors.surface,
       body: SafeArea(
@@ -55,14 +57,17 @@ class _LoginPageState extends State<LoginPage> {
                     const Expanded(flex: 5, child: _Hero()),
                     Expanded(
                       flex: 4,
-                      child: Center(child: SingleChildScrollView(padding: const EdgeInsets.all(40), child: form)),
+                      child: Center(
+                          child: SingleChildScrollView(
+                              padding: const EdgeInsets.all(40), child: form)),
                     ),
                   ])
                 : SingleChildScrollView(
                     padding: const EdgeInsets.fromLTRB(22, 20, 22, 28),
                     child: Center(
                       child: Column(children: [
-                        Image.asset('assets/new_logo_hq-removebg-preview.png', height: 130, semanticLabel: context.t('SANAD')),
+                        Image.asset('assets/new_logo_hq-removebg-preview.png',
+                            height: 130, semanticLabel: context.t('SANAD')),
                         const SizedBox(height: 6),
                         form,
                       ]),
@@ -75,7 +80,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _formColumn() {
-    InputDecoration field(String label, IconData icon, {Widget? suffix}) => InputDecoration(
+    InputDecoration field(String label, IconData icon, {Widget? suffix}) =>
+        InputDecoration(
           labelText: label,
           prefixIcon: Icon(icon),
           suffixIcon: suffix,
@@ -93,16 +99,22 @@ class _LoginPageState extends State<LoginPage> {
         Semantics(
           header: true,
           child: Text(context.t('Sign in to SANAD'),
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: SanadColors.ink)),
+              style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.w800,
+                  color: SanadColors.ink)),
         ),
         const SizedBox(height: 6),
-        Text(context.t('Government, medical and job services in one place.'), style: TextStyle(color: SanadColors.inkMuted)),
+        Text(context.t('Government, medical and job services in one place.'),
+            style: TextStyle(color: SanadColors.inkMuted)),
         const SizedBox(height: 22),
         TextFormField(
           controller: _id,
           keyboardType: TextInputType.number,
           maxLength: 14,
-          decoration: field(context.t('National ID (14 digits)'), Icons.badge_outlined).copyWith(counterText: ''),
+          decoration:
+              field(context.t('National ID (14 digits)'), Icons.badge_outlined)
+                  .copyWith(counterText: ''),
           validator: (v) {
             final error = validateNationalId(v);
             return error == null ? null : context.t(error);
@@ -116,28 +128,37 @@ class _LoginPageState extends State<LoginPage> {
             context.t('Password'),
             Icons.lock_outline_rounded,
             suffix: IconButton(
-              tooltip: _hidden ? context.t('Show password') : context.t('Hide password'),
+              tooltip: _hidden
+                  ? context.t('Show password')
+                  : context.t('Hide password'),
               onPressed: () => setState(() => _hidden = !_hidden),
-              icon: Icon(_hidden ? Icons.visibility_off_outlined : Icons.visibility_outlined),
+              icon: Icon(_hidden
+                  ? Icons.visibility_off_outlined
+                  : Icons.visibility_outlined),
             ),
           ),
-          validator: (v) => (v == null || v.length < 6) ? context.t('Use at least 6 characters') : null,
+          validator: (v) => (v == null || v.length < 6)
+              ? context.t('Use at least 6 characters')
+              : null,
         ),
         Align(
           alignment: AlignmentDirectional.centerEnd,
-          child: TextButton(onPressed: () {}, child: Text(context.t('Forgot password?'))),
+          child: TextButton(
+              onPressed: () {}, child: Text(context.t('Forgot password?'))),
         ),
         SizedBox(
           height: 54,
           child: FilledButton(
             style: FilledButton.styleFrom(
               backgroundColor: SanadColors.primary,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14)),
             ),
             onPressed: () {
               if (_form.currentState!.validate()) _go(const HomePage());
             },
-            child: Text(context.t('Sign in'), style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+            child: Text(context.t('Sign in'),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
           ),
         ),
         const SizedBox(height: 10),
@@ -146,18 +167,22 @@ class _LoginPageState extends State<LoginPage> {
             minimumSize: const Size.fromHeight(50),
             foregroundColor: SanadColors.primary,
             side: const BorderSide(color: SanadColors.primary),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
           ),
           onPressed: () => _go(const HomePage()),
           icon: const Icon(Icons.person_outline_rounded),
-          label: Text(context.t('Continue as guest'), style: TextStyle(fontWeight: FontWeight.w600)),
+          label: Text(context.t('Continue as guest'),
+              style: TextStyle(fontWeight: FontWeight.w600)),
         ),
         const SizedBox(height: 22),
         Row(children: [
           Expanded(child: Divider()),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Text(context.t('Try a demo account'), style: TextStyle(color: SanadColors.inkMuted, fontWeight: FontWeight.w600)),
+            child: Text(context.t('Try a demo account'),
+                style: TextStyle(
+                    color: SanadColors.inkMuted, fontWeight: FontWeight.w600)),
           ),
           Expanded(child: Divider()),
         ]),
@@ -165,7 +190,8 @@ class _LoginPageState extends State<LoginPage> {
         _DemoTile(
           icon: Icons.accessible_forward_rounded,
           title: 'Citizen',
-          note: context.t('A booked doctor, tracked requests and a job application'),
+          note: context
+              .t('A booked doctor, tracked requests and a job application'),
           onTap: () {
             sanadStore.seedDemoCitizen();
             _go(const HomePage());
@@ -179,13 +205,18 @@ class _LoginPageState extends State<LoginPage> {
           onTap: () => _go(const StaffPortal()),
         ),
         const SizedBox(height: 12),
-        Wrap(alignment: WrapAlignment.center, crossAxisAlignment: WrapCrossAlignment.center, children: [
-          Text(context.t("Don't have an account?"), style: TextStyle(color: SanadColors.inkMuted)),
-          TextButton(
-            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SignUpPage())),
-            child: Text(context.t('Create one')),
-          ),
-        ]),
+        Wrap(
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              Text(context.t("Don't have an account?"),
+                  style: TextStyle(color: SanadColors.inkMuted)),
+              TextButton(
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const SignUpPage())),
+                child: Text(context.t('Create one')),
+              ),
+            ]),
       ]),
     );
   }
@@ -201,20 +232,27 @@ class _GovBar extends StatelessWidget {
           color: SanadColors.primary,
           padding: const EdgeInsets.fromLTRB(16, 6, 6, 6),
           child: Row(children: [
-            const Icon(Icons.account_balance_outlined, color: Colors.white, size: 18),
+            const Icon(Icons.account_balance_outlined,
+                color: Colors.white, size: 18),
             const SizedBox(width: 8),
             Expanded(
               child: Text(context.t('SANAD · Citizen services portal'),
-                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 13)),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 13)),
             ),
             TextButton(
               onPressed: sanadStore.toggleLanguage,
-              child: Text(context.isArabic ? 'English' : 'العربية', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
+              child: Text(context.isArabic ? 'English' : 'العربية',
+                  style: const TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.w700)),
             ),
             IconButton(
               tooltip: context.t('Accessibility settings'),
               color: Colors.white,
-              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AccessibilityPage())),
+              onPressed: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const AccessibilityPage())),
               icon: const Icon(Icons.accessibility_new_rounded),
             ),
           ]),
@@ -241,25 +279,42 @@ class _Hero extends StatelessWidget {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
             padding: EdgeInsets.all(14),
-            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
-            child: Image.asset('assets/new_logo_hq-removebg-preview.png', height: 70, semanticLabel: context.t('SANAD')),
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(20)),
+            child: Image.asset('assets/new_logo_hq-removebg-preview.png',
+                height: 70, semanticLabel: context.t('SANAD')),
           ),
           Spacer(),
           Text(context.t('More than a\nhelping hand.'),
-              style: TextStyle(color: Colors.white, fontSize: 42, height: 1.1, fontWeight: FontWeight.w800)),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 42,
+                  height: 1.1,
+                  fontWeight: FontWeight.w800)),
           SizedBox(height: 22),
           for (final (icon, text) in [
-            (Icons.badge_outlined, context.t('Renew your ID and track every request')),
-            (Icons.medical_services_outlined, context.t('Book doctors and hospitals near you')),
+            (
+              Icons.badge_outlined,
+              context.t('Renew your ID and track every request')
+            ),
+            (
+              Icons.medical_services_outlined,
+              context.t('Book doctors and hospitals near you')
+            ),
             (Icons.work_outline_rounded, context.t('Find jobs suited to you')),
-            (Icons.accessibility_new_rounded, context.t('Large text, high contrast and screen readers')),
+            (
+              Icons.accessibility_new_rounded,
+              context.t('Large text, high contrast and screen readers')
+            ),
           ])
             Padding(
               padding: const EdgeInsets.only(bottom: 12),
               child: Row(children: [
                 Icon(icon, color: SanadColors.gold),
                 const SizedBox(width: 12),
-                Expanded(child: Text(context.t(text), style: TextStyle(color: Colors.white, fontSize: 16))),
+                Expanded(
+                    child: Text(context.t(text),
+                        style: TextStyle(color: Colors.white, fontSize: 16))),
               ]),
             ),
           const Spacer(),
@@ -268,7 +323,11 @@ class _Hero extends StatelessWidget {
 }
 
 class _DemoTile extends StatelessWidget {
-  const _DemoTile({required this.icon, required this.title, required this.note, required this.onTap});
+  const _DemoTile(
+      {required this.icon,
+      required this.title,
+      required this.note,
+      required this.onTap});
   final IconData icon;
   final String title;
   final String note;
@@ -282,17 +341,25 @@ class _DemoTile extends StatelessWidget {
           Container(
             width: 44,
             height: 44,
-            decoration: BoxDecoration(color: SanadColors.primary.withValues(alpha: 0.08), borderRadius: BorderRadius.circular(12)),
+            decoration: BoxDecoration(
+                color: SanadColors.primary.withValues(alpha: 0.08),
+                borderRadius: BorderRadius.circular(12)),
             child: Icon(icon, color: SanadColors.primary),
           ),
           const SizedBox(width: 12),
           Expanded(
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(context.t('$title demo'), style: TextStyle(fontWeight: FontWeight.w700, color: SanadColors.ink)),
-              Text(context.t(note), style: TextStyle(color: SanadColors.inkMuted, fontSize: 12.5)),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(context.t('$title demo'),
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700, color: SanadColors.ink)),
+              Text(context.t(note),
+                  style:
+                      TextStyle(color: SanadColors.inkMuted, fontSize: 12.5)),
             ]),
           ),
-          const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: SanadColors.inkMuted),
+          const Icon(Icons.arrow_forward_ios_rounded,
+              size: 16, color: SanadColors.inkMuted),
         ]),
       );
 }

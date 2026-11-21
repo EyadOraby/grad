@@ -18,8 +18,6 @@ class DoctorsPage extends StatefulWidget {
 class _DoctorsPageState extends State<DoctorsPage> {
   TextEditingController formNumberController = TextEditingController();
 
-  final _formKey = GlobalKey<FormState>();
-
   @override
   void dispose() {
     formNumberController.dispose();
@@ -28,8 +26,6 @@ class _DoctorsPageState extends State<DoctorsPage> {
 
   @override
   Widget build(BuildContext scontext) {
-    final deviceSize = MediaQuery.of(context).size;
-    final node = FocusScope.of(context);
     return TemplatePage(
       drawerMobile: DrawerMobile(),
       appBarTitle: context.t('SANAD'),
@@ -57,7 +53,8 @@ class _DoctorsPageState extends State<DoctorsPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               alignment: Alignment.centerLeft,
               child: Text(
-                context.t("Hi Aly, based on your condition here are the doctors we found near you."),
+                context.t(
+                    "Hi Aly, based on your condition here are the doctors we found near you."),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -75,7 +72,7 @@ class _DoctorsPageState extends State<DoctorsPage> {
                       lastName: "Abdallah",
                       specialization: context.t("Neurology"),
                       location: "Giza, Egypt",
-                      workinDays: "Sun - Thu",
+                      workinDays: context.t("Sun - Thu"),
                       workingHours: "6 - 10 PM",
                       rating: "4.2",
                       gender: "Male",
@@ -91,7 +88,7 @@ class _DoctorsPageState extends State<DoctorsPage> {
                       lastName: "Omar",
                       specialization: context.t("Rheumatologist"),
                       location: "Cairo, Egypt",
-                      workinDays: "Thu - Sat",
+                      workinDays: context.t("Thu - Sat"),
                       workingHours: "8 - 12 AM",
                       rating: "4.0",
                       gender: "Male",
@@ -112,7 +109,7 @@ class _DoctorsPageState extends State<DoctorsPage> {
                       lastName: "Ahmed",
                       specialization: context.t("Osteopaths"),
                       location: "Giza, Egypt",
-                      workinDays: "Sun - Wed",
+                      workinDays: context.t("Sun - Wed"),
                       workingHours: "2 - 7 PM",
                       rating: "5.0",
                       gender: "Male",
@@ -128,7 +125,7 @@ class _DoctorsPageState extends State<DoctorsPage> {
                       lastName: "Mohamed",
                       specialization: context.t("Neurology"),
                       location: "Cairo, Egypt",
-                      workinDays: "Tue - Thu",
+                      workinDays: context.t("Tue - Thu"),
                       workingHours: "1 - 5 PM",
                       rating: "4.6",
                       gender: "Female",

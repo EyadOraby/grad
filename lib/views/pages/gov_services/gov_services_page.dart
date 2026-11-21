@@ -17,7 +17,6 @@ class GovServicesPage extends StatefulWidget {
 }
 
 class _GovServicesPageState extends State<GovServicesPage> {
-
   @override
   void dispose() {
     super.dispose();
@@ -56,7 +55,7 @@ class _GovServicesPageState extends State<GovServicesPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               alignment: Alignment.centerLeft,
               child: Text(
-                "Apply for a Card if you still haven't!",
+                context.t("Apply for a Card if you still haven't!"),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,

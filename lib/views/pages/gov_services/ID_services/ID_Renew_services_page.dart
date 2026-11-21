@@ -83,7 +83,8 @@ class _IDServicesPageState extends State<IDServicesPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
+                Flexible(
+                    child: Padding(
                   padding: const EdgeInsets.fromLTRB(10, 5, 10, 20),
                   child: SizedBox(
                     width: deviceSize.width * 0.9,
@@ -110,8 +111,8 @@ class _IDServicesPageState extends State<IDServicesPage> {
                                         textAlign: TextAlign.center,
                                         text: TextSpan(children: [
                                           TextSpan(
-                                            text:
-                                                "National ID Card Renewal Application",
+                                            text: context.t(
+                                                "National ID Card Renewal Application"),
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.bold,
@@ -141,7 +142,7 @@ class _IDServicesPageState extends State<IDServicesPage> {
                       ),
                     ),
                   ),
-                ),
+                )),
               ],
             ),
             Container(
@@ -168,11 +169,12 @@ class _IDServicesPageState extends State<IDServicesPage> {
                       borderRadius: BorderRadius.circular(20.0),
                       color: SanadColors.primarySoft),
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 30, 0, 30),
+                    padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Column(
+                        Expanded(
+                            child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             RichText(
@@ -192,13 +194,13 @@ class _IDServicesPageState extends State<IDServicesPage> {
                               height: 15,
                             ),
                             SizedBox(
-                              width: deviceSize.width * 0.8,
+                              width: double.infinity,
                               child: RichText(
                                   textAlign: TextAlign.center,
                                   text: TextSpan(children: [
                                     TextSpan(
-                                      text:
-                                          "Enter your application number to know the status of your application",
+                                      text: context.t(
+                                          "Enter your application number to know the status of your application"),
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 16,
@@ -219,8 +221,8 @@ class _IDServicesPageState extends State<IDServicesPage> {
                                         CustomTextField(
                                             deviceSize: deviceSize,
                                             width: 0.8,
-                                            hintText:
-                                                'Enter your form number here',
+                                            hintText: context.t(
+                                                'Enter your form number here'),
                                             controller: formNumberController,
                                             textInputAction:
                                                 TextInputAction.done,
@@ -228,7 +230,8 @@ class _IDServicesPageState extends State<IDServicesPage> {
                                             obsecure: false,
                                             validator: (value) {
                                               if (value == '') {
-                                                return 'Enter your form number';
+                                                return context.t(
+                                                    'Enter your form number');
                                               }
                                               return null;
                                             },
@@ -246,7 +249,8 @@ class _IDServicesPageState extends State<IDServicesPage> {
                               height: 15,
                             ),
                             InkWell(
-                              onTap: () => submitServiceRequest(context, service: 'National ID renewal'),
+                              onTap: () => submitServiceRequest(context,
+                                  service: 'National ID renewal'),
                               child: Container(
                                 height: 45,
                                 width: 150,
@@ -255,13 +259,15 @@ class _IDServicesPageState extends State<IDServicesPage> {
                                   borderRadius: BorderRadius.circular(15),
                                   boxShadow: [
                                     BoxShadow(
-                                        color: Colors.black.withValues(alpha: 0.3),
+                                        color:
+                                            Colors.black.withValues(alpha: 0.3),
                                         offset: Offset(0, -2),
                                         blurRadius: 8,
                                         blurStyle: BlurStyle.inner,
                                         spreadRadius: 1),
                                     BoxShadow(
-                                        color: Colors.black.withValues(alpha: 0.3),
+                                        color:
+                                            Colors.black.withValues(alpha: 0.3),
                                         offset: Offset(0, -2),
                                         blurRadius: 8,
                                         blurStyle: BlurStyle.inner,
@@ -270,7 +276,7 @@ class _IDServicesPageState extends State<IDServicesPage> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    'Check',
+                                    context.t('Check'),
                                     style: TextStyle(
                                       letterSpacing: 1,
                                       color: SanadColors.primary,
@@ -289,7 +295,7 @@ class _IDServicesPageState extends State<IDServicesPage> {
                               ),
                             ),
                           ],
-                        ),
+                        )),
                         SizedBox(
                           width: 15,
                         ),

@@ -63,7 +63,8 @@ class _ICServicesPageState extends State<ICServicesPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               alignment: Alignment.centerLeft,
               child: Text(
-                context.t("Apply for a new card or renew your old one from here:"),
+                context
+                    .t("Apply for a new card or renew your old one from here:"),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -145,11 +146,12 @@ class _ICServicesPageState extends State<ICServicesPage> {
                       borderRadius: BorderRadius.circular(20.0),
                       color: SanadColors.primarySoft),
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 30, 0, 30),
+                    padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Column(
+                        Expanded(
+                            child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             RichText(
@@ -169,13 +171,13 @@ class _ICServicesPageState extends State<ICServicesPage> {
                               height: 15,
                             ),
                             SizedBox(
-                              width: deviceSize.width * 0.8,
+                              width: double.infinity,
                               child: RichText(
                                   textAlign: TextAlign.center,
                                   text: TextSpan(children: [
                                     TextSpan(
-                                      text:
-                                          "Enter your application number to know the status of your application",
+                                      text: context.t(
+                                          "Enter your application number to know the status of your application"),
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 16,
@@ -196,8 +198,8 @@ class _ICServicesPageState extends State<ICServicesPage> {
                                         CustomTextField(
                                             deviceSize: deviceSize,
                                             width: 0.8,
-                                            hintText:
-                                                'Enter your form number here',
+                                            hintText: context.t(
+                                                'Enter your form number here'),
                                             controller: formNumberController,
                                             textInputAction:
                                                 TextInputAction.done,
@@ -205,7 +207,8 @@ class _ICServicesPageState extends State<ICServicesPage> {
                                             obsecure: false,
                                             validator: (value) {
                                               if (value == '') {
-                                                return 'Enter your form number';
+                                                return context.t(
+                                                    'Enter your form number');
                                               }
                                               return null;
                                             },
@@ -232,13 +235,15 @@ class _ICServicesPageState extends State<ICServicesPage> {
                                   borderRadius: BorderRadius.circular(15),
                                   boxShadow: [
                                     BoxShadow(
-                                        color: Colors.black.withValues(alpha: 0.3),
+                                        color:
+                                            Colors.black.withValues(alpha: 0.3),
                                         offset: Offset(0, -2),
                                         blurRadius: 8,
                                         blurStyle: BlurStyle.inner,
                                         spreadRadius: 1),
                                     BoxShadow(
-                                        color: Colors.black.withValues(alpha: 0.3),
+                                        color:
+                                            Colors.black.withValues(alpha: 0.3),
                                         offset: Offset(0, -2),
                                         blurRadius: 8,
                                         blurStyle: BlurStyle.inner,
@@ -247,7 +252,7 @@ class _ICServicesPageState extends State<ICServicesPage> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    'Check',
+                                    context.t('Check'),
                                     style: TextStyle(
                                       letterSpacing: 1,
                                       color: SanadColors.primary,
@@ -266,7 +271,7 @@ class _ICServicesPageState extends State<ICServicesPage> {
                               ),
                             ),
                           ],
-                        ),
+                        )),
                         SizedBox(
                           width: 15,
                         ),

@@ -23,8 +23,6 @@ class MedicalServicesPage extends StatefulWidget {
 class _MedicalServicesPageState extends State<MedicalServicesPage> {
   TextEditingController formNumberController = TextEditingController();
 
-  final _formKey = GlobalKey<FormState>();
-
   @override
   void dispose() {
     formNumberController.dispose();
@@ -33,8 +31,6 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
 
   @override
   Widget build(BuildContext scontext) {
-    final deviceSize = MediaQuery.of(context).size;
-    final node = FocusScope.of(context);
     return TemplatePage(
       drawerMobile: DrawerMobile(),
       appBarTitle: context.t('SANAD'),
@@ -181,14 +177,14 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
             AppointmentsCard(
               dateNum: "24",
               dateText: "Wed",
-              description: "Ophthalmology",
+              description: context.t("Ophthalmology"),
               name: "Dr. Aly Omar",
               time: "12:30 AM",
             ),
             AppointmentsCard(
               dateNum: "05",
               dateText: "Sun",
-              description: "Orthopedics",
+              description: context.t("Orthopedics"),
               name: "Dr. Alaa Amr",
               time: "04:00 PM",
             ),

@@ -31,7 +31,8 @@ class TemplatePage extends StatelessWidget {
         tooltip: context.t('Accessibility settings'),
         color: color,
         icon: const Icon(Icons.accessibility_new_rounded),
-        onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AccessibilityPage())),
+        onPressed: () => Navigator.of(context)
+            .push(MaterialPageRoute(builder: (_) => const AccessibilityPage())),
       );
 
   @override
@@ -49,7 +50,10 @@ class TemplatePage extends StatelessWidget {
         backgroundColor: SanadColors.surface,
         actions: [_accessibilityButton(context, SanadColors.ink)],
         title: Image.asset('assets/sanad.JPG',
-            height: 40, colorBlendMode: BlendMode.multiply, color: SanadColors.surface, semanticLabel: context.t('SANAD')),
+            height: 40,
+            colorBlendMode: BlendMode.multiply,
+            color: SanadColors.surface,
+            semanticLabel: context.t('SANAD')),
         // A thin gold rule under the header, a nod to official documents.
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(3),
@@ -67,7 +71,11 @@ class TemplatePage extends StatelessWidget {
         ),
       ),
       body: width > 700
-          ? Align(alignment: Alignment.topCenter, child: ConstrainedBox(constraints: const BoxConstraints(maxWidth: 720), child: body))
+          ? Align(
+              alignment: Alignment.topCenter,
+              child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 720),
+                  child: body))
           : body,
       bottomNavigationBar: bottomNavBar,
     );
@@ -95,7 +103,10 @@ class TemplatePage extends StatelessWidget {
                   Semantics(
                     header: true,
                     child: Text(appBarTitle,
-                        style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: Colors.white)),
+                        style: const TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.white)),
                   ),
                   const Spacer(),
                   _accessibilityButton(context, Colors.white),
@@ -106,7 +117,9 @@ class TemplatePage extends StatelessWidget {
             Expanded(
               child: Align(
                 alignment: Alignment.topCenter,
-                child: ConstrainedBox(constraints: const BoxConstraints(maxWidth: 980), child: body),
+                child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 980),
+                    child: body),
               ),
             ),
           ]),

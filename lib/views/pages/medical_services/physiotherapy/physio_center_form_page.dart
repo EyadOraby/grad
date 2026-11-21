@@ -30,16 +30,6 @@ class _PhysioCenterFormPageState extends State<PhysioCenterFormPage> {
   TextEditingController timeController = TextEditingController();
   TextEditingController formNumberController = TextEditingController();
 
-  static String? validateEmptyText(
-      String text, String validationMessage, BuildContext context) {
-    if (text.isEmpty) {
-      return validationMessage;
-    }
-    return null;
-  }
-
-  final _formKey = GlobalKey<FormState>();
-
   @override
   void dispose() {
     formNumberController.dispose();
@@ -50,8 +40,6 @@ class _PhysioCenterFormPageState extends State<PhysioCenterFormPage> {
 
   @override
   Widget build(BuildContext scontext) {
-    final deviceSize = MediaQuery.of(context).size;
-    final node = FocusScope.of(context);
     return TemplatePage(
       drawerMobile: DrawerMobile(),
       appBarTitle: context.t('SANAD'),

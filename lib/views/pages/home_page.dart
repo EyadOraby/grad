@@ -18,9 +18,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentSliderIndex = 0;
-
-
   @override
   void dispose() {
     super.dispose();
@@ -97,7 +94,8 @@ class _HomePageState extends State<HomePage> {
                                 borderRadius: const BorderRadius.only(
                                     bottomLeft: Radius.circular(10),
                                     bottomRight: Radius.circular(10)),
-                                color: SanadColors.primary.withValues(alpha: 0.85),
+                                color:
+                                    SanadColors.primary.withValues(alpha: 0.85),
                               ),
                               child: Text(
                                 highlightsTitleArray[i],
@@ -129,11 +127,6 @@ class _HomePageState extends State<HomePage> {
                   enableInfiniteScroll: false,
                   autoPlay: true,
                   enlargeCenterPage: true,
-                  onPageChanged: (index, _) {
-                    setState(() {
-                      _currentSliderIndex = index;
-                    });
-                  },
                   scrollDirection: Axis.horizontal,
                 ),
               ),

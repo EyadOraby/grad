@@ -55,7 +55,6 @@ class _NewICFormPageState extends State<NewICFormPage> {
   @override
   Widget build(BuildContext scontext) {
     final deviceSize = MediaQuery.of(context).size;
-    final node = FocusScope.of(context);
     return TemplatePage(
       drawerMobile: DrawerMobile(),
       appBarTitle: context.t('SANAD'),
@@ -152,17 +151,19 @@ class _NewICFormPageState extends State<NewICFormPage> {
                           validate: (_) {
                             return validateEmptyText(
                                 socialStatusController.text,
-                                "Please choose social status",
+                                context.t("Please choose social status"),
                                 context);
                           },
                           label: context.t("Choose Scoical Status"),
                           onTap: () {
                             customListModalSheet(context, (index) {
                               socialStatusController.text =
-                                  socialStatuses[index];
+                                  context.t(socialStatuses[index]);
                               socialStatusesIndex = index;
-                            }, socialStatusesIndex, socialStatuses,
-                                "Choose your Scoical Status");
+                            },
+                                socialStatusesIndex,
+                                socialStatuses.map(context.t).toList(),
+                                context.t("Choose your Scoical Status"));
                           }),
 
                       Container(
@@ -182,10 +183,10 @@ class _NewICFormPageState extends State<NewICFormPage> {
                         deviceSize: deviceSize,
                         controller: dateController,
                         initialDate: DateTime.now(),
-                        title: "Date",
+                        title: context.t("Date"),
                         validate: (_) {
                           return validateEmptyText(dateController.text,
-                              "Please choose date", context);
+                              context.t("Please choose date"), context);
                         },
                       ),
                       Container(
@@ -209,7 +210,7 @@ class _NewICFormPageState extends State<NewICFormPage> {
                         width: 0.9,
                         validate: (_) {
                           return validateEmptyText(timeController.text,
-                              "Please choose time", context);
+                              context.t("Please choose time"), context);
                         },
                       ),
                       Padding(
@@ -217,7 +218,8 @@ class _NewICFormPageState extends State<NewICFormPage> {
                         child: InkWell(
                           onTap: () {
                             if (_formKey.currentState?.validate() ?? true) {
-                              submitServiceRequest(context, service: 'Integrated services card');
+                              submitServiceRequest(context,
+                                  service: 'Integrated services card');
                             }
                           },
                           child: Container(

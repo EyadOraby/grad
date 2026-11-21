@@ -14,32 +14,32 @@ class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key, required this.index});
 
   List<NavigationDestination> _destinations(BuildContext context) => [
-    NavigationDestination(
-      icon: Icon(Icons.home_outlined),
-      selectedIcon: Icon(Icons.home_rounded),
-      label: context.t('Home'),
-    ),
-    NavigationDestination(
-      icon: Icon(Icons.badge_outlined),
-      selectedIcon: Icon(Icons.badge_rounded),
-      label: context.t('Gov'),
-    ),
-    NavigationDestination(
-      icon: Icon(Icons.medical_services_outlined),
-      selectedIcon: Icon(Icons.medical_services_rounded),
-      label: context.t('Medical'),
-    ),
-    NavigationDestination(
-      icon: Icon(Icons.work_outline_rounded),
-      selectedIcon: Icon(Icons.work_rounded),
-      label: context.t('Jobs'),
-    ),
-    NavigationDestination(
-      icon: Icon(Icons.inbox_outlined),
-      selectedIcon: Icon(Icons.inbox_rounded),
-      label: context.t('Activity'),
-    ),
-  ];
+        NavigationDestination(
+          icon: Icon(Icons.home_outlined),
+          selectedIcon: Icon(Icons.home_rounded),
+          label: context.t('Home'),
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.badge_outlined),
+          selectedIcon: Icon(Icons.badge_rounded),
+          label: context.t('Gov'),
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.medical_services_outlined),
+          selectedIcon: Icon(Icons.medical_services_rounded),
+          label: context.t('Medical'),
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.work_outline_rounded),
+          selectedIcon: Icon(Icons.work_rounded),
+          label: context.t('Jobs'),
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.inbox_outlined),
+          selectedIcon: Icon(Icons.inbox_rounded),
+          label: context.t('Activity'),
+        ),
+      ];
 
   Widget? _pageFor(int i) {
     switch (i) {

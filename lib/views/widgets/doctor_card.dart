@@ -29,14 +29,17 @@ class DoctorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ProviderCard(
-      image: gender == 'Female' ? 'assets/female-doctor-icon.png' : 'assets/doctor-icon.png',
+      image: gender == 'Female'
+          ? 'assets/female-doctor-icon.png'
+          : 'assets/doctor-icon.png',
       title: 'Dr. $firstName $lastName',
       subtitle: specialization,
       location: location,
       days: workinDays,
       hours: workingHours,
       rating: rating,
-      onBook: () => showBookingSheet(context, provider: 'Dr. $firstName $lastName', kind: 'Doctor'),
+      onBook: () => showBookingSheet(context,
+          provider: 'Dr. $firstName $lastName', kind: 'Doctor'),
     );
   }
 }
