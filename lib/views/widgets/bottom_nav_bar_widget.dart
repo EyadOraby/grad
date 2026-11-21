@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grad/views/pages/activity_page.dart';
 import 'package:grad/views/pages/gov_services/gov_services_page.dart';
 import 'package:grad/views/pages/jobs_services/jobs_page.dart';
 import 'package:grad/views/pages/medical_services/medical_services_page.dart';
@@ -20,7 +21,7 @@ class BottomNavBar extends StatelessWidget {
     NavigationDestination(
       icon: Icon(Icons.badge_outlined),
       selectedIcon: Icon(Icons.badge_rounded),
-      label: 'Government',
+      label: 'Gov',
     ),
     NavigationDestination(
       icon: Icon(Icons.medical_services_outlined),
@@ -32,6 +33,11 @@ class BottomNavBar extends StatelessWidget {
       selectedIcon: Icon(Icons.work_rounded),
       label: 'Jobs',
     ),
+    NavigationDestination(
+      icon: Icon(Icons.inbox_outlined),
+      selectedIcon: Icon(Icons.inbox_rounded),
+      label: 'Activity',
+    ),
   ];
 
   Widget? _pageFor(int i) {
@@ -42,6 +48,8 @@ class BottomNavBar extends StatelessWidget {
         return const MedicalServicesPage();
       case 3:
         return const JobsPage();
+      case 4:
+        return const ActivityPage();
       default:
         return null;
     }

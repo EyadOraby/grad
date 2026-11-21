@@ -1,3 +1,4 @@
+import 'package:grad/state/sanad_store.dart';
 import 'package:grad/theme/sanad_colors.dart';
 
 import 'package:flutter/material.dart';
@@ -27,7 +28,10 @@ class JobCard extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) =>
+      ListenableBuilder(listenable: sanadStore, builder: (context, _) => _card(context));
+
+  Widget _card(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
@@ -190,7 +194,15 @@ class JobCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       InkWell(
-                        onTap: click,
+                        onTap: () {
+                          final applied = sanadStore.apply(jobTitle: jobTitle, company: name);
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            behavior: SnackBarBehavior.floating,
+                            content: Text(applied == null
+                                ? 'You already applied to $jobTitle at $name.'
+                                : 'Applied to $jobTitle at $name. Track it in Activity.'),
+                          ));
+                        },
                         child: Container(
                           height: 35,
                           width: 130,
@@ -214,7 +226,7 @@ class JobCard extends StatelessWidget {
                           ),
                           child: Center(
                             child: Text(
-                              'Apply',
+                              sanadStore.hasApplied(jobTitle, name) ? 'Applied' : 'Apply',
                               style: TextStyle(
                                 letterSpacing: 1,
                                 color: Colors.white,

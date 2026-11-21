@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:grad/views/pages/accessibility_page.dart';
+import 'package:grad/views/pages/activity_page.dart';
 import 'package:grad/views/pages/gov_services/IC_services/IC_services_page.dart';
+import 'package:grad/views/pages/staff/staff_portal.dart';
 import 'package:grad/views/pages/gov_services/ID_services/ID_Renew_services_page.dart';
 import 'package:grad/views/pages/gov_services/gov_services_page.dart';
 import 'package:grad/views/pages/home_page.dart';
@@ -12,6 +15,9 @@ import 'package:grad/views/pages/sign_up_page.dart';
 
 /// Screens the web demo can open directly, e.g. `?screen=medical`.
 final Map<String, Widget Function()> demoScreens = {
+  'activity': () => const ActivityPage(),
+  'accessibility': () => const AccessibilityPage(),
+  'staff': () => const StaffPortal(),
   'home': () => const HomePage(),
   'signup': () => const SignUpPage(),
   'government': () => const GovServicesPage(),

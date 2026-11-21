@@ -1,4 +1,5 @@
 import 'package:grad/theme/sanad_colors.dart';
+import 'package:grad/views/pages/accessibility_page.dart';
 import 'package:flutter/material.dart';
 
 class TemplatePage extends StatelessWidget {
@@ -35,6 +36,14 @@ class TemplatePage extends StatelessWidget {
                 centerTitle: true,
                 iconTheme: const IconThemeData(color: SanadColors.ink),
                 backgroundColor: SanadColors.surface,
+                actions: [
+                  IconButton(
+                    tooltip: 'Accessibility settings',
+                    icon: const Icon(Icons.accessibility_new_rounded),
+                    onPressed: () => Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (_) => const AccessibilityPage())),
+                  ),
+                ],
                 title: Image.asset('assets/sanad.JPG', height: 40, colorBlendMode: BlendMode.multiply, color: SanadColors.surface),
                 // A thin gold rule under the header, a nod to official documents.
                 bottom: PreferredSize(

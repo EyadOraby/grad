@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grad/state/sanad_store.dart';
 import 'package:grad/theme/sanad_colors.dart';
 
 /// Small building blocks shared by SANAD's redesigned screens.
@@ -17,7 +18,9 @@ class SanadCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: SanadColors.card,
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: SanadColors.line),
+        border: sanadStore.settings.highContrast
+            ? Border.all(color: Colors.black, width: 1.5)
+            : Border.all(color: SanadColors.line),
         boxShadow: const [BoxShadow(color: Color(0x0F0F5C4A), blurRadius: 24, offset: Offset(0, 10))],
       ),
       child: Material(

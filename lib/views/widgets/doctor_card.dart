@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grad/views/widgets/booking_sheet.dart';
 import 'package:grad/views/widgets/sanad_ui.dart';
 
 class DoctorCard extends StatelessWidget {
@@ -35,7 +36,7 @@ class DoctorCard extends StatelessWidget {
       days: workinDays,
       hours: workingHours,
       rating: rating,
-      onBook: click,
+      onBook: () => showBookingSheet(context, provider: 'Dr. $firstName $lastName', kind: 'Doctor'),
     );
   }
 }

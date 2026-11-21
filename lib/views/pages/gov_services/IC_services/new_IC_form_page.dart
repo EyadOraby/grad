@@ -1,3 +1,4 @@
+import 'package:grad/views/widgets/booking_sheet.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/widgets/custom_date_picker.dart';
@@ -214,11 +215,9 @@ class _NewICFormPageState extends State<NewICFormPage> {
                         padding: const EdgeInsets.fromLTRB(50, 5, 50, 20),
                         child: InkWell(
                           onTap: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (_) =>
-                            //             DoctorsFormPage()));
+                            if (_formKey.currentState?.validate() ?? true) {
+                              submitServiceRequest(context, service: 'Integrated services card');
+                            }
                           },
                           child: Container(
                             height: 45,

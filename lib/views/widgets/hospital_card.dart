@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grad/views/widgets/booking_sheet.dart';
 import 'package:grad/views/widgets/sanad_ui.dart';
 
 class HospitalCard extends StatelessWidget {
@@ -29,7 +30,7 @@ class HospitalCard extends StatelessWidget {
       days: workinDays,
       hours: workingHours,
       rating: rating,
-      onBook: click,
+      onBook: () => showBookingSheet(context, provider: name, kind: 'Hospital'),
     );
   }
 }

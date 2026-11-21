@@ -1,3 +1,4 @@
+import 'package:grad/views/widgets/booking_sheet.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/widgets/drawer_mobile.dart';
@@ -244,7 +245,7 @@ class _IDServicesPageState extends State<IDServicesPage> {
                               height: 15,
                             ),
                             InkWell(
-                              onTap: () {},
+                              onTap: () => submitServiceRequest(context, service: 'National ID renewal'),
                               child: Container(
                                 height: 45,
                                 width: 150,

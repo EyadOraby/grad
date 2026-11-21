@@ -1,3 +1,5 @@
+import 'package:grad/views/pages/accessibility_page.dart';
+import 'package:grad/views/pages/staff/staff_portal.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:future_loading_dialog/future_loading_dialog.dart';
@@ -112,6 +114,16 @@ class DrawerMobile extends StatelessWidget {
           //   },
           //   trailing: Icon(Icons.task_rounded),
           // ),
+          ListTile(
+            leading: const Icon(Icons.accessibility_new_rounded),
+            title: const Text('Accessibility'),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AccessibilityPage())),
+          ),
+          ListTile(
+            leading: const Icon(Icons.account_balance_outlined),
+            title: const Text('Staff portal'),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const StaffPortal())),
+          ),
           ListTile(
             leading: Text("Logout"),
             onTap: () async {
