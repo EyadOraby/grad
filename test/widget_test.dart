@@ -1,30 +1,22 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:grad/main.dart';
+import 'package:grad/deep_links.dart';
+import 'package:grad/views/pages/home_page.dart';
+import 'package:grad/views/pages/jobs_services/jobs_page.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  test('opens a demo screen named in the URL', () {
+    expect(deepLinkedScreen(Uri.parse('https://x.test/?screen=home')), isA<HomePage>());
+    expect(deepLinkedScreen(Uri.parse('https://x.test/?screen=jobs')), isA<JobsPage>());
+  });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  test('ignores unknown or missing screens', () {
+    expect(deepLinkedScreen(Uri.parse('https://x.test/?screen=nope')), isNull);
+    expect(deepLinkedScreen(Uri.parse('https://x.test/')), isNull);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  test('every demo screen builds a widget', () {
+    for (final build in demoScreens.values) {
+      expect(build(), isNotNull);
+    }
   });
 }
