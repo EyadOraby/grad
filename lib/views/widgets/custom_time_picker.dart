@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
 
 class CustomTimePicker extends StatefulWidget {
@@ -12,14 +11,14 @@ class CustomTimePicker extends StatefulWidget {
   final String? Function(String?)? validate;
   final double width;
   const CustomTimePicker({
-    Key? key,
+    super.key,
     required this.deviceSize,
     required this.controller,
     required this.today,
     required this.title,
     required this.validate,
     required this.width,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomTimePicker> createState() => _CustomTimePickerState();
@@ -100,12 +99,11 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
                         foregroundColor: Colors.black,
                       ),
                     ),
-                    dialogBackgroundColor: Colors.white,
                     colorScheme: const ColorScheme.light(
                       primary: Colors.green,
                       onPrimary: Colors.black,
                       brightness: Brightness.light,
-                    ).copyWith(secondary: Colors.black),
+                    ).copyWith(secondary: Colors.black), dialogTheme: DialogThemeData(backgroundColor: Colors.white),
                   ),
                   child: child!,
                 );
@@ -138,13 +136,19 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
               );
               widget.controller.text = DateFormat('hh:mm').format(selectedDate);
             }
-            await DatePicker.showTimePicker(context,
-                showSecondsColumn: false,
-                showTitleActions: true,
-                onChanged: (date) {}, onConfirm: (date) {
-              widget.controller.text = DateFormat('hh:mm').format(date);
-              // print('confirm $date');
-            }, currentTime: selectedDate);
+            final picked = await showTimePicker(
+              context: context,
+              initialTime: TimeOfDay.fromDateTime(selectedDate),
+            );
+            if (picked != null) {
+              widget.controller.text = DateFormat('hh:mm').format(DateTime(
+                selectedDate.year,
+                selectedDate.month,
+                selectedDate.day,
+                picked.hour,
+                picked.minute,
+              ));
+            }
           }
         },
       ),
