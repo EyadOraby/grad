@@ -1,6 +1,8 @@
 # SANAD
 
 *More than a helping hand.* SANAD is my graduation project: one Flutter app for everyday public services in Egypt.
+**Try it in the browser:** [eyadoraby.github.io/grad](https://eyadoraby.github.io/grad/)
+
 
 - **Government services**: national ID renewal and integrated services card (IC) requests
 - **Medical services**: find doctors, hospitals, radiology and physiotherapy centers, and book appointments with a calendar and time picker
