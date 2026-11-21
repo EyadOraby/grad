@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/pages/gov_services/IC_services/new_IC_form_page.dart';
@@ -32,7 +33,7 @@ class _ICServicesPageState extends State<ICServicesPage> {
     final node = FocusScope.of(context);
     return TemplatePage(
       drawerMobile: DrawerMobile(),
-      appBarTitle: 'SANAD',
+      appBarTitle: context.t('SANAD'),
       index: 0,
       body: SingleChildScrollView(
         child: Column(
@@ -62,7 +63,7 @@ class _ICServicesPageState extends State<ICServicesPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               alignment: Alignment.centerLeft,
               child: Text(
-                "Apply for a new card or renew your old one from here:",
+                context.t("Apply for a new card or renew your old one from here:"),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -74,7 +75,7 @@ class _ICServicesPageState extends State<ICServicesPage> {
             //   height: 5,
             // ),
             // GovServicesButton(
-            //   serviceTitle: "Apply for a new card",
+            //   serviceTitle: context.t("Apply for a new card"),
             //   click: () {},
             //   serviceDescription:
             //       "Tap here if you want to apply for a new Integrated Services Card",
@@ -84,14 +85,14 @@ class _ICServicesPageState extends State<ICServicesPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ICServicesButton(
-                    serviceTitle: "New Card",
+                    serviceTitle: context.t("New Card"),
                     serviceImage: "assets/new-card.png",
                     click: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (_) => NewICFormPage()));
                     }),
                 ICServicesButton(
-                    serviceTitle: "Renew ",
+                    serviceTitle: context.t("Renew "),
                     serviceImage: "assets/renew-card.png",
                     click: () {}),
               ],
@@ -110,7 +111,7 @@ class _ICServicesPageState extends State<ICServicesPage> {
             //   ),
             // ),
             // GovServicesButton(
-            //   serviceTitle: "Renew your old card",
+            //   serviceTitle: context.t("Renew your old card"),
             //   click: () {},
             //   serviceDescription:
             //       'Tap here if you want to renew your old Integrated Services Card',
@@ -119,7 +120,7 @@ class _ICServicesPageState extends State<ICServicesPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               alignment: Alignment.centerLeft,
               child: Text(
-                "Pending Applications",
+                context.t("Pending Applications"),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,

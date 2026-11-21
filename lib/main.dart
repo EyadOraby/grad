@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:grad/deep_links.dart';
 import 'package:grad/state/sanad_store.dart';
 import 'package:grad/views/pages/accessibility_page.dart';
@@ -19,6 +20,11 @@ Future<void> main() async {
   sanadStore = SanadStore(PrefsSanadStorage(prefs!));
   // `?demo=1` fills in some activity so the web demo can be explored at once.
   if (Uri.base.queryParameters['demo'] == '1') sanadStore.seedDemoCitizen();
+  // `?lang=ar` or `?lang=en` on the web picks the language.
+  final lang = Uri.base.queryParameters['lang'];
+  if ((lang == 'ar' || lang == 'en') && lang != sanadStore.settings.language) {
+    sanadStore.updateSettings(sanadStore.settings.copyWith(language: lang));
+  }
   runApp(const MyApp());
 }
 
@@ -78,6 +84,13 @@ class MyApp extends StatelessWidget {
         ),
       ),
       builder: (context, child) => applyAccessibility(context, child, settings),
+      locale: Locale(settings.language),
+      supportedLocales: const [Locale('en'), Locale('ar')],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       home: deepLinkedScreen() ?? const SplashPage(),
     );
   }

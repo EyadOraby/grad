@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/pages/activity_page.dart';
 import 'package:grad/views/pages/gov_services/gov_services_page.dart';
@@ -12,31 +13,31 @@ class BottomNavBar extends StatelessWidget {
   final int index;
   const BottomNavBar({super.key, required this.index});
 
-  static const _destinations = [
+  List<NavigationDestination> _destinations(BuildContext context) => [
     NavigationDestination(
       icon: Icon(Icons.home_outlined),
       selectedIcon: Icon(Icons.home_rounded),
-      label: 'Home',
+      label: context.t('Home'),
     ),
     NavigationDestination(
       icon: Icon(Icons.badge_outlined),
       selectedIcon: Icon(Icons.badge_rounded),
-      label: 'Gov',
+      label: context.t('Gov'),
     ),
     NavigationDestination(
       icon: Icon(Icons.medical_services_outlined),
       selectedIcon: Icon(Icons.medical_services_rounded),
-      label: 'Medical',
+      label: context.t('Medical'),
     ),
     NavigationDestination(
       icon: Icon(Icons.work_outline_rounded),
       selectedIcon: Icon(Icons.work_rounded),
-      label: 'Jobs',
+      label: context.t('Jobs'),
     ),
     NavigationDestination(
       icon: Icon(Icons.inbox_outlined),
       selectedIcon: Icon(Icons.inbox_rounded),
-      label: 'Activity',
+      label: context.t('Activity'),
     ),
   ];
 
@@ -80,7 +81,7 @@ class BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return NavigationBar(
       selectedIndex: index,
-      destinations: _destinations,
+      destinations: _destinations(context),
       onDestinationSelected: (i) => _open(context, i),
     );
   }

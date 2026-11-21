@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/state/sanad_store.dart';
 import 'package:grad/theme/sanad_colors.dart';
@@ -52,12 +53,12 @@ class _BookingSheetState extends State<_BookingSheet> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Book with ${widget.provider}',
+          Text('${context.t('Book with')} ${widget.provider}',
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: SanadColors.ink)),
           const SizedBox(height: 4),
-          const Text('Choose a day and a time that works for you.', style: TextStyle(color: SanadColors.inkMuted)),
+          Text(context.t('Choose a day and a time that works for you.'), style: TextStyle(color: SanadColors.inkMuted)),
           const SizedBox(height: 18),
-          const Text('Day', style: TextStyle(fontWeight: FontWeight.w700, color: SanadColors.ink)),
+          Text(context.t('Day'), style: TextStyle(fontWeight: FontWeight.w700, color: SanadColors.ink)),
           const SizedBox(height: 8),
           SizedBox(
             height: 74,
@@ -99,7 +100,7 @@ class _BookingSheetState extends State<_BookingSheet> {
             ),
           ),
           const SizedBox(height: 16),
-          const Text('Time', style: TextStyle(fontWeight: FontWeight.w700, color: SanadColors.ink)),
+          Text(context.t('Time'), style: TextStyle(fontWeight: FontWeight.w700, color: SanadColors.ink)),
           const SizedBox(height: 8),
           Wrap(
             spacing: 8,
@@ -130,7 +131,7 @@ class _BookingSheetState extends State<_BookingSheet> {
                       ScaffoldMessenger.of(widget.outer).showSnackBar(SnackBar(
                         behavior: SnackBarBehavior.floating,
                         content: Text(booked == null
-                            ? 'That time was just taken. Please pick another.'
+                            ? context.t('That time was just taken. Please pick another.')
                             : 'Booked for ${formatSlot(when)}. See it in Activity.'),
                       ));
                     },
@@ -138,7 +139,7 @@ class _BookingSheetState extends State<_BookingSheet> {
                 backgroundColor: SanadColors.primary,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               ),
-              child: Text(_hour == null ? 'Choose a time' : 'Confirm booking',
+              child: Text(_hour == null ? context.t('Choose a time') : context.t('Confirm booking'),
                   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
             ),
           ),
@@ -155,17 +156,17 @@ Future<void> submitServiceRequest(BuildContext context, {required String service
     context: context,
     builder: (context) => AlertDialog(
       icon: const Icon(Icons.verified_rounded, color: SanadColors.primary, size: 48),
-      title: const Text('Request submitted'),
+      title: Text(context.t('Request submitted')),
       content: Column(mainAxisSize: MainAxisSize.min, children: [
-        Text('$service has been sent for review.', textAlign: TextAlign.center),
+        Text('${context.t(service)} ${context.t('has been sent for review.')}', textAlign: TextAlign.center),
         const SizedBox(height: 14),
-        const Text('Your reference number', style: TextStyle(color: SanadColors.inkMuted)),
+        Text(context.t('Your reference number'), style: TextStyle(color: SanadColors.inkMuted)),
         SelectableText(request.reference,
             style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w800, letterSpacing: 1, color: SanadColors.primary)),
         const SizedBox(height: 8),
-        const Text('Track its status any time from Activity.', textAlign: TextAlign.center),
+        Text(context.t('Track its status any time from Activity.'), textAlign: TextAlign.center),
       ]),
-      actions: [FilledButton(onPressed: () => Navigator.pop(context), child: const Text('Done'))],
+      actions: [FilledButton(onPressed: () => Navigator.pop(context), child: Text(context.t('Done')))],
     ),
   );
 }

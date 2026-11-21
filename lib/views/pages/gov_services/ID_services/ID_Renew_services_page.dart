@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/views/widgets/booking_sheet.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class _IDServicesPageState extends State<IDServicesPage> {
     final node = FocusScope.of(context);
     return TemplatePage(
       drawerMobile: DrawerMobile(),
-      appBarTitle: 'SANAD',
+      appBarTitle: context.t('SANAD'),
       index: 0,
       body: SingleChildScrollView(
         child: Column(
@@ -61,7 +62,7 @@ class _IDServicesPageState extends State<IDServicesPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               alignment: Alignment.centerLeft,
               child: Text(
-                "Renew your old National ID Card from here:",
+                context.t("Renew your old National ID Card from here:"),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -73,7 +74,7 @@ class _IDServicesPageState extends State<IDServicesPage> {
             //   height: 5,
             // ),
             // GovServicesButton(
-            //   serviceTitle: "Apply for a new card",
+            //   serviceTitle: context.t("Apply for a new card"),
             //   click: () {},
             //   serviceDescription:
             //       "Tap here if you want to apply for a new Integrated Services Card",
@@ -147,7 +148,7 @@ class _IDServicesPageState extends State<IDServicesPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               alignment: Alignment.centerLeft,
               child: Text(
-                "Pending Applications",
+                context.t("Pending Applications"),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,

@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/state/sanad_store.dart';
 import 'package:grad/theme/sanad_colors.dart';
@@ -14,7 +15,7 @@ class ActivityPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TemplatePage(
-      appBarTitle: 'Activity',
+      appBarTitle: context.t('Activity'),
       index: 4,
       drawerMobile: const DrawerMobile(),
       bottomNavBar: const BottomNavBar(index: 4),
@@ -29,12 +30,12 @@ class ActivityPage extends StatelessWidget {
             children: [
               Semantics(
                 header: true,
-                child: const Text('Your activity', style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800, color: SanadColors.ink)),
+                child: Text(context.t('Your activity'), style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800, color: SanadColors.ink)),
               ),
               const SizedBox(height: 4),
-              const Text('Appointments, requests and applications in one place.', style: TextStyle(color: SanadColors.inkMuted)),
-              _Header('Appointments', appointments.where((a) => a.status == AppointmentStatus.booked).length),
-              if (appointments.isEmpty) const _Empty('Book a doctor or hospital from Medical services.'),
+              Text(context.t('Appointments, requests and applications in one place.'), style: TextStyle(color: SanadColors.inkMuted)),
+              _Header(context.t('Appointments'), appointments.where((a) => a.status == AppointmentStatus.booked).length),
+              if (appointments.isEmpty) _Empty(context.t('Book a doctor or hospital from Medical services.')),
               for (final a in appointments)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
@@ -49,18 +50,18 @@ class ActivityPage extends StatelessWidget {
                         ]),
                       ),
                       if (a.status == AppointmentStatus.booked)
-                        TextButton(onPressed: () => sanadStore.cancelAppointment(a.id), child: const Text('Cancel'))
+                        TextButton(onPressed: () => sanadStore.cancelAppointment(a.id), child: Text(context.t('Cancel')))
                       else
-                        _StatusText(a.status == AppointmentStatus.cancelled ? 'Cancelled' : 'Completed'),
+                        _StatusText(a.status == AppointmentStatus.cancelled ? context.t('Cancelled') : context.t('Completed')),
                     ]),
                   ),
                 ),
-              _Header('Government requests', requests.length),
-              if (requests.isEmpty) const _Empty('Renew your ID or apply for a services card from Government.'),
+              _Header(context.t('Government requests'), requests.length),
+              if (requests.isEmpty) _Empty(context.t('Renew your ID or apply for a services card from Government.')),
               for (final r in requests)
                 Padding(padding: const EdgeInsets.only(bottom: 10), child: RequestCard(request: r)),
-              _Header('Job applications', applications.length),
-              if (applications.isEmpty) const _Empty('Apply to jobs that suit you from Jobs.'),
+              _Header(context.t('Job applications'), applications.length),
+              if (applications.isEmpty) _Empty(context.t('Apply to jobs that suit you from Jobs.')),
               for (final a in applications)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
@@ -74,7 +75,7 @@ class ActivityPage extends StatelessWidget {
                           Text(a.company, style: const TextStyle(color: SanadColors.inkMuted, fontSize: 13)),
                         ]),
                       ),
-                      _StatusText(a.status.label),
+                      _StatusText(context.t(a.status.label)),
                     ]),
                   ),
                 ),
@@ -103,11 +104,11 @@ class RequestCard extends StatelessWidget {
           const SizedBox(width: 12),
           Expanded(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(request.service, style: const TextStyle(fontWeight: FontWeight.w700, color: SanadColors.ink)),
-              Text('Ref ${request.reference} · ${request.citizen}', style: const TextStyle(color: SanadColors.inkMuted, fontSize: 13)),
+              Text(context.t(request.service), style: TextStyle(fontWeight: FontWeight.w700, color: SanadColors.ink)),
+              Text('${context.t('Ref')} ${request.reference} · ${context.t(request.citizen)}', style: TextStyle(color: SanadColors.inkMuted, fontSize: 13)),
             ]),
           ),
-          _StatusText(request.status.label, color: rejected ? const Color(0xFFB3261E) : null),
+          _StatusText(context.t(request.status.label), color: rejected ? Color(0xFFB3261E) : null),
         ]),
         if (!rejected) ...[
           const SizedBox(height: 14),
@@ -134,7 +135,7 @@ class RequestCard extends StatelessWidget {
           const SizedBox(height: 6),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [for (final s in steps) Text(s.label, style: const TextStyle(fontSize: 10.5, color: SanadColors.inkMuted))],
+            children: [for (final s in steps) Text(context.t(s.label), style: TextStyle(fontSize: 10.5, color: SanadColors.inkMuted))],
           ),
         ],
         if (actions != null) ...[const SizedBox(height: 10), actions!],
@@ -154,7 +155,7 @@ class _Header extends StatelessWidget {
         child: Semantics(
           header: true,
           child: Row(children: [
-            Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: SanadColors.ink)),
+            Text(context.t(title), style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: SanadColors.ink)),
             const SizedBox(width: 8),
             Text('$count', style: const TextStyle(color: SanadColors.inkMuted)),
           ]),
@@ -167,7 +168,7 @@ class _Empty extends StatelessWidget {
   final String text;
 
   @override
-  Widget build(BuildContext context) => Text(text, style: const TextStyle(color: SanadColors.inkMuted));
+  Widget build(BuildContext context) => Text(context.t(text), style: TextStyle(color: SanadColors.inkMuted));
 }
 
 class _Badge extends StatelessWidget {

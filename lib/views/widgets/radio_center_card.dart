@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
 
 import 'package:flutter/material.dart';
@@ -143,7 +144,7 @@ class RadioCenterCard extends StatelessWidget {
                           //     textAlign: TextAlign.left,
                           //     text: TextSpan(children: [
                           //       TextSpan(
-                          //         text: "Working Days",
+                          //         text: context.t("Working Days"),
                           //         style: TextStyle(
                           //           color: Colors.white,
                           //           fontWeight: FontWeight.w400,
@@ -158,7 +159,7 @@ class RadioCenterCard extends StatelessWidget {
                           //     textAlign: TextAlign.left,
                           //     text: TextSpan(children: [
                           //       TextSpan(
-                          //         text: "Working Hours",
+                          //         text: context.t("Working Hours"),
                           //         style: TextStyle(
                           //           color: Colors.white,
                           //           fontWeight: FontWeight.bold,
@@ -270,7 +271,7 @@ class RadioCenterCard extends StatelessWidget {
                           ),
                           child: Center(
                             child: Text(
-                              'Book',
+                              context.t('Book'),
                               style: TextStyle(
                                 letterSpacing: 1,
                                 color: Colors.white,

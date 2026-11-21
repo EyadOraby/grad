@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/widgets/drawer_mobile.dart';
 import 'package:grad/views/widgets/hospital_form_widget.dart';
@@ -53,7 +54,7 @@ class _HospitalsFormPageState extends State<HospitalsFormPage> {
     final node = FocusScope.of(context);
     return TemplatePage(
       drawerMobile: DrawerMobile(),
-      appBarTitle: 'SANAD',
+      appBarTitle: context.t('SANAD'),
       index: 2,
       body: HospitalFormWidget(
         name: widget.name,

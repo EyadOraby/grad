@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:grad/views/widgets/sanad_ui.dart';
@@ -45,9 +46,9 @@ class MedicalCategoryServicesButton extends StatelessWidget {
               style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: SanadColors.ink, height: 1.25),
             ),
             const SizedBox(height: 8),
-            const Row(
+            Row(
               children: [
-                Text('Explore', style: TextStyle(fontSize: 12.5, color: SanadColors.primary, fontWeight: FontWeight.w600)),
+                Text(context.t('Explore'), style: TextStyle(fontSize: 12.5, color: SanadColors.primary, fontWeight: FontWeight.w600)),
                 Icon(Icons.arrow_forward_rounded, size: 15, color: SanadColors.primary),
               ],
             ),

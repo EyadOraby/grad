@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/widgets/booking_sheet.dart';
 import 'package:grad/views/widgets/sanad_ui.dart';
@@ -25,7 +26,7 @@ class HospitalCard extends StatelessWidget {
     return ProviderCard(
       image: 'assets/hospital-icon.png',
       title: name,
-      subtitle: 'Hospital',
+      subtitle: context.t('Hospital'),
       location: location,
       days: workinDays,
       hours: workingHours,

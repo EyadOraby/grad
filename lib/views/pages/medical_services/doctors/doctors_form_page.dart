@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/widgets/doctor_form_widget.dart';
 import 'package:grad/views/widgets/drawer_mobile.dart';
@@ -41,11 +42,11 @@ class _DoctorsFormPageState extends State<DoctorsFormPage> {
     final node = FocusScope.of(context);
     return TemplatePage(
       drawerMobile: DrawerMobile(),
-      appBarTitle: 'SANAD',
+      appBarTitle: context.t('SANAD'),
       index: 2,
       body: DoctorFormWidget(
         name: "Dr. Aly Ahmed",
-        specialization: "Osteopaths",
+        specialization: context.t("Osteopaths"),
         about:
             "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-",
         address: "El-Gabal El-Akhdar Bldgs. 17, Nasr City",

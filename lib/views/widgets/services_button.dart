@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:grad/views/widgets/sanad_ui.dart';
@@ -50,7 +51,7 @@ class ServicesButton extends StatelessWidget {
                   if (serviceDescription != null) ...[
                     const SizedBox(height: 4),
                     Text(
-                      serviceDescription!,
+                      context.t(serviceDescription!),
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(fontSize: 12.5, height: 1.45, color: SanadColors.inkMuted),

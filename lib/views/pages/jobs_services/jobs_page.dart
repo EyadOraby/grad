@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/widgets/drawer_mobile.dart';
@@ -30,7 +31,7 @@ class _JobsPageState extends State<JobsPage> {
     final node = FocusScope.of(context);
     return TemplatePage(
       drawerMobile: DrawerMobile(),
-      appBarTitle: 'SANAD',
+      appBarTitle: context.t('SANAD'),
       index: 3,
       body: SingleChildScrollView(
         child: Column(
@@ -42,7 +43,7 @@ class _JobsPageState extends State<JobsPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               alignment: Alignment.center,
               child: Text(
-                "Jobs Services",
+                context.t("Jobs Services"),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: SanadColors.primary,
@@ -55,7 +56,7 @@ class _JobsPageState extends State<JobsPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               alignment: Alignment.centerLeft,
               child: Text(
-                "Hi Aly, these are Jobs near you, and suitable for your condition.",
+                context.t("Hi Aly, these are Jobs near you, and suitable for your condition."),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,

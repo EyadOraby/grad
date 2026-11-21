@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
 
 import 'package:flutter/material.dart';
@@ -136,7 +137,7 @@ class RadioCenterFormWidget extends StatelessWidget {
                       child: Container(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "About: ",
+                          context.t("About: "),
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 22,
@@ -165,7 +166,7 @@ class RadioCenterFormWidget extends StatelessWidget {
                       child: Container(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "Address: ",
+                          context.t("Address: "),
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 22,
@@ -193,7 +194,7 @@ class RadioCenterFormWidget extends StatelessWidget {
                       child: Container(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "Working Days: ",
+                          context.t("Working Days: "),
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 22,
@@ -221,7 +222,7 @@ class RadioCenterFormWidget extends StatelessWidget {
                       child: Container(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "Working Hours: ",
+                          context.t("Working Hours: "),
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 22,
@@ -267,7 +268,7 @@ class RadioCenterFormWidget extends StatelessWidget {
                           child: Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Book an Appointment Now!!",
+                              context.t("Book an Appointment Now!!"),
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 22,
@@ -284,7 +285,7 @@ class RadioCenterFormWidget extends StatelessWidget {
                               // CustomTextField(
                               //     deviceSize: deviceSize,
                               //     width: 0.7,
-                              //     hintText: "Name",
+                              //     hintText: context.t("Name"),
                               //     controller: nameController,
                               //     textInputAction: TextInputAction.next,
                               //     keyboardType: TextInputType.text,
@@ -329,7 +330,7 @@ class RadioCenterFormWidget extends StatelessWidget {
                               ),
                               CustomTimePicker(
                                 deviceSize: deviceSize,
-                                title: "Time",
+                                title: context.t("Time"),
                                 controller: timeController,
                                 today: DateTime.now(),
                                 width: 0.9,
@@ -374,7 +375,7 @@ class RadioCenterFormWidget extends StatelessWidget {
                                     ),
                                     child: Center(
                                       child: Text(
-                                        'Book Appointment',
+                                        context.t('Book Appointment'),
                                         style: TextStyle(
                                           letterSpacing: 1,
                                           color: Colors.white,

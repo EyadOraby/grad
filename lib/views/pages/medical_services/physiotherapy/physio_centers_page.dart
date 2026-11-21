@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/pages/medical_services/physiotherapy/physio_center_form_page.dart';
@@ -31,7 +32,7 @@ class _PhysioCentersPageState extends State<PhysioCentersPage> {
     final node = FocusScope.of(context);
     return TemplatePage(
       drawerMobile: DrawerMobile(),
-      appBarTitle: 'SANAD',
+      appBarTitle: context.t('SANAD'),
       index: 2,
       body: SingleChildScrollView(
         child: Column(
@@ -43,7 +44,7 @@ class _PhysioCentersPageState extends State<PhysioCentersPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               alignment: Alignment.center,
               child: Text(
-                "Physiotherapy Centers",
+                context.t("Physiotherapy Centers"),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: SanadColors.primary,
@@ -56,7 +57,7 @@ class _PhysioCentersPageState extends State<PhysioCentersPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               alignment: Alignment.centerLeft,
               child: Text(
-                "Hi Aly, these are Physiotherapy Centers near you, which provide medical services for your condition.",
+                context.t("Hi Aly, these are Physiotherapy Centers near you, which provide medical services for your condition."),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,

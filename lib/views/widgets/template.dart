@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:grad/views/pages/accessibility_page.dart';
@@ -27,7 +28,7 @@ class TemplatePage extends StatelessWidget {
   static const desktopFrom = 900.0;
 
   Widget _accessibilityButton(BuildContext context, Color color) => IconButton(
-        tooltip: 'Accessibility settings',
+        tooltip: context.t('Accessibility settings'),
         color: color,
         icon: const Icon(Icons.accessibility_new_rounded),
         onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AccessibilityPage())),
@@ -48,7 +49,7 @@ class TemplatePage extends StatelessWidget {
         backgroundColor: SanadColors.surface,
         actions: [_accessibilityButton(context, SanadColors.ink)],
         title: Image.asset('assets/sanad.JPG',
-            height: 40, colorBlendMode: BlendMode.multiply, color: SanadColors.surface, semanticLabel: 'SANAD'),
+            height: 40, colorBlendMode: BlendMode.multiply, color: SanadColors.surface, semanticLabel: context.t('SANAD')),
         // A thin gold rule under the header, a nod to official documents.
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(3),

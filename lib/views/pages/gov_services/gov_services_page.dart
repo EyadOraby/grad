@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/pages/gov_services/IC_services/IC_services_page.dart';
@@ -26,7 +27,7 @@ class _GovServicesPageState extends State<GovServicesPage> {
   Widget build(BuildContext scontext) {
     return TemplatePage(
       drawerMobile: DrawerMobile(),
-      appBarTitle: 'SANAD',
+      appBarTitle: context.t('SANAD'),
       index: 1,
       body: SingleChildScrollView(
         child: Column(
@@ -38,7 +39,7 @@ class _GovServicesPageState extends State<GovServicesPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               alignment: Alignment.center,
               child: Text(
-                "Governmental Services",
+                context.t("Governmental Services"),
                 style: TextStyle(
                   color: SanadColors.primary,
                   fontSize: 24,
@@ -84,7 +85,7 @@ class _GovServicesPageState extends State<GovServicesPage> {
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Other services:",
+                    context.t("Other services:"),
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 20,

@@ -162,25 +162,35 @@ class AccessibilitySettings {
   final bool highContrast;
   final bool reduceMotion;
   final bool boldText;
+  /// 'en' or 'ar'.
+  final String language;
 
-  const AccessibilitySettings({this.textScale = 1, this.highContrast = false, this.reduceMotion = false, this.boldText = false});
+  const AccessibilitySettings({
+    this.textScale = 1,
+    this.highContrast = false,
+    this.reduceMotion = false,
+    this.boldText = false,
+    this.language = 'en',
+  });
 
-  AccessibilitySettings copyWith({double? textScale, bool? highContrast, bool? reduceMotion, bool? boldText}) =>
+  AccessibilitySettings copyWith({double? textScale, bool? highContrast, bool? reduceMotion, bool? boldText, String? language}) =>
       AccessibilitySettings(
         textScale: textScale ?? this.textScale,
         highContrast: highContrast ?? this.highContrast,
         reduceMotion: reduceMotion ?? this.reduceMotion,
         boldText: boldText ?? this.boldText,
+        language: language ?? this.language,
       );
 
   Map<String, dynamic> toJson() =>
-      {'textScale': textScale, 'highContrast': highContrast, 'reduceMotion': reduceMotion, 'boldText': boldText};
+      {'textScale': textScale, 'highContrast': highContrast, 'reduceMotion': reduceMotion, 'boldText': boldText, 'language': language};
 
   factory AccessibilitySettings.fromJson(Map j) => AccessibilitySettings(
         textScale: (j['textScale'] as num?)?.toDouble() ?? 1,
         highContrast: j['highContrast'] as bool? ?? false,
         reduceMotion: j['reduceMotion'] as bool? ?? false,
         boldText: j['boldText'] as bool? ?? false,
+        language: j['language'] as String? ?? 'en',
       );
 }
 
@@ -308,6 +318,8 @@ class SanadStore extends ChangeNotifier {
     book(provider: 'Dr. Hana Mohamed', kind: 'Doctor', when: DateTime(day.year, day.month, day.day, 11));
     apply(jobTitle: 'Data Entry', company: 'Orange');
   }
+
+  void toggleLanguage() => updateSettings(settings.copyWith(language: settings.language == 'ar' ? 'en' : 'ar'));
 
   void updateSettings(AccessibilitySettings s) {
     settings = s;

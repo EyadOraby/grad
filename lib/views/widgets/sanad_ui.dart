@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/state/sanad_store.dart';
 import 'package:grad/theme/sanad_colors.dart';
@@ -152,7 +153,7 @@ class ProviderCard extends StatelessWidget {
             if (subtitle != null)
               Padding(
                 padding: const EdgeInsets.only(top: 2),
-                child: Text(subtitle!, style: const TextStyle(fontSize: 12.5, color: SanadColors.primary)),
+                child: Text(context.t(subtitle!), style: TextStyle(fontSize: 12.5, color: SanadColors.primary)),
               ),
             const SizedBox(height: 6),
             InfoRow(icon: Icons.location_on_outlined, text: location),
@@ -167,7 +168,7 @@ class ProviderCard extends StatelessWidget {
                   backgroundColor: SanadColors.primary,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                 ),
-                child: const Text('Book', style: TextStyle(fontWeight: FontWeight.w700)),
+                child: Text(context.t('Book'), style: TextStyle(fontWeight: FontWeight.w700)),
               ),
             ),
           ],

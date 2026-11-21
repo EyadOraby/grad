@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/state/sanad_store.dart';
 import 'package:grad/theme/sanad_colors.dart';
 
@@ -226,7 +227,7 @@ class JobCard extends StatelessWidget {
                           ),
                           child: Center(
                             child: Text(
-                              sanadStore.hasApplied(jobTitle, name) ? 'Applied' : 'Apply',
+                              sanadStore.hasApplied(jobTitle, name) ? context.t('Applied') : context.t('Apply'),
                               style: TextStyle(
                                 letterSpacing: 1,
                                 color: Colors.white,
@@ -259,7 +260,7 @@ class JobCard extends StatelessWidget {
                           textAlign: TextAlign.left,
                           text: TextSpan(children: [
                             TextSpan(
-                              text: "Applicants",
+                              text: context.t("Applicants"),
                               style: TextStyle(
                                 color: SanadColors.ink,
                                 fontWeight: FontWeight.w400,

@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'dart:io';
 import 'package:cupertino_ui/cupertino_ui.dart';
@@ -132,8 +133,8 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
                           height: widget.deviceSize.height * 0.09,
                           alignment: Alignment.centerRight,
                           child: CupertinoButton(
-                            child: const Text(
-                              "Done",
+                            child: Text(
+                              context.t("Done"),
                               style: TextStyle(
                                 color: Colors.blue,
                               ),

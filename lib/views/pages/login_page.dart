@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/state/sanad_store.dart';
 import 'package:grad/theme/sanad_colors.dart';
@@ -61,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.fromLTRB(22, 20, 22, 28),
                     child: Center(
                       child: Column(children: [
-                        Image.asset('assets/new_logo_hq-removebg-preview.png', height: 130, semanticLabel: 'SANAD'),
+                        Image.asset('assets/new_logo_hq-removebg-preview.png', height: 130, semanticLabel: context.t('SANAD')),
                         const SizedBox(height: 6),
                         form,
                       ]),
@@ -91,37 +92,40 @@ class _LoginPageState extends State<LoginPage> {
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         Semantics(
           header: true,
-          child: const Text('Sign in to SANAD',
+          child: Text(context.t('Sign in to SANAD'),
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: SanadColors.ink)),
         ),
         const SizedBox(height: 6),
-        const Text('Government, medical and job services in one place.', style: TextStyle(color: SanadColors.inkMuted)),
+        Text(context.t('Government, medical and job services in one place.'), style: TextStyle(color: SanadColors.inkMuted)),
         const SizedBox(height: 22),
         TextFormField(
           controller: _id,
           keyboardType: TextInputType.number,
           maxLength: 14,
-          decoration: field('National ID (14 digits)', Icons.badge_outlined).copyWith(counterText: ''),
-          validator: validateNationalId,
+          decoration: field(context.t('National ID (14 digits)'), Icons.badge_outlined).copyWith(counterText: ''),
+          validator: (v) {
+            final error = validateNationalId(v);
+            return error == null ? null : context.t(error);
+          },
         ),
         const SizedBox(height: 12),
         TextFormField(
           controller: _password,
           obscureText: _hidden,
           decoration: field(
-            'Password',
+            context.t('Password'),
             Icons.lock_outline_rounded,
             suffix: IconButton(
-              tooltip: _hidden ? 'Show password' : 'Hide password',
+              tooltip: _hidden ? context.t('Show password') : context.t('Hide password'),
               onPressed: () => setState(() => _hidden = !_hidden),
               icon: Icon(_hidden ? Icons.visibility_off_outlined : Icons.visibility_outlined),
             ),
           ),
-          validator: (v) => (v == null || v.length < 6) ? 'Use at least 6 characters' : null,
+          validator: (v) => (v == null || v.length < 6) ? context.t('Use at least 6 characters') : null,
         ),
         Align(
           alignment: AlignmentDirectional.centerEnd,
-          child: TextButton(onPressed: () {}, child: const Text('Forgot password?')),
+          child: TextButton(onPressed: () {}, child: Text(context.t('Forgot password?'))),
         ),
         SizedBox(
           height: 54,
@@ -133,7 +137,7 @@ class _LoginPageState extends State<LoginPage> {
             onPressed: () {
               if (_form.currentState!.validate()) _go(const HomePage());
             },
-            child: const Text('Sign in', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+            child: Text(context.t('Sign in'), style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
           ),
         ),
         const SizedBox(height: 10),
@@ -146,14 +150,14 @@ class _LoginPageState extends State<LoginPage> {
           ),
           onPressed: () => _go(const HomePage()),
           icon: const Icon(Icons.person_outline_rounded),
-          label: const Text('Continue as guest', style: TextStyle(fontWeight: FontWeight.w600)),
+          label: Text(context.t('Continue as guest'), style: TextStyle(fontWeight: FontWeight.w600)),
         ),
         const SizedBox(height: 22),
-        const Row(children: [
+        Row(children: [
           Expanded(child: Divider()),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Text('Try a demo account', style: TextStyle(color: SanadColors.inkMuted, fontWeight: FontWeight.w600)),
+            child: Text(context.t('Try a demo account'), style: TextStyle(color: SanadColors.inkMuted, fontWeight: FontWeight.w600)),
           ),
           Expanded(child: Divider()),
         ]),
@@ -161,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
         _DemoTile(
           icon: Icons.accessible_forward_rounded,
           title: 'Citizen',
-          note: 'A booked doctor, tracked requests and a job application',
+          note: context.t('A booked doctor, tracked requests and a job application'),
           onTap: () {
             sanadStore.seedDemoCitizen();
             _go(const HomePage());
@@ -171,15 +175,15 @@ class _LoginPageState extends State<LoginPage> {
         _DemoTile(
           icon: Icons.account_balance_outlined,
           title: 'Staff',
-          note: 'Review requests, appointments and applications',
+          note: context.t('Review requests, appointments and applications'),
           onTap: () => _go(const StaffPortal()),
         ),
         const SizedBox(height: 12),
         Wrap(alignment: WrapAlignment.center, crossAxisAlignment: WrapCrossAlignment.center, children: [
-          const Text("Don't have an account?", style: TextStyle(color: SanadColors.inkMuted)),
+          Text(context.t("Don't have an account?"), style: TextStyle(color: SanadColors.inkMuted)),
           TextButton(
             onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SignUpPage())),
-            child: const Text('Create one'),
+            child: Text(context.t('Create one')),
           ),
         ]),
       ]),
@@ -199,12 +203,16 @@ class _GovBar extends StatelessWidget {
           child: Row(children: [
             const Icon(Icons.account_balance_outlined, color: Colors.white, size: 18),
             const SizedBox(width: 8),
-            const Expanded(
-              child: Text('SANAD · Citizen services portal',
+            Expanded(
+              child: Text(context.t('SANAD · Citizen services portal'),
                   style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 13)),
             ),
+            TextButton(
+              onPressed: sanadStore.toggleLanguage,
+              child: Text(context.isArabic ? 'English' : 'العربية', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700)),
+            ),
             IconButton(
-              tooltip: 'Accessibility settings',
+              tooltip: context.t('Accessibility settings'),
               color: Colors.white,
               onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AccessibilityPage())),
               icon: const Icon(Icons.accessibility_new_rounded),
@@ -232,26 +240,26 @@ class _Hero extends StatelessWidget {
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
-            padding: const EdgeInsets.all(14),
+            padding: EdgeInsets.all(14),
             decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
-            child: Image.asset('assets/new_logo_hq-removebg-preview.png', height: 70, semanticLabel: 'SANAD'),
+            child: Image.asset('assets/new_logo_hq-removebg-preview.png', height: 70, semanticLabel: context.t('SANAD')),
           ),
-          const Spacer(),
-          const Text('More than a\nhelping hand.',
+          Spacer(),
+          Text(context.t('More than a\nhelping hand.'),
               style: TextStyle(color: Colors.white, fontSize: 42, height: 1.1, fontWeight: FontWeight.w800)),
-          const SizedBox(height: 22),
-          for (final (icon, text) in const [
-            (Icons.badge_outlined, 'Renew your ID and track every request'),
-            (Icons.medical_services_outlined, 'Book doctors and hospitals near you'),
-            (Icons.work_outline_rounded, 'Find jobs suited to you'),
-            (Icons.accessibility_new_rounded, 'Large text, high contrast and screen readers'),
+          SizedBox(height: 22),
+          for (final (icon, text) in [
+            (Icons.badge_outlined, context.t('Renew your ID and track every request')),
+            (Icons.medical_services_outlined, context.t('Book doctors and hospitals near you')),
+            (Icons.work_outline_rounded, context.t('Find jobs suited to you')),
+            (Icons.accessibility_new_rounded, context.t('Large text, high contrast and screen readers')),
           ])
             Padding(
               padding: const EdgeInsets.only(bottom: 12),
               child: Row(children: [
                 Icon(icon, color: SanadColors.gold),
                 const SizedBox(width: 12),
-                Expanded(child: Text(text, style: const TextStyle(color: Colors.white, fontSize: 16))),
+                Expanded(child: Text(context.t(text), style: TextStyle(color: Colors.white, fontSize: 16))),
               ]),
             ),
           const Spacer(),
@@ -280,8 +288,8 @@ class _DemoTile extends StatelessWidget {
           const SizedBox(width: 12),
           Expanded(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text('$title demo', style: const TextStyle(fontWeight: FontWeight.w700, color: SanadColors.ink)),
-              Text(note, style: const TextStyle(color: SanadColors.inkMuted, fontSize: 12.5)),
+              Text(context.t('$title demo'), style: TextStyle(fontWeight: FontWeight.w700, color: SanadColors.ink)),
+              Text(context.t(note), style: TextStyle(color: SanadColors.inkMuted, fontSize: 12.5)),
             ]),
           ),
           const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: SanadColors.inkMuted),

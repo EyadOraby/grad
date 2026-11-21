@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/state/sanad_store.dart';
 import 'package:grad/theme/sanad_colors.dart';
@@ -10,7 +11,7 @@ class AccessibilityPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Accessibility')),
+      appBar: AppBar(title: Text(context.t('Accessibility'))),
       body: ListenableBuilder(
         listenable: sanadStore,
         builder: (context, _) {
@@ -19,10 +20,10 @@ class AccessibilityPage extends StatelessWidget {
           return ListView(
             padding: const EdgeInsets.all(20),
             children: [
-              const Text('Make SANAD comfortable to use',
+              Text(context.t('Make SANAD comfortable to use'),
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: SanadColors.ink)),
               const SizedBox(height: 6),
-              const Text('These settings apply to every screen and are saved on this device.',
+              Text(context.t('These settings apply to every screen and are saved on this device.'),
                   style: TextStyle(color: SanadColors.inkMuted)),
               const SizedBox(height: 20),
               SanadCard(
@@ -30,7 +31,7 @@ class AccessibilityPage extends StatelessWidget {
                   Row(children: [
                     const Icon(Icons.format_size_rounded, color: SanadColors.primary),
                     const SizedBox(width: 10),
-                    const Expanded(child: Text('Text size', style: TextStyle(fontWeight: FontWeight.w700))),
+                    Expanded(child: Text(context.t('Text size'), style: TextStyle(fontWeight: FontWeight.w700))),
                     Text('${(s.textScale * 100).round()}%'),
                   ]),
                   Slider(
@@ -42,7 +43,7 @@ class AccessibilityPage extends StatelessWidget {
                     semanticFormatterCallback: (v) => 'Text size ${(v * 100).round()} percent',
                     onChanged: (v) => update(s.copyWith(textScale: v)),
                   ),
-                  const Text('Preview: Book a doctor in a few taps.', style: TextStyle(color: SanadColors.inkMuted)),
+                  Text(context.t('Preview: Book a doctor in a few taps.'), style: TextStyle(color: SanadColors.inkMuted)),
                 ]),
               ),
               const SizedBox(height: 12),
@@ -50,23 +51,29 @@ class AccessibilityPage extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 child: Column(children: [
                   SwitchListTile(
+                    secondary: const Icon(Icons.translate_rounded),
+                    title: const Text('العربية'),
+                    value: s.language == 'ar',
+                    onChanged: (_) => sanadStore.toggleLanguage(),
+                  ),
+                  SwitchListTile(
                     secondary: const Icon(Icons.contrast_rounded),
-                    title: const Text('High contrast'),
-                    subtitle: const Text('Black text, stronger borders and darker buttons'),
+                    title: Text(context.t('High contrast')),
+                    subtitle: Text(context.t('Black text, stronger borders and darker buttons')),
                     value: s.highContrast,
                     onChanged: (v) => update(s.copyWith(highContrast: v)),
                   ),
                   SwitchListTile(
                     secondary: const Icon(Icons.format_bold_rounded),
-                    title: const Text('Bold text'),
-                    subtitle: const Text('Heavier text that is easier to read'),
+                    title: Text(context.t('Bold text')),
+                    subtitle: Text(context.t('Heavier text that is easier to read')),
                     value: s.boldText,
                     onChanged: (v) => update(s.copyWith(boldText: v)),
                   ),
                   SwitchListTile(
                     secondary: const Icon(Icons.motion_photos_off_outlined),
-                    title: const Text('Reduce motion'),
-                    subtitle: const Text('Turn off animations and transitions'),
+                    title: Text(context.t('Reduce motion')),
+                    subtitle: Text(context.t('Turn off animations and transitions')),
                     value: s.reduceMotion,
                     onChanged: (v) => update(s.copyWith(reduceMotion: v)),
                   ),

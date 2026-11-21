@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/state/sanad_store.dart';
 import 'package:grad/theme/sanad_colors.dart';
@@ -35,7 +36,7 @@ class _StaffPortalState extends State<StaffPortal> {
         children: [
           Semantics(
             header: true,
-            child: Text(_tabs[_index].$2,
+            child: Text(context.t(_tabs[_index].$2),
                 style: TextStyle(fontSize: wide ? 30 : 24, fontWeight: FontWeight.w800, color: SanadColors.ink)),
           ),
           const SizedBox(height: 18),
@@ -51,14 +52,14 @@ class _StaffPortalState extends State<StaffPortal> {
         child: Row(children: [
           const Icon(Icons.account_balance_outlined, color: Colors.white),
           const SizedBox(width: 10),
-          const Expanded(
+          Expanded(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text('SANAD Staff Portal', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 17)),
-              Text('Citizen services · Giza office', style: TextStyle(color: Colors.white70, fontSize: 12.5)),
+              Text(context.t('SANAD Staff Portal'), style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 17)),
+              Text(context.t('Citizen services · Giza office'), style: TextStyle(color: Colors.white70, fontSize: 12.5)),
             ]),
           ),
           IconButton(
-            tooltip: 'Accessibility settings',
+            tooltip: context.t('Accessibility settings'),
             color: Colors.white,
             onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AccessibilityPage())),
             icon: const Icon(Icons.accessibility_new_rounded),
@@ -80,7 +81,7 @@ class _StaffPortalState extends State<StaffPortal> {
                     backgroundColor: Colors.white,
                     indicatorColor: SanadColors.primary.withValues(alpha: 0.12),
                     destinations: [
-                      for (final (icon, label) in _tabs) NavigationRailDestination(icon: Icon(icon), label: Text(label)),
+                      for (final (icon, label) in _tabs) NavigationRailDestination(icon: Icon(icon), label: Text(context.t(label))),
                     ],
                   ),
                   const VerticalDivider(width: 1),
@@ -94,7 +95,7 @@ class _StaffPortalState extends State<StaffPortal> {
           : NavigationBar(
               selectedIndex: _index,
               onDestinationSelected: (i) => setState(() => _index = i),
-              destinations: [for (final (icon, label) in _tabs) NavigationDestination(icon: Icon(icon), label: label)],
+              destinations: [for (final (icon, label) in _tabs) NavigationDestination(icon: Icon(icon), label: context.t(label))],
             ),
     );
   }
@@ -120,7 +121,7 @@ class _Kpi extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             Text(value, style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: SanadColors.ink)),
-            Text(label, style: const TextStyle(color: SanadColors.inkMuted)),
+            Text(context.t(label), style: TextStyle(color: SanadColors.inkMuted)),
           ]),
         ),
       );
@@ -143,16 +144,16 @@ class _Overview extends StatelessWidget {
         final w = (c.maxWidth - (cols - 1) * 14) / cols;
         return Wrap(spacing: 14, runSpacing: 14, children: [
           for (final k in [
-            _Kpi(Icons.pending_actions_outlined, 'Open requests', '$open', SanadColors.gold),
-            _Kpi(Icons.event_available_outlined, 'Booked appointments', '$booked'),
-            _Kpi(Icons.work_outline_rounded, 'New job applications', '$newApps', const Color(0xFF2F6FB0)),
-            _Kpi(Icons.check_circle_outline, 'Ready for pickup', '${byStatus[RequestStatus.readyForPickup]}', SanadColors.mint),
+            _Kpi(Icons.pending_actions_outlined, context.t('Open requests'), '$open', SanadColors.gold),
+            _Kpi(Icons.event_available_outlined, context.t('Booked appointments'), '$booked'),
+            _Kpi(Icons.work_outline_rounded, context.t('New job applications'), '$newApps', Color(0xFF2F6FB0)),
+            _Kpi(Icons.check_circle_outline, context.t('Ready for pickup'), '${byStatus[RequestStatus.readyForPickup]}', SanadColors.mint),
           ])
             SizedBox(width: w, child: k),
         ]);
       }),
       const SizedBox(height: 22),
-      const Text('Requests by status', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: SanadColors.ink)),
+      Text(context.t('Requests by status'), style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: SanadColors.ink)),
       const SizedBox(height: 10),
       SanadCard(
         child: Column(children: [
@@ -163,7 +164,7 @@ class _Overview extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 6),
                 child: Row(children: [
-                  SizedBox(width: 130, child: Text(e.key.label, style: const TextStyle(fontWeight: FontWeight.w600))),
+                  SizedBox(width: 130, child: Text(context.t(e.key.label), style: TextStyle(fontWeight: FontWeight.w600))),
                   Expanded(
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(6),
@@ -203,14 +204,14 @@ class _Requests extends StatelessWidget {
                     FilledButton(
                       onPressed: () => sanadStore.advanceRequest(r.reference),
                       child: Text(switch (r.status.next!) {
-                        RequestStatus.underReview => 'Start review',
+                        RequestStatus.underReview => context.t('Start review'),
                         RequestStatus.approved => 'Approve',
-                        _ => 'Mark ready for pickup',
+                        _ => context.t('Mark ready for pickup'),
                       }),
                     ),
                     OutlinedButton(
                       onPressed: () => sanadStore.rejectRequest(r.reference),
-                      child: const Text('Reject'),
+                      child: Text(context.t('Reject')),
                     ),
                   ]),
           ),
@@ -245,7 +246,7 @@ class _Appointments extends StatelessWidget {
                   Text(status(a), style: const TextStyle(color: SanadColors.primary, fontWeight: FontWeight.w700)),
                   const Spacer(),
                   if (a.status == AppointmentStatus.booked)
-                    TextButton(onPressed: () => sanadStore.completeAppointment(a.id), child: const Text('Mark attended')),
+                    TextButton(onPressed: () => sanadStore.completeAppointment(a.id), child: Text(context.t('Mark attended'))),
                 ]),
               ]),
             ),
@@ -257,12 +258,12 @@ class _Appointments extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: DataTable(
-          columns: const [
-            DataColumn(label: Text('Citizen')),
-            DataColumn(label: Text('With')),
-            DataColumn(label: Text('When')),
-            DataColumn(label: Text('Status')),
-            DataColumn(label: Text('Action')),
+          columns: [
+            DataColumn(label: Text(context.t('Citizen'))),
+            DataColumn(label: Text(context.t('With'))),
+            DataColumn(label: Text(context.t('When'))),
+            DataColumn(label: Text(context.t('Status'))),
+            DataColumn(label: Text(context.t('Action'))),
           ],
           rows: [
             for (final a in list)
@@ -276,7 +277,7 @@ class _Appointments extends StatelessWidget {
                   AppointmentStatus.cancelled => 'Cancelled',
                 })),
                 DataCell(a.status == AppointmentStatus.booked
-                    ? TextButton(onPressed: () => sanadStore.completeAppointment(a.id), child: const Text('Mark attended'))
+                    ? TextButton(onPressed: () => sanadStore.completeAppointment(a.id), child: Text(context.t('Mark attended')))
                     : const SizedBox()),
               ]),
           ],
@@ -313,9 +314,9 @@ class _Applications extends StatelessWidget {
                   Wrap(spacing: 8, children: [
                     FilledButton(
                       onPressed: () => sanadStore.advanceApplication(a.id),
-                      child: Text(a.status.next == ApplicationStatus.shortlisted ? 'Shortlist' : 'Invite to interview'),
+                      child: Text(a.status.next == ApplicationStatus.shortlisted ? context.t('Shortlist') : context.t('Invite to interview')),
                     ),
-                    OutlinedButton(onPressed: () => sanadStore.rejectApplication(a.id), child: const Text('Decline')),
+                    OutlinedButton(onPressed: () => sanadStore.rejectApplication(a.id), child: Text(context.t('Decline'))),
                   ]),
               ],
             ),

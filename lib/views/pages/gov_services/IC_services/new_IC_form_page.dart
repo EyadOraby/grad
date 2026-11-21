@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/views/widgets/booking_sheet.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +58,7 @@ class _NewICFormPageState extends State<NewICFormPage> {
     final node = FocusScope.of(context);
     return TemplatePage(
       drawerMobile: DrawerMobile(),
-      appBarTitle: 'SANAD',
+      appBarTitle: context.t('SANAD'),
       index: 2,
       body: SingleChildScrollView(
         child: Column(
@@ -69,7 +70,7 @@ class _NewICFormPageState extends State<NewICFormPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               alignment: Alignment.center,
               child: Text(
-                "New Integrated Card Form",
+                context.t("New Integrated Card Form"),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: SanadColors.primary,
@@ -82,7 +83,7 @@ class _NewICFormPageState extends State<NewICFormPage> {
             //   margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             //   alignment: Alignment.centerLeft,
             //   child: Text(
-            //     "Hi Aly, these are Radiology Centers near you, which provide medical services for your condition.",
+            //     context.t("Hi Aly, these are Radiology Centers near you, which provide medical services for your condition."),
             //     style: TextStyle(
             //       color: Colors.black,
             //       fontSize: 20,
@@ -100,7 +101,7 @@ class _NewICFormPageState extends State<NewICFormPage> {
                       // CustomTextField(
                       //     deviceSize: deviceSize,
                       //     width: 0.7,
-                      //     hintText: "Name",
+                      //     hintText: context.t("Name"),
                       //     controller: nameController,
                       //     textInputAction: TextInputAction.next,
                       //     keyboardType: TextInputType.text,
@@ -138,7 +139,7 @@ class _NewICFormPageState extends State<NewICFormPage> {
                             horizontal: 20, vertical: 10),
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "Scoial Status:",
+                          context.t("Scoial Status:"),
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -154,7 +155,7 @@ class _NewICFormPageState extends State<NewICFormPage> {
                                 "Please choose social status",
                                 context);
                           },
-                          label: "Choose Scoical Status",
+                          label: context.t("Choose Scoical Status"),
                           onTap: () {
                             customListModalSheet(context, (index) {
                               socialStatusController.text =
@@ -169,7 +170,7 @@ class _NewICFormPageState extends State<NewICFormPage> {
                             horizontal: 20, vertical: 10),
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "Date of Medical Check-Up Visit:",
+                          context.t("Date of Medical Check-Up Visit:"),
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -192,7 +193,7 @@ class _NewICFormPageState extends State<NewICFormPage> {
                             horizontal: 20, vertical: 10),
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "Time of Medical Check-Up Visit:",
+                          context.t("Time of Medical Check-Up Visit:"),
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -202,7 +203,7 @@ class _NewICFormPageState extends State<NewICFormPage> {
                       ),
                       CustomTimePicker(
                         deviceSize: deviceSize,
-                        title: "Time",
+                        title: context.t("Time"),
                         controller: timeController,
                         today: DateTime.now(),
                         width: 0.9,
@@ -242,7 +243,7 @@ class _NewICFormPageState extends State<NewICFormPage> {
                             ),
                             child: Center(
                               child: Text(
-                                'Book Appointment',
+                                context.t('Book Appointment'),
                                 style: TextStyle(
                                   letterSpacing: 1,
                                   color: Colors.white,

@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/pages/medical_services/doctors/doctors_page.dart';
@@ -36,7 +37,7 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
     final node = FocusScope.of(context);
     return TemplatePage(
       drawerMobile: DrawerMobile(),
-      appBarTitle: 'SANAD',
+      appBarTitle: context.t('SANAD'),
       index: 2,
       body: SingleChildScrollView(
         child: Column(
@@ -48,7 +49,7 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               alignment: Alignment.center,
               child: Text(
-                "Medical Services",
+                context.t("Medical Services"),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: SanadColors.primary,
@@ -66,7 +67,7 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               alignment: Alignment.centerLeft,
               child: Text(
-                "Categories",
+                context.t("Categories"),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -78,7 +79,7 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
             //   height: 5,
             // ),
             // GovServicesButton(
-            //   serviceTitle: "Apply for a new card",
+            //   serviceTitle: context.t("Apply for a new card"),
             //   click: () {},
             //   serviceDescription:
             //       "Tap here if you want to apply for a new Integrated Services Card",
@@ -90,7 +91,7 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     MedicalCategoryServicesButton(
-                        serviceTitle: "Doctors",
+                        serviceTitle: context.t("Doctors"),
                         serviceImage: "assets/doctor-icon.png",
                         color: SanadColors.primary,
                         click: () {
@@ -98,7 +99,7 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
                               MaterialPageRoute(builder: (_) => DoctorsPage()));
                         }),
                     MedicalCategoryServicesButton(
-                        serviceTitle: "Hospitals ",
+                        serviceTitle: context.t("Hospitals "),
                         serviceImage: "assets/hospital-icon.png",
                         color: SanadColors.primarySoft,
                         click: () {
@@ -150,7 +151,7 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
             //   ),
             // ),
             // GovServicesButton(
-            //   serviceTitle: "Renew your old card",
+            //   serviceTitle: context.t("Renew your old card"),
             //   click: () {},
             //   serviceDescription:
             //       'Tap here if you want to renew your old Integrated Services Card',
@@ -162,7 +163,7 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               alignment: Alignment.centerLeft,
               child: Text(
-                "Upcoming Appointments",
+                context.t("Upcoming Appointments"),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -173,7 +174,7 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
             AppointmentsCard(
               dateNum: "12",
               dateText: "Tue",
-              description: "Neurology",
+              description: context.t("Neurology"),
               name: "Dr. Mohamed Abdallah",
               time: "09:30 AM",
             ),
@@ -298,7 +299,7 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
             //                     textAlign: TextAlign.left,
             //                     text: TextSpan(children: [
             //                       TextSpan(
-            //                         text: "Neurology",
+            //                         text: context.t("Neurology"),
             //                         style: TextStyle(
             //                           color: Colors.white,
             //                           fontWeight: FontWeight.w400,

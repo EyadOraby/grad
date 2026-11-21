@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/pages/medical_services/medical_services_page.dart';
@@ -35,15 +36,15 @@ class _HomePageState extends State<HomePage> {
       "assets/ALLY.png"
     ];
     var highlightsTitleArray = [
-      "Governmental Services",
-      "Medical Services",
-      "Job Services",
+      context.t("Governmental Services"),
+      context.t("Medical Services"),
+      context.t("Job Services"),
       "ALLY"
     ];
 
     return TemplatePage(
       drawerMobile: DrawerMobile(),
-      appBarTitle: 'SANAD',
+      appBarTitle: context.t('SANAD'),
       index: 0,
       body: SingleChildScrollView(
         child: Column(
@@ -55,7 +56,7 @@ class _HomePageState extends State<HomePage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               alignment: Alignment.centerLeft,
               child: Text(
-                "What's new",
+                context.t("What's new"),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 24,
@@ -151,7 +152,7 @@ class _HomePageState extends State<HomePage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               alignment: Alignment.centerLeft,
               child: Text(
-                "Choose from the different services we offer!",
+                context.t("Choose from the different services we offer!"),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 22,
@@ -183,7 +184,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ServicesButton(
               click: () {},
-              serviceTitle: "Job Services",
+              serviceTitle: context.t("Job Services"),
               serviceImage: "assets/job-icon.png",
               color: SanadColors.primarySoft,
               serviceDescription:

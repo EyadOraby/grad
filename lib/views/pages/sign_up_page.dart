@@ -1,3 +1,4 @@
+import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/pages/login_page.dart';
@@ -65,7 +66,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
             Text(
-              'Sign Up',
+              context.t('Sign Up'),
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 32,
@@ -142,13 +143,13 @@ class _SignUpPageState extends State<SignUpPage> {
                                       //                     BorderRadius.all(
                                       //                         Radius.circular(
                                       //                             15))),
-                                      //             hintText: 'National ID...')),
+                                      //             hintText: context.t('National ID...'))),
                                       //   ),
                                       // ),
                                       CustomTextField(
                                           deviceSize: deviceSize,
                                           width: 0.95,
-                                          hintText: 'National ID...',
+                                          hintText: context.t('National ID...'),
                                           controller: nationalController,
                                           textInputAction: TextInputAction.next,
                                           keyboardType: TextInputType.number,
@@ -168,7 +169,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       CustomTextField(
                                           deviceSize: deviceSize,
                                           width: 0.95,
-                                          hintText: 'Password...',
+                                          hintText: context.t('Password...'),
                                           controller: passwordController,
                                           textInputAction: TextInputAction.next,
                                           keyboardType:
@@ -251,7 +252,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       //                             Radius
                                       //                                 .circular(
                                       //                                     15))),
-                                      //             hintText: 'Password...')),
+                                      //             hintText: context.t('Password...'))),
                                       //   ),
                                       // ),
                                       // Container(
@@ -308,13 +309,13 @@ class _SignUpPageState extends State<SignUpPage> {
                                       //                                 .circular(
                                       //                                     15))),
                                       //             hintText:
-                                      //                 'Re-Enter Password...')),
+                                      //                 context.t('Re-Enter Password...'))),
                                       //   ),
                                       // ),
                                       CustomTextField(
                                           deviceSize: deviceSize,
                                           width: 0.95,
-                                          hintText: 'Re-Enter Password...',
+                                          hintText: context.t('Re-Enter Password...'),
                                           controller: re_passwordController,
                                           textInputAction: TextInputAction.next,
                                           keyboardType:
@@ -347,7 +348,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       CustomTextField(
                                           deviceSize: deviceSize,
                                           width: 0.95,
-                                          hintText: 'Email...',
+                                          hintText: context.t('Email...'),
                                           controller: emailController,
                                           textInputAction: TextInputAction.done,
                                           keyboardType:
@@ -404,7 +405,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       //                         BorderRadius.all(
                                       //                             Radius.circular(
                                       //                                 15))),
-                                      //             hintText: 'Email...')),
+                                      //             hintText: context.t('Email...'))),
                                       //   ),
                                       // )
                                     ],
@@ -443,7 +444,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                     ),
                                     child: Center(
                                       child: Text(
-                                        'Sign In',
+                                        context.t('Sign In'),
                                         style: TextStyle(
                                           letterSpacing: 1,
                                           color: Colors.white,
@@ -482,7 +483,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 10),
                                       child: Text(
-                                        'Or',
+                                        context.t('Or'),
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold,
@@ -526,7 +527,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   ),
                                   child: Center(
                                     child: Text(
-                                      'Sign Up',
+                                      context.t('Sign Up'),
                                       style: TextStyle(
                                         letterSpacing: 1,
                                         color: SanadColors.primary,

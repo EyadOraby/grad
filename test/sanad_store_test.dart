@@ -82,6 +82,14 @@ void main() {
     expect(restarted.settings.highContrast, isTrue);
   });
 
+  test('language toggles between English and Arabic and is saved', () {
+    final storage = MemorySanadStorage();
+    final s = fresh(storage);
+    expect(s.settings.language, 'en');
+    s.toggleLanguage();
+    expect(fresh(storage).settings.language, 'ar');
+  });
+
   test('listeners hear about changes', () {
     final s = fresh();
     var calls = 0;
