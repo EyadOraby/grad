@@ -66,7 +66,9 @@ class TemplatePage extends StatelessWidget {
           ),
         ),
       ),
-      body: width > 700 ? Center(child: ConstrainedBox(constraints: const BoxConstraints(maxWidth: 720), child: body)) : body,
+      body: width > 700
+          ? Align(alignment: Alignment.topCenter, child: ConstrainedBox(constraints: const BoxConstraints(maxWidth: 720), child: body))
+          : body,
       bottomNavigationBar: bottomNavBar,
     );
   }
@@ -102,7 +104,8 @@ class TemplatePage extends StatelessWidget {
             ),
             Container(height: 3, color: SanadColors.gold),
             Expanded(
-              child: Center(
+              child: Align(
+                alignment: Alignment.topCenter,
                 child: ConstrainedBox(constraints: const BoxConstraints(maxWidth: 980), child: body),
               ),
             ),
