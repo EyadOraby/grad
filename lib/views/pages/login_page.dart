@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:grad/views/pages/home_page.dart';
 import 'package:grad/views/pages/sign_up_page.dart';
 import 'package:grad/views/widgets/custom_text_field.dart';
 
-import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -36,8 +34,11 @@ class _LoginPageState extends State<LoginPage> {
         errorMessage = 'Input cannot be empty';
       });
     } else {
-      // do something with the entered text
-      print(nationalController.text);
+      // The prototype has no accounts backend yet, so any national ID
+      // signs in and opens the home screen.
+      setState(() => errorMessage = '');
+      Navigator.pushAndRemoveUntil(context,
+          MaterialPageRoute(builder: (_) => const HomePage()), (route) => false);
     }
   }
 
@@ -307,13 +308,13 @@ class _LoginPageState extends State<LoginPage> {
                                     borderRadius: BorderRadius.circular(15),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Colors.black.withOpacity(0.3),
+                                          color: Colors.black.withValues(alpha: 0.3),
                                           offset: Offset(0, -2),
                                           blurRadius: 8,
                                           blurStyle: BlurStyle.inner,
                                           spreadRadius: 1),
                                       BoxShadow(
-                                          color: Colors.black.withOpacity(0.3),
+                                          color: Colors.black.withValues(alpha: 0.3),
                                           offset: Offset(0, -2),
                                           blurRadius: 8,
                                           blurStyle: BlurStyle.inner,
@@ -332,7 +333,7 @@ class _LoginPageState extends State<LoginPage> {
                                             offset: Offset(1, 1),
                                             blurRadius: 1.0,
                                             color:
-                                                Colors.black.withOpacity(0.3),
+                                                Colors.black.withValues(alpha: 0.3),
                                           ),
                                         ],
                                         fontSize: 18,
@@ -346,7 +347,7 @@ class _LoginPageState extends State<LoginPage> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: 125,
                                       child: Divider(
                                         color: Colors.black,
@@ -367,7 +368,7 @@ class _LoginPageState extends State<LoginPage> {
                                         ),
                                       ),
                                     ),
-                                    Container(
+                                    SizedBox(
                                       width: 125,
                                       child: Divider(
                                         color: Colors.black,
@@ -395,13 +396,13 @@ class _LoginPageState extends State<LoginPage> {
                                     borderRadius: BorderRadius.circular(15),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Colors.black.withOpacity(0.3),
+                                          color: Colors.black.withValues(alpha: 0.3),
                                           offset: Offset(0, -2),
                                           blurRadius: 8,
                                           blurStyle: BlurStyle.inner,
                                           spreadRadius: 1),
                                       BoxShadow(
-                                          color: Colors.black.withOpacity(0.3),
+                                          color: Colors.black.withValues(alpha: 0.3),
                                           offset: Offset(0, -2),
                                           blurRadius: 8,
                                           blurStyle: BlurStyle.inner,
@@ -420,7 +421,7 @@ class _LoginPageState extends State<LoginPage> {
                                             offset: Offset(1, 1),
                                             blurRadius: 1.0,
                                             color:
-                                                Colors.black.withOpacity(0.3),
+                                                Colors.black.withValues(alpha: 0.3),
                                           ),
                                         ],
                                         fontSize: 18,

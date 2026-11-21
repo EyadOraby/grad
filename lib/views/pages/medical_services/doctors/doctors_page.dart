@@ -1,25 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:grad/views/pages/medical_services/doctors/doctors_form_page.dart';
-import 'package:grad/views/pages/home_page.dart';
-import 'package:grad/views/pages/splash_page.dart';
-import 'package:future_loading_dialog/future_loading_dialog.dart';
-import 'package:grad/views/widgets/appointments_card.dart';
 import 'package:grad/views/widgets/doctor_card.dart';
 import 'package:grad/views/widgets/drawer_mobile.dart';
-import 'package:grad/views/widgets/gov_services_buttton.dart';
-import 'package:grad/views/widgets/ic_services_button.dart';
-import 'package:grad/views/widgets/medical_cat_services_button.dart';
 
-import '../../../../main.dart';
 import '../../../widgets/bottom_nav_bar_widget.dart';
-import '../../../widgets/custom_text_field.dart';
-import '../../../widgets/services_button.dart';
 import '../../../widgets/template.dart';
 
 class DoctorsPage extends StatefulWidget {
-  const DoctorsPage({Key? key}) : super(key: key);
+  const DoctorsPage({super.key});
 
   @override
   State<DoctorsPage> createState() => _DoctorsPageState();
@@ -29,8 +17,6 @@ class _DoctorsPageState extends State<DoctorsPage> {
   TextEditingController formNumberController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
-  @override
-  void initState() {}
 
   @override
   void dispose() {
@@ -69,7 +55,7 @@ class _DoctorsPageState extends State<DoctorsPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               alignment: Alignment.centerLeft,
               child: Text(
-                "Hi.. Aly, based on your condition here are the doctors we found near you.",
+                "Hi Aly, based on your condition here are the doctors we found near you.",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,

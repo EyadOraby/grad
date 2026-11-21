@@ -1,10 +1,6 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-import '../pages/home_page.dart';
 
 class ICServicesButton extends StatelessWidget {
   final String serviceTitle;
@@ -12,18 +8,18 @@ class ICServicesButton extends StatelessWidget {
   final VoidCallback click;
 
   const ICServicesButton({
-    Key? key,
+    super.key,
     required this.serviceTitle,
     required this.serviceImage,
     required this.click,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.fromLTRB(10, 5, 10, 20),
-      child: Container(
+      child: SizedBox(
         width: deviceSize.width * 0.43,
         child: Card(
           shape: RoundedRectangleBorder(
@@ -67,14 +63,11 @@ class ICServicesButton extends StatelessWidget {
                         SizedBox(
                           height: 15,
                         ),
-                        Container(
-                          // width: deviceSize.width * 0.3,
-                          child: Image(
-                            alignment: Alignment.center,
-                            image: AssetImage(serviceImage),
-                            height: 80,
-                            width: 80,
-                          ),
+                        Image(
+                          alignment: Alignment.center,
+                          image: AssetImage(serviceImage),
+                          height: 80,
+                          width: 80,
                         ),
                       ],
                     ),

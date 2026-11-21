@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-import '../pages/home_page.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
-      {Key? key,
+      {super.key,
       required this.deviceSize,
       required this.hintText,
       required this.controller,
@@ -19,8 +16,7 @@ class CustomTextField extends StatelessWidget {
       this.preficon,
       this.obsecure = false,
       required this.autovalidateMode,
-      required this.cursorColor})
-      : super(key: key);
+      required this.cursorColor});
 
   final Size deviceSize;
   final double width;
@@ -40,7 +36,7 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
+        SizedBox(
           width: deviceSize.width * width,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),

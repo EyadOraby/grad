@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:grad/views/pages/home_page.dart';
+import 'package:grad/views/pages/login_page.dart';
 
-import 'login_page.dart';
 
 class SplashPage extends StatefulWidget {
-  const SplashPage({Key? key}) : super(key: key);
+  const SplashPage({super.key});
 
   @override
   State<SplashPage> createState() => _SplashPageState();
@@ -23,8 +20,9 @@ class _SplashPageState extends State<SplashPage> {
       //   Navigator.pushAndRemoveUntil(context,
       //       MaterialPageRoute(builder: (_) => LoginPage()), (route) => false);
       // }
+      if (!mounted) return;
       Navigator.pushAndRemoveUntil(context,
-          MaterialPageRoute(builder: (_) => HomePage()), (route) => false);
+          MaterialPageRoute(builder: (_) => const LoginPage()), (route) => false);
     });
     super.initState();
   }

@@ -1,22 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:grad/views/pages/gov_services/IC_services/new_IC_form_page.dart';
-import 'package:grad/views/pages/home_page.dart';
-import 'package:grad/views/pages/splash_page.dart';
-import 'package:future_loading_dialog/future_loading_dialog.dart';
 import 'package:grad/views/widgets/drawer_mobile.dart';
-import 'package:grad/views/widgets/gov_services_buttton.dart';
 import 'package:grad/views/widgets/ic_services_button.dart';
 
-import '../../../../main.dart';
 import '../../../widgets/bottom_nav_bar_widget.dart';
 import '../../../widgets/custom_text_field.dart';
-import '../../../widgets/services_button.dart';
 import '../../../widgets/template.dart';
 
 class ICServicesPage extends StatefulWidget {
-  const ICServicesPage({Key? key}) : super(key: key);
+  const ICServicesPage({super.key});
 
   @override
   State<ICServicesPage> createState() => _ICServicesPageState();
@@ -26,8 +18,6 @@ class _ICServicesPageState extends State<ICServicesPage> {
   TextEditingController formNumberController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
-  @override
-  void initState() {}
 
   @override
   void dispose() {
@@ -176,7 +166,7 @@ class _ICServicesPageState extends State<ICServicesPage> {
                             SizedBox(
                               height: 15,
                             ),
-                            Container(
+                            SizedBox(
                               width: deviceSize.width * 0.8,
                               child: RichText(
                                   textAlign: TextAlign.center,
@@ -240,13 +230,13 @@ class _ICServicesPageState extends State<ICServicesPage> {
                                   borderRadius: BorderRadius.circular(15),
                                   boxShadow: [
                                     BoxShadow(
-                                        color: Colors.black.withOpacity(0.3),
+                                        color: Colors.black.withValues(alpha: 0.3),
                                         offset: Offset(0, -2),
                                         blurRadius: 8,
                                         blurStyle: BlurStyle.inner,
                                         spreadRadius: 1),
                                     BoxShadow(
-                                        color: Colors.black.withOpacity(0.3),
+                                        color: Colors.black.withValues(alpha: 0.3),
                                         offset: Offset(0, -2),
                                         blurRadius: 8,
                                         blurStyle: BlurStyle.inner,

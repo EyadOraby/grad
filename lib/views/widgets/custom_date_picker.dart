@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:flutter/cupertino.dart';
+import 'package:cupertino_ui/cupertino_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -10,13 +10,13 @@ class CustomDatePicker extends StatefulWidget {
   final DateTime initialDate;
   final String? Function(String?)? validate;
   const CustomDatePicker({
-    Key? key,
+    super.key,
     required this.deviceSize,
     required this.controller,
     required this.initialDate,
     required this.title,
     required this.validate,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomDatePicker> createState() => _CustomDatePickerState();
@@ -107,12 +107,11 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
                             foregroundColor: Colors.black,
                           ),
                         ),
-                        dialogBackgroundColor: Colors.white,
                         colorScheme: const ColorScheme.light(
                           primary: Colors.green,
                           onPrimary: Colors.black,
                           brightness: Brightness.light,
-                        ).copyWith(secondary: Colors.black),
+                        ).copyWith(secondary: Colors.black), dialogTheme: DialogThemeData(backgroundColor: Colors.white),
                       ),
                       child: child!,
                     );

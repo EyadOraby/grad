@@ -1,11 +1,6 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:grad/views/pages/medical_services/doctors/doctors_form_page.dart';
 
-import '../pages/home_page.dart';
 
 class DoctorCard extends StatelessWidget {
   final String firstName;
@@ -19,7 +14,7 @@ class DoctorCard extends StatelessWidget {
   final VoidCallback click;
 
   const DoctorCard({
-    Key? key,
+    super.key,
     required this.firstName,
     required this.lastName,
     required this.specialization,
@@ -29,14 +24,14 @@ class DoctorCard extends StatelessWidget {
     required this.rating,
     required this.click,
     this.gender,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.fromLTRB(2, 2, 2, 10),
-      child: Container(
+      child: SizedBox(
         width: deviceSize.width * 0.46,
         height: deviceSize.height * 0.39,
         child: Card(
@@ -56,15 +51,13 @@ class DoctorCard extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
-                    Container(
-                      child: Image(
-                        alignment: Alignment.center,
-                        image: gender == "Male"
-                            ? AssetImage("assets/doctor-icon.png")
-                            : AssetImage("assets/female-doctor-icon.png"),
-                        height: 60,
-                        width: 60,
-                      ),
+                    Image(
+                      alignment: Alignment.center,
+                      image: gender == "Male"
+                          ? AssetImage("assets/doctor-icon.png")
+                          : AssetImage("assets/female-doctor-icon.png"),
+                      height: 60,
+                      width: 60,
                     ),
                     SizedBox(
                       height: 10,
@@ -73,7 +66,7 @@ class DoctorCard extends StatelessWidget {
                         textAlign: TextAlign.center,
                         text: TextSpan(children: [
                           TextSpan(
-                            text: "Dr. " + firstName + "\n" + lastName,
+                            text: "Dr. $firstName\n$lastName",
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -104,13 +97,11 @@ class DoctorCard extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
-                            child: Image(
-                              alignment: Alignment.center,
-                              image: AssetImage("assets/location-pin-icon.png"),
-                              height: 18,
-                              width: 18,
-                            ),
+                          Image(
+                            alignment: Alignment.center,
+                            image: AssetImage("assets/location-pin-icon.png"),
+                            height: 18,
+                            width: 18,
                           ),
                           SizedBox(
                             width: 15,
@@ -138,13 +129,11 @@ class DoctorCard extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
-                            child: Image(
-                              alignment: Alignment.center,
-                              image: AssetImage("assets/calendar-icon.png"),
-                              height: 18,
-                              width: 18,
-                            ),
+                          Image(
+                            alignment: Alignment.center,
+                            image: AssetImage("assets/calendar-icon.png"),
+                            height: 18,
+                            width: 18,
                           ),
                           SizedBox(
                             width: 15,
@@ -172,13 +161,11 @@ class DoctorCard extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
-                            child: Image(
-                              alignment: Alignment.center,
-                              image: AssetImage("assets/clock-icon.png"),
-                              height: 18,
-                              width: 18,
-                            ),
+                          Image(
+                            alignment: Alignment.center,
+                            image: AssetImage("assets/clock-icon.png"),
+                            height: 18,
+                            width: 18,
                           ),
                           SizedBox(
                             width: 15,
@@ -223,13 +210,13 @@ class DoctorCard extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                                 boxShadow: [
                                   BoxShadow(
-                                      color: Colors.black.withOpacity(0.3),
+                                      color: Colors.black.withValues(alpha: 0.3),
                                       offset: Offset(0, -2),
                                       blurRadius: 8,
                                       blurStyle: BlurStyle.inner,
                                       spreadRadius: 1),
                                   BoxShadow(
-                                      color: Colors.black.withOpacity(0.3),
+                                      color: Colors.black.withValues(alpha: 0.3),
                                       offset: Offset(0, -2),
                                       blurRadius: 8,
                                       blurStyle: BlurStyle.inner,

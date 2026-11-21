@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class TemplatePage extends StatelessWidget {
   final Widget body;
@@ -10,13 +8,13 @@ class TemplatePage extends StatelessWidget {
   final int index;
 
   const TemplatePage({
-    Key? key,
+    super.key,
     required this.body,
     required this.appBarTitle,
     required this.index,
     this.drawerMobile,
     required this.bottomNavBar,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -68,41 +66,39 @@ class TemplatePage extends StatelessWidget {
                       )),
                   Expanded(
                       flex: 4,
-                      child: Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Container(
-                              color: Colors.green.shade200,
-                              height: 60,
-                              child: Row(
-                                children: [
-                                  Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(15.0),
-                                      child: Text(
-                                        appBarTitle,
-                                        style: TextStyle(
-                                            fontSize: 24,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),
-                                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Container(
+                            color: Colors.green.shade200,
+                            height: 60,
+                            child: Row(
+                              children: [
+                                Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: Text(
+                                      appBarTitle,
+                                      style: TextStyle(
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                            Expanded(
-                                child: SingleChildScrollView(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  body,
-                                ],
-                              ),
-                            ))
-                          ],
-                        ),
+                          ),
+                          Expanded(
+                              child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                body,
+                              ],
+                            ),
+                          ))
+                        ],
                       ))
                 ],
               )

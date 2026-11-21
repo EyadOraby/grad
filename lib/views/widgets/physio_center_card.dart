@@ -1,11 +1,6 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:grad/views/pages/medical_services/doctors/doctors_form_page.dart';
 
-import '../pages/home_page.dart';
 
 class PhysioCenterCard extends StatelessWidget {
   final String name;
@@ -16,21 +11,21 @@ class PhysioCenterCard extends StatelessWidget {
   final VoidCallback click;
 
   const PhysioCenterCard({
-    Key? key,
+    super.key,
     required this.location,
     required this.name,
     required this.workinDays,
     required this.workingHours,
     required this.rating,
     required this.click,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
-      child: Container(
+      child: SizedBox(
         width: deviceSize.width * 0.92,
         height: deviceSize.height * 0.3,
         child: Card(
@@ -116,14 +111,12 @@ class PhysioCenterCard extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Container(
-                                child: Image(
-                                  alignment: Alignment.center,
-                                  image: AssetImage(
-                                      "assets/location-pin-icon.png"),
-                                  height: 18,
-                                  width: 18,
-                                ),
+                              Image(
+                                alignment: Alignment.center,
+                                image: AssetImage(
+                                    "assets/location-pin-icon.png"),
+                                height: 18,
+                                width: 18,
                               ),
                               SizedBox(
                                 width: 5,
@@ -188,13 +181,11 @@ class PhysioCenterCard extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
-                            child: Image(
-                              alignment: Alignment.center,
-                              image: AssetImage("assets/calendar-icon.png"),
-                              height: 18,
-                              width: 18,
-                            ),
+                          Image(
+                            alignment: Alignment.center,
+                            image: AssetImage("assets/calendar-icon.png"),
+                            height: 18,
+                            width: 18,
                           ),
                           SizedBox(
                             width: 10,
@@ -219,13 +210,11 @@ class PhysioCenterCard extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
-                            child: Image(
-                              alignment: Alignment.center,
-                              image: AssetImage("assets/clock-icon.png"),
-                              height: 18,
-                              width: 18,
-                            ),
+                          Image(
+                            alignment: Alignment.center,
+                            image: AssetImage("assets/clock-icon.png"),
+                            height: 18,
+                            width: 18,
                           ),
                           SizedBox(
                             width: 10,
@@ -265,13 +254,13 @@ class PhysioCenterCard extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: [
                               BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
+                                  color: Colors.black.withValues(alpha: 0.3),
                                   offset: Offset(0, -2),
                                   blurRadius: 8,
                                   blurStyle: BlurStyle.inner,
                                   spreadRadius: 1),
                               BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
+                                  color: Colors.black.withValues(alpha: 0.3),
                                   offset: Offset(0, -2),
                                   blurRadius: 8,
                                   blurStyle: BlurStyle.inner,

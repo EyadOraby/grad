@@ -1,11 +1,6 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:grad/views/pages/medical_services/doctors/doctors_form_page.dart';
 
-import '../pages/home_page.dart';
 
 class HospitalCard extends StatelessWidget {
   final String name;
@@ -16,21 +11,21 @@ class HospitalCard extends StatelessWidget {
   final VoidCallback click;
 
   const HospitalCard({
-    Key? key,
+    super.key,
     required this.location,
     required this.name,
     required this.workinDays,
     required this.workingHours,
     required this.rating,
     required this.click,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.fromLTRB(2, 2, 2, 10),
-      child: Container(
+      child: SizedBox(
         width: deviceSize.width * 0.46,
         height: deviceSize.height * 0.33,
         child: Card(
@@ -50,13 +45,11 @@ class HospitalCard extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
-                    Container(
-                      child: Image(
-                        alignment: Alignment.center,
-                        image: AssetImage("assets/hospital-icon.png"),
-                        height: 60,
-                        width: 60,
-                      ),
+                    Image(
+                      alignment: Alignment.center,
+                      image: AssetImage("assets/hospital-icon.png"),
+                      height: 60,
+                      width: 60,
                     ),
                     SizedBox(
                       height: 10,
@@ -81,13 +74,11 @@ class HospitalCard extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
-                            child: Image(
-                              alignment: Alignment.center,
-                              image: AssetImage("assets/location-pin-icon.png"),
-                              height: 18,
-                              width: 18,
-                            ),
+                          Image(
+                            alignment: Alignment.center,
+                            image: AssetImage("assets/location-pin-icon.png"),
+                            height: 18,
+                            width: 18,
                           ),
                           SizedBox(
                             width: 15,
@@ -115,13 +106,11 @@ class HospitalCard extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
-                            child: Image(
-                              alignment: Alignment.center,
-                              image: AssetImage("assets/calendar-icon.png"),
-                              height: 18,
-                              width: 18,
-                            ),
+                          Image(
+                            alignment: Alignment.center,
+                            image: AssetImage("assets/calendar-icon.png"),
+                            height: 18,
+                            width: 18,
                           ),
                           SizedBox(
                             width: 15,
@@ -149,13 +138,11 @@ class HospitalCard extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
-                            child: Image(
-                              alignment: Alignment.center,
-                              image: AssetImage("assets/clock-icon.png"),
-                              height: 18,
-                              width: 18,
-                            ),
+                          Image(
+                            alignment: Alignment.center,
+                            image: AssetImage("assets/clock-icon.png"),
+                            height: 18,
+                            width: 18,
                           ),
                           SizedBox(
                             width: 15,
@@ -193,13 +180,13 @@ class HospitalCard extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                                 boxShadow: [
                                   BoxShadow(
-                                      color: Colors.black.withOpacity(0.3),
+                                      color: Colors.black.withValues(alpha: 0.3),
                                       offset: Offset(0, -2),
                                       blurRadius: 8,
                                       blurStyle: BlurStyle.inner,
                                       spreadRadius: 1),
                                   BoxShadow(
-                                      color: Colors.black.withOpacity(0.3),
+                                      color: Colors.black.withValues(alpha: 0.3),
                                       offset: Offset(0, -2),
                                       blurRadius: 8,
                                       blurStyle: BlurStyle.inner,

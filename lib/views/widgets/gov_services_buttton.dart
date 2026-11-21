@@ -1,10 +1,6 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-import '../pages/home_page.dart';
 
 class GovServicesButton extends StatelessWidget {
   final String serviceTitle;
@@ -14,13 +10,13 @@ class GovServicesButton extends StatelessWidget {
 
   final VoidCallback click;
   const GovServicesButton({
-    Key? key,
+    super.key,
     required this.serviceTitle,
     required this.serviceImage,
     required this.click,
     required this.color,
     this.serviceDescription,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +67,7 @@ class GovServicesButton extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Container(
+                      SizedBox(
                         width: deviceSize.width * 0.8,
                         child: RichText(
                             textAlign: TextAlign.center,

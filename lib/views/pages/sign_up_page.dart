@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:grad/views/pages/login_page.dart';
 import 'package:grad/views/widgets/custom_text_field.dart';
 
-import 'home_page.dart';
 
 class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+  const SignUpPage({super.key});
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -429,14 +426,14 @@ class _SignUpPageState extends State<SignUpPage> {
                                       boxShadow: [
                                         BoxShadow(
                                             color:
-                                                Colors.black.withOpacity(0.3),
+                                                Colors.black.withValues(alpha: 0.3),
                                             offset: Offset(0, -2),
                                             blurRadius: 8,
                                             blurStyle: BlurStyle.inner,
                                             spreadRadius: 1),
                                         BoxShadow(
                                             color:
-                                                Colors.black.withOpacity(0.3),
+                                                Colors.black.withValues(alpha: 0.3),
                                             offset: Offset(0, -2),
                                             blurRadius: 8,
                                             blurStyle: BlurStyle.inner,
@@ -455,7 +452,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                               offset: Offset(1, 1),
                                               blurRadius: 1.0,
                                               color:
-                                                  Colors.black.withOpacity(0.3),
+                                                  Colors.black.withValues(alpha: 0.3),
                                             ),
                                           ],
                                           fontSize: 18,
@@ -470,7 +467,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: 125,
                                       child: Divider(
                                         color: Colors.black,
@@ -491,7 +488,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                         ),
                                       ),
                                     ),
-                                    Container(
+                                    SizedBox(
                                       width: 125,
                                       child: Divider(
                                         color: Colors.black,
@@ -513,13 +510,13 @@ class _SignUpPageState extends State<SignUpPage> {
                                     borderRadius: BorderRadius.circular(15),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Colors.black.withOpacity(0.3),
+                                          color: Colors.black.withValues(alpha: 0.3),
                                           offset: Offset(0, -2),
                                           blurRadius: 8,
                                           blurStyle: BlurStyle.inner,
                                           spreadRadius: 1),
                                       BoxShadow(
-                                          color: Colors.black.withOpacity(0.3),
+                                          color: Colors.black.withValues(alpha: 0.3),
                                           offset: Offset(0, -2),
                                           blurRadius: 8,
                                           blurStyle: BlurStyle.inner,
@@ -538,7 +535,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                             offset: Offset(1, 1),
                                             blurRadius: 1.0,
                                             color:
-                                                Colors.black.withOpacity(0.3),
+                                                Colors.black.withValues(alpha: 0.3),
                                           ),
                                         ],
                                         fontSize: 18,

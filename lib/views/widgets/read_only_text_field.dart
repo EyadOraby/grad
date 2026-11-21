@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-import '../pages/home_page.dart';
 
 class ReadOnlyTextFiled extends StatelessWidget {
   final TextEditingController controller;
@@ -10,12 +7,11 @@ class ReadOnlyTextFiled extends StatelessWidget {
   final String label;
   Function? onTap;
   ReadOnlyTextFiled(
-      {Key? key,
+      {super.key,
       required this.controller,
       required this.validate,
       required this.label,
-      this.onTap})
-      : super(key: key);
+      this.onTap});
 
   @override
   Widget build(BuildContext context) {

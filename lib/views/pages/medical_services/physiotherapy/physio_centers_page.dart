@@ -1,28 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:grad/views/pages/home_page.dart';
 import 'package:grad/views/pages/medical_services/physiotherapy/physio_center_form_page.dart';
-import 'package:grad/views/pages/splash_page.dart';
-import 'package:future_loading_dialog/future_loading_dialog.dart';
-import 'package:grad/views/widgets/appointments_card.dart';
-import 'package:grad/views/widgets/doctor_card.dart';
 import 'package:grad/views/widgets/drawer_mobile.dart';
-import 'package:grad/views/widgets/gov_services_buttton.dart';
-import 'package:grad/views/widgets/hospital_card.dart';
-import 'package:grad/views/widgets/ic_services_button.dart';
-import 'package:grad/views/widgets/medical_cat_services_button.dart';
 import 'package:grad/views/widgets/physio_center_card.dart';
-import 'package:grad/views/widgets/radio_center_card.dart';
 
-import '../../../../main.dart';
 import '../../../widgets/bottom_nav_bar_widget.dart';
-import '../../../widgets/custom_text_field.dart';
-import '../../../widgets/services_button.dart';
 import '../../../widgets/template.dart';
 
 class PhysioCentersPage extends StatefulWidget {
-  const PhysioCentersPage({Key? key}) : super(key: key);
+  const PhysioCentersPage({super.key});
 
   @override
   State<PhysioCentersPage> createState() => _PhysioCentersPageState();
@@ -32,8 +17,6 @@ class _PhysioCentersPageState extends State<PhysioCentersPage> {
   TextEditingController formNumberController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
-  @override
-  void initState() {}
 
   @override
   void dispose() {
@@ -72,7 +55,7 @@ class _PhysioCentersPageState extends State<PhysioCentersPage> {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               alignment: Alignment.centerLeft,
               child: Text(
-                "Hi.. Aly, these are Physiotherapy Centers near you, which provide medical services for your condition.",
+                "Hi Aly, these are Physiotherapy Centers near you, which provide medical services for your condition.",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,

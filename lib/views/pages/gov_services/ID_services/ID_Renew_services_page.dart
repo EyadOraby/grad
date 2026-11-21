@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:grad/views/pages/home_page.dart';
-import 'package:grad/views/pages/splash_page.dart';
-import 'package:future_loading_dialog/future_loading_dialog.dart';
 import 'package:grad/views/widgets/drawer_mobile.dart';
-import 'package:grad/views/widgets/gov_services_buttton.dart';
-import 'package:grad/views/widgets/ic_services_button.dart';
 
-import '../../../../main.dart';
 import '../../../widgets/bottom_nav_bar_widget.dart';
 import '../../../widgets/custom_text_field.dart';
-import '../../../widgets/services_button.dart';
 import '../../../widgets/template.dart';
 
 class IDServicesPage extends StatefulWidget {
-  const IDServicesPage({Key? key}) : super(key: key);
+  const IDServicesPage({super.key});
 
   @override
   State<IDServicesPage> createState() => _IDServicesPageState();
@@ -25,8 +16,6 @@ class _IDServicesPageState extends State<IDServicesPage> {
   TextEditingController formNumberController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
-  @override
-  void initState() {}
 
   @override
   void dispose() {
@@ -93,7 +82,7 @@ class _IDServicesPageState extends State<IDServicesPage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(10, 5, 10, 20),
-                  child: Container(
+                  child: SizedBox(
                     width: deviceSize.width * 0.9,
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -130,15 +119,12 @@ class _IDServicesPageState extends State<IDServicesPage> {
                                     SizedBox(
                                       height: 15,
                                     ),
-                                    Container(
-                                      // width: deviceSize.width * 0.3,
-                                      child: Image(
-                                        alignment: Alignment.center,
-                                        image:
-                                            AssetImage("assets/renew-card.png"),
-                                        height: 80,
-                                        width: 80,
-                                      ),
+                                    Image(
+                                      alignment: Alignment.center,
+                                      image:
+                                          AssetImage("assets/renew-card.png"),
+                                      height: 80,
+                                      width: 80,
                                     ),
                                   ],
                                 ),
@@ -202,7 +188,7 @@ class _IDServicesPageState extends State<IDServicesPage> {
                             SizedBox(
                               height: 15,
                             ),
-                            Container(
+                            SizedBox(
                               width: deviceSize.width * 0.8,
                               child: RichText(
                                   textAlign: TextAlign.center,
@@ -266,13 +252,13 @@ class _IDServicesPageState extends State<IDServicesPage> {
                                   borderRadius: BorderRadius.circular(15),
                                   boxShadow: [
                                     BoxShadow(
-                                        color: Colors.black.withOpacity(0.3),
+                                        color: Colors.black.withValues(alpha: 0.3),
                                         offset: Offset(0, -2),
                                         blurRadius: 8,
                                         blurStyle: BlurStyle.inner,
                                         spreadRadius: 1),
                                     BoxShadow(
-                                        color: Colors.black.withOpacity(0.3),
+                                        color: Colors.black.withValues(alpha: 0.3),
                                         offset: Offset(0, -2),
                                         blurRadius: 8,
                                         blurStyle: BlurStyle.inner,

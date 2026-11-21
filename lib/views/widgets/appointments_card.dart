@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class AppointmentsCard extends StatelessWidget {
   final String dateNum;
@@ -10,13 +8,13 @@ class AppointmentsCard extends StatelessWidget {
   final String description;
 
   const AppointmentsCard({
-    Key? key,
+    super.key,
     required this.dateNum,
     required this.dateText,
     required this.description,
     required this.name,
     required this.time,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +22,7 @@ class AppointmentsCard extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
-      child: Container(
+      child: SizedBox(
         width: deviceSize.width * 0.92,
         height: deviceSize.height * 0.18,
         child: Card(

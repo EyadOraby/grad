@@ -82,13 +82,13 @@ void customListModalSheet(BuildContext context, Function onSelected,
 
 class ModalSheetButton extends StatelessWidget {
   const ModalSheetButton({
-    Key? key,
+    super.key,
     required this.index,
     required this.title,
     required this.selected,
     required this.onSelect,
     this.isLast = false,
-  }) : super(key: key);
+  });
 
   final int index;
   final String title;
@@ -102,12 +102,12 @@ class ModalSheetButton extends StatelessWidget {
         onSelect(index);
       },
       style: ButtonStyle(
-        padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
+        padding: WidgetStateProperty.all<EdgeInsets>(EdgeInsets.zero),
       ),
       child: Container(
         height: 48,
         decoration: BoxDecoration(
-          color: selected ? Colors.green.withOpacity(0.15) : Colors.transparent,
+          color: selected ? Colors.green.withValues(alpha: 0.15) : Colors.transparent,
           border: !isLast
               ? const Border(
                   bottom: BorderSide(

@@ -1,31 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:grad/views/pages/home_page.dart';
-import 'package:grad/views/pages/medical_services/radiology/radio_center_form_page.dart';
-import 'package:grad/views/pages/splash_page.dart';
-import 'package:future_loading_dialog/future_loading_dialog.dart';
-import 'package:grad/views/widgets/appointments_card.dart';
 import 'package:grad/views/widgets/custom_date_picker.dart';
 import 'package:grad/views/widgets/custom_modal_list.dart';
 import 'package:grad/views/widgets/custom_time_picker.dart';
-import 'package:grad/views/widgets/doctor_card.dart';
 import 'package:grad/views/widgets/drawer_mobile.dart';
-import 'package:grad/views/widgets/gov_services_buttton.dart';
-import 'package:grad/views/widgets/hospital_card.dart';
-import 'package:grad/views/widgets/ic_services_button.dart';
-import 'package:grad/views/widgets/medical_cat_services_button.dart';
-import 'package:grad/views/widgets/radio_center_card.dart';
 import 'package:grad/views/widgets/read_only_text_field.dart';
 
-import '../../../../main.dart';
 import '../../../widgets/bottom_nav_bar_widget.dart';
-import '../../../widgets/custom_text_field.dart';
-import '../../../widgets/services_button.dart';
 import '../../../widgets/template.dart';
 
 class NewICFormPage extends StatefulWidget {
-  const NewICFormPage({Key? key}) : super(key: key);
+  const NewICFormPage({super.key});
 
   @override
   State<NewICFormPage> createState() => _NewICFormPageState();
@@ -54,8 +38,6 @@ class _NewICFormPageState extends State<NewICFormPage> {
   ];
 
   final _formKey = GlobalKey<FormState>();
-  @override
-  void initState() {}
 
   @override
   void dispose() {
@@ -98,7 +80,7 @@ class _NewICFormPageState extends State<NewICFormPage> {
             //   margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             //   alignment: Alignment.centerLeft,
             //   child: Text(
-            //     "Hi.. Aly, these are Radiology Centers near you, which provide medical services for your condition.",
+            //     "Hi Aly, these are Radiology Centers near you, which provide medical services for your condition.",
             //     style: TextStyle(
             //       color: Colors.black,
             //       fontSize: 20,
@@ -245,13 +227,13 @@ class _NewICFormPageState extends State<NewICFormPage> {
                               borderRadius: BorderRadius.circular(10),
                               boxShadow: [
                                 BoxShadow(
-                                    color: Colors.black.withOpacity(0.3),
+                                    color: Colors.black.withValues(alpha: 0.3),
                                     offset: Offset(0, -2),
                                     blurRadius: 8,
                                     blurStyle: BlurStyle.inner,
                                     spreadRadius: 1),
                                 BoxShadow(
-                                    color: Colors.black.withOpacity(0.3),
+                                    color: Colors.black.withValues(alpha: 0.3),
                                     offset: Offset(0, -2),
                                     blurRadius: 8,
                                     blurStyle: BlurStyle.inner,

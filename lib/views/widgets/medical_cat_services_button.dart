@@ -1,10 +1,6 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-import '../pages/home_page.dart';
 
 class MedicalCategoryServicesButton extends StatelessWidget {
   final String serviceTitle;
@@ -13,19 +9,19 @@ class MedicalCategoryServicesButton extends StatelessWidget {
   final VoidCallback click;
 
   const MedicalCategoryServicesButton({
-    Key? key,
+    super.key,
     required this.serviceTitle,
     required this.serviceImage,
     required this.color,
     required this.click,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.fromLTRB(2, 2, 2, 2),
-      child: Container(
+      child: SizedBox(
         width: deviceSize.width * 0.46,
         height: deviceSize.height * 0.281,
         child: Card(
@@ -72,14 +68,11 @@ class MedicalCategoryServicesButton extends StatelessWidget {
                         SizedBox(
                           height: 15,
                         ),
-                        Container(
-                          // width: deviceSize.width * 0.3,
-                          child: Image(
-                            alignment: Alignment.center,
-                            image: AssetImage(serviceImage),
-                            height: 80,
-                            width: 80,
-                          ),
+                        Image(
+                          alignment: Alignment.center,
+                          image: AssetImage(serviceImage),
+                          height: 80,
+                          width: 80,
                         ),
                       ],
                     ),

@@ -1,86 +1,79 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:grad/views/pages/gov_services/gov_services_page.dart';
 import 'package:grad/views/pages/jobs_services/jobs_page.dart';
 import 'package:grad/views/pages/medical_services/medical_services_page.dart';
 
-import '../pages/home_page.dart';
-
-class BottomNavBar extends StatefulWidget {
+/// Bottom navigation shared by the main sections.
+///
+/// Switching tabs replaces the current section instead of stacking a new
+/// page on every tap, so the back button always returns to Home.
+class BottomNavBar extends StatelessWidget {
   final int index;
-  const BottomNavBar({Key? key, required this.index}) : super(key: key);
+  const BottomNavBar({super.key, required this.index});
 
-  @override
-  State<BottomNavBar> createState() => _BottomNavBarState();
-}
+  static const _destinations = [
+    NavigationDestination(
+      icon: Icon(Icons.home_outlined),
+      selectedIcon: Icon(Icons.home_rounded),
+      label: 'Home',
+    ),
+    NavigationDestination(
+      icon: Icon(Icons.badge_outlined),
+      selectedIcon: Icon(Icons.badge_rounded),
+      label: 'Government',
+    ),
+    NavigationDestination(
+      icon: Icon(Icons.medical_services_outlined),
+      selectedIcon: Icon(Icons.medical_services_rounded),
+      label: 'Medical',
+    ),
+    NavigationDestination(
+      icon: Icon(Icons.work_outline_rounded),
+      selectedIcon: Icon(Icons.work_rounded),
+      label: 'Jobs',
+    ),
+  ];
 
-class _BottomNavBarState extends State<BottomNavBar> {
-  @override
-  void initState() {
-    super.initState();
+  Widget? _pageFor(int i) {
+    switch (i) {
+      case 1:
+        return const GovServicesPage();
+      case 2:
+        return const MedicalServicesPage();
+      case 3:
+        return const JobsPage();
+      default:
+        return null;
+    }
   }
 
-  @override
-  void dispose() {
-    super.dispose();
+  void _open(BuildContext context, int i) {
+    if (i == index) return;
+    final navigator = Navigator.of(context);
+    final page = _pageFor(i);
+    if (page == null) {
+      navigator.popUntil((route) => route.isFirst);
+      return;
+    }
+    final route = PageRouteBuilder(
+      pageBuilder: (_, __, ___) => page,
+      transitionsBuilder: (_, animation, __, child) =>
+          FadeTransition(opacity: animation, child: child),
+      transitionDuration: const Duration(milliseconds: 180),
+    );
+    if (index == 0) {
+      navigator.push(route);
+    } else {
+      navigator.pushReplacement(route);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      items: [
-        BottomNavigationBarItem(
-            icon: Icon(Icons.home_rounded),
-            label: 'Home',
-            backgroundColor: Colors.white),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.document_scanner_rounded),
-            label: 'Govornmnetal Services',
-            backgroundColor: Colors.white),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.medical_services_rounded),
-            label: 'Medical Services',
-            backgroundColor: Colors.white),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.work_rounded),
-            label: 'Job Services',
-            backgroundColor: Colors.white),
-      ],
-      type: BottomNavigationBarType.shifting,
-      selectedItemColor: Color.fromARGB(255, 139, 185, 111),
-      unselectedItemColor: Colors.black45,
-      currentIndex: widget.index,
-      iconSize: 26,
-      onTap: (index) {
-        switch (index) {
-          case 0:
-            Navigator.push(
-                context, MaterialPageRoute(builder: (_) => HomePage()));
-
-            break;
-          case 1:
-            Navigator.push(
-                context, MaterialPageRoute(builder: (_) => GovServicesPage()));
-
-            break;
-          case 2:
-            Navigator.push(context,
-                MaterialPageRoute(builder: (_) => MedicalServicesPage()));
-
-            break;
-          case 3:
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => JobsPage()),
-            );
-
-            break;
-          default:
-            Navigator.push(
-                context, MaterialPageRoute(builder: (_) => HomePage()));
-        }
-      },
+    return NavigationBar(
+      selectedIndex: index,
+      destinations: _destinations,
+      onDestinationSelected: (i) => _open(context, i),
     );
   }
 }
