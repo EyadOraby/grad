@@ -225,6 +225,33 @@ class _Appointments extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final list = [...sanadStore.appointments]..sort((a, b) => a.when.compareTo(b.when));
+    String status(Appointment a) => switch (a.status) {
+          AppointmentStatus.booked => 'Booked',
+          AppointmentStatus.completed => 'Completed',
+          AppointmentStatus.cancelled => 'Cancelled',
+        };
+    // Phones get cards; the table needs room.
+    if (MediaQuery.sizeOf(context).width < 700) {
+      return Column(children: [
+        for (final a in list)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: SanadCard(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(a.citizen, style: const TextStyle(fontWeight: FontWeight.w700, color: SanadColors.ink)),
+                Text('${a.provider} · ${formatSlot(a.when)}', style: const TextStyle(color: SanadColors.inkMuted)),
+                const SizedBox(height: 8),
+                Row(children: [
+                  Text(status(a), style: const TextStyle(color: SanadColors.primary, fontWeight: FontWeight.w700)),
+                  const Spacer(),
+                  if (a.status == AppointmentStatus.booked)
+                    TextButton(onPressed: () => sanadStore.completeAppointment(a.id), child: const Text('Mark attended')),
+                ]),
+              ]),
+            ),
+          ),
+      ]);
+    }
     return SanadCard(
       padding: EdgeInsets.zero,
       child: SingleChildScrollView(
@@ -269,22 +296,29 @@ class _Applications extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: SanadCard(
-            child: Row(children: [
-              Expanded(
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text('${a.jobTitle} · ${a.company}', style: const TextStyle(fontWeight: FontWeight.w700, color: SanadColors.ink)),
-                  Text('${a.citizen} · ${a.status.label}', style: const TextStyle(color: SanadColors.inkMuted)),
-                ]),
-              ),
-              if (a.status.next != null) ...[
-                FilledButton(
-                  onPressed: () => sanadStore.advanceApplication(a.id),
-                  child: Text(a.status.next == ApplicationStatus.shortlisted ? 'Shortlist' : 'Invite to interview'),
+            child: Wrap(
+              spacing: 8,
+              runSpacing: 10,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              alignment: WrapAlignment.spaceBetween,
+              children: [
+                ConstrainedBox(
+                  constraints: const BoxConstraints(minWidth: 220),
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Text('${a.jobTitle} · ${a.company}', style: const TextStyle(fontWeight: FontWeight.w700, color: SanadColors.ink)),
+                    Text('${a.citizen} · ${a.status.label}', style: const TextStyle(color: SanadColors.inkMuted)),
+                  ]),
                 ),
-                const SizedBox(width: 8),
-                OutlinedButton(onPressed: () => sanadStore.rejectApplication(a.id), child: const Text('Decline')),
+                if (a.status.next != null)
+                  Wrap(spacing: 8, children: [
+                    FilledButton(
+                      onPressed: () => sanadStore.advanceApplication(a.id),
+                      child: Text(a.status.next == ApplicationStatus.shortlisted ? 'Shortlist' : 'Invite to interview'),
+                    ),
+                    OutlinedButton(onPressed: () => sanadStore.rejectApplication(a.id), child: const Text('Decline')),
+                  ]),
               ],
-            ]),
+            ),
           ),
         ),
     ]);

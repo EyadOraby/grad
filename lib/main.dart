@@ -18,14 +18,7 @@ Future<void> main() async {
   prefs = await SharedPreferences.getInstance();
   sanadStore = SanadStore(PrefsSanadStorage(prefs!));
   // `?demo=1` fills in some activity so the web demo can be explored at once.
-  if (Uri.base.queryParameters['demo'] == '1' && sanadStore.myRequests.isEmpty) {
-    final r = sanadStore.submitRequest(service: 'National ID renewal');
-    sanadStore.advanceRequest(r.reference);
-    sanadStore.submitRequest(service: 'Integrated services card');
-    final day = DateTime.now().add(const Duration(days: 2));
-    sanadStore.book(provider: 'Dr. Hana Mohamed', kind: 'Doctor', when: DateTime(day.year, day.month, day.day, 11));
-    sanadStore.apply(jobTitle: 'Data Entry', company: 'Orange');
-  }
+  if (Uri.base.queryParameters['demo'] == '1') sanadStore.seedDemoCitizen();
   runApp(const MyApp());
 }
 

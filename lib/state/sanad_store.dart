@@ -297,6 +297,18 @@ class SanadStore extends ChangeNotifier {
     _save();
   }
 
+  /// Gives the demo citizen a booking, tracked requests and an application,
+  /// once, so every screen has something to show.
+  void seedDemoCitizen() {
+    if (myRequests.isNotEmpty) return;
+    final r = submitRequest(service: 'National ID renewal');
+    advanceRequest(r.reference);
+    submitRequest(service: 'Integrated services card');
+    final day = _clock().add(const Duration(days: 2));
+    book(provider: 'Dr. Hana Mohamed', kind: 'Doctor', when: DateTime(day.year, day.month, day.day, 11));
+    apply(jobTitle: 'Data Entry', company: 'Orange');
+  }
+
   void updateSettings(AccessibilitySettings s) {
     settings = s;
     _save();
