@@ -1,3 +1,4 @@
+import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/pages/medical_services/medical_services_page.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -95,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                                 borderRadius: const BorderRadius.only(
                                     bottomLeft: Radius.circular(10),
                                     bottomRight: Radius.circular(10)),
-                                color: Color.fromRGBO(139, 185, 111, 0.7),
+                                color: SanadColors.primary.withValues(alpha: 0.85),
                               ),
                               child: Text(
                                 highlightsTitleArray[i],
@@ -165,7 +166,7 @@ class _HomePageState extends State<HomePage> {
               },
               serviceTitle: "Governmental \nServices",
               serviceImage: "assets/government2.png",
-              color: Color.fromARGB(255, 139, 185, 111),
+              color: SanadColors.primarySoft,
               serviceDescription:
                   "A fast and convenient way to apply for an integrated services card or access other governmental services.",
             ),
@@ -176,7 +177,7 @@ class _HomePageState extends State<HomePage> {
               },
               serviceTitle: "Medical \nServices",
               serviceImage: "assets/medical2-icon.png",
-              color: Color.fromARGB(255, 118, 168, 88),
+              color: SanadColors.primary,
               serviceDescription:
                   "Providing you with personalized medical services based on your disability type, preferences and location",
             ),
@@ -184,7 +185,7 @@ class _HomePageState extends State<HomePage> {
               click: () {},
               serviceTitle: "Job Services",
               serviceImage: "assets/job-icon.png",
-              color: Color.fromARGB(255, 139, 185, 111),
+              color: SanadColors.primarySoft,
               serviceDescription:
                   "Matching you with job opportunities, self and career developing courses based on your disability type, preferences and location",
             ),

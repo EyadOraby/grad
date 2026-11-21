@@ -1,3 +1,4 @@
+import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/widgets/custom_date_picker.dart';
 import 'package:grad/views/widgets/custom_modal_list.dart';
@@ -70,7 +71,7 @@ class _NewICFormPageState extends State<NewICFormPage> {
                 "New Integrated Card Form",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color.fromARGB(255, 11, 129, 62),
+                  color: SanadColors.primary,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
@@ -120,11 +121,11 @@ class _NewICFormPageState extends State<NewICFormPage> {
                       //   minHeight: 60.0,
                       //   fontSize: 16.0,
                       //   initialLabelIndex: 1,
-                      //   activeBgColor: [Colors.green],
+                      //   activeBgColor: [SanadColors.primary],
                       //   activeFgColor: Colors.white,
                       //   inactiveBgColor:
                       //       Color.fromARGB(179, 207, 200, 200),
-                      //   inactiveFgColor: Colors.grey[900],
+                      //   inactiveFgColor: SanadColors.ink,
                       //   totalSwitches: 3,
                       //   labels: ['Tall', 'Grande', 'Venti'],
                       //   onToggle: (index) {
@@ -223,7 +224,7 @@ class _NewICFormPageState extends State<NewICFormPage> {
                             height: 45,
                             width: 250,
                             decoration: BoxDecoration(
-                              color: Colors.green.shade900,
+                              color: SanadColors.primaryDark,
                               borderRadius: BorderRadius.circular(10),
                               boxShadow: [
                                 BoxShadow(

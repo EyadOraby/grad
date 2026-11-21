@@ -1,7 +1,8 @@
-
 import 'package:flutter/material.dart';
+import 'package:grad/theme/sanad_colors.dart';
+import 'package:grad/views/widgets/sanad_ui.dart';
 
-
+/// A category tile (doctors, hospitals, ...) in a two-column grid.
 class MedicalCategoryServicesButton extends StatelessWidget {
   final String serviceTitle;
   final String serviceImage;
@@ -18,119 +19,41 @@ class MedicalCategoryServicesButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final deviceSize = MediaQuery.of(context).size;
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(2, 2, 2, 2),
-      child: SizedBox(
-        width: deviceSize.width * 0.46,
-        height: deviceSize.height * 0.281,
-        child: Card(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20))),
-          elevation: 5,
-          shadowColor: Colors.black87,
-          child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0),
-                // gradient: LinearGradient(
-                //   begin: Alignment.topCenter,
-                //   end: Alignment.bottomCenter,
-                //   colors: [
-                //     Color.fromRGBO(94, 216, 147, 1),
-                //     Color.fromRGBO(55, 131, 88, 1),
-                //   ],
-                // ),
-                color: color
-                //  Color.fromARGB(255, 139, 185, 111)
-                ),
-            child: InkWell(
-              onTap: click,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 30, 0, 30),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        RichText(
-                            textAlign: TextAlign.center,
-                            text: TextSpan(children: [
-                              TextSpan(
-                                text: serviceTitle,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 23,
-                                ),
-                              ),
-                            ])),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Image(
-                          alignment: Alignment.center,
-                          image: AssetImage(serviceImage),
-                          height: 80,
-                          width: 80,
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    // Image(
-                    //   alignment: Alignment.center,
-                    //   image: AssetImage(serviceImage!),
-                    //   height: 120,
-                    //   width: 115,
-                    // ),
-                  ],
-                ),
+    final width = ((MediaQuery.sizeOf(context).width - 36) / 2).clamp(140.0, 280.0);
+    return Container(
+      width: width,
+      padding: const EdgeInsets.all(6),
+      child: SanadCard(
+        onTap: click,
+        padding: const EdgeInsets.fromLTRB(16, 18, 16, 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: 72,
+              height: 72,
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: SanadColors.primary.withValues(alpha: 0.08),
+                borderRadius: BorderRadius.circular(20),
               ),
+              child: Image.asset(serviceImage, fit: BoxFit.contain),
             ),
-          ),
+            const SizedBox(height: 14),
+            Text(
+              serviceTitle.replaceAll('\n', ' ').replaceAll(RegExp(r'\s+'), ' ').trim(),
+              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: SanadColors.ink, height: 1.25),
+            ),
+            const SizedBox(height: 8),
+            const Row(
+              children: [
+                Text('Explore', style: TextStyle(fontSize: 12.5, color: SanadColors.primary, fontWeight: FontWeight.w600)),
+                Icon(Icons.arrow_forward_rounded, size: 15, color: SanadColors.primary),
+              ],
+            ),
+          ],
         ),
       ),
     );
-    // InkWell(
-    //   child: Padding(
-    //     padding: const EdgeInsets.fromLTRB(30, 30, 30, 30),
-    //     child: Card(
-    //       shape: RoundedRectangleBorder(
-    //           borderRadius: BorderRadius.all(Radius.circular(20))),
-    //       elevation: 15,
-    //       shadowColor: Colors.black87,
-    //       child: Container(
-    //         decoration: BoxDecoration(
-    //           borderRadius: BorderRadius.circular(20.0),
-    //           color: Color.fromARGB(255, 139, 185, 111),
-    //         ),
-    //         child: Padding(
-    //           padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-    //           child: Column(
-    //             crossAxisAlignment: CrossAxisAlignment.stretch,
-    //             children: [
-    //               RichText(
-    //                   textAlign: TextAlign.center,
-    //                   text: TextSpan(children: [
-    //                     TextSpan(
-    //                       text: serviceTitle,
-    //                       style: TextStyle(
-    //                           color: Colors.white,
-    //                           fontWeight: FontWeight.bold,
-    //                           fontSize: 26),
-    //                     ),
-    //                   ])),
-    //               const SizedBox(
-    //                 height: 15,
-    //               )
-    //             ],
-    //           ),
-    //         ),
-    //       ),
-    //     ),
-    //   ),
-    // );
   }
 }

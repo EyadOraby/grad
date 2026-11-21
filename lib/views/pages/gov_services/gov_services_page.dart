@@ -1,3 +1,4 @@
+import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/pages/gov_services/IC_services/IC_services_page.dart';
 import 'package:grad/views/pages/gov_services/ID_services/ID_Renew_services_page.dart';
@@ -39,13 +40,13 @@ class _GovServicesPageState extends State<GovServicesPage> {
               child: Text(
                 "Governmental Services",
                 style: TextStyle(
-                  color: Color.fromARGB(255, 11, 129, 62),
+                  color: SanadColors.primary,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                   // fontStyle: FontStyle.italic,
                   // decoration: TextDecoration.underline,
                   // decorationStyle: TextDecorationStyle.solid,
-                  // decorationColor: Color.fromRGBO(139, 185, 111, 0.8),
+                  // decorationColor: SanadColors.primarySoft,
                   // decorationThickness: 2.0
                 ),
               ),
@@ -76,7 +77,7 @@ class _GovServicesPageState extends State<GovServicesPage> {
                   serviceDescription:
                       'New card and renewal applications \nFollow up requests',
                   serviceImage: "assets/applications.png",
-                  color: Color.fromARGB(255, 139, 185, 111),
+                  color: SanadColors.primarySoft,
                 ),
                 Container(
                   margin:
@@ -100,7 +101,7 @@ class _GovServicesPageState extends State<GovServicesPage> {
                   serviceDescription:
                       'National ID Card renewal applications \nFollow up requests',
                   serviceImage: "assets/id-icon.png",
-                  color: Color.fromARGB(255, 118, 168, 88),
+                  color: SanadColors.primary,
                 ),
               ],
             ),

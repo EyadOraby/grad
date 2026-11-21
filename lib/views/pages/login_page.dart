@@ -1,3 +1,4 @@
+import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/pages/home_page.dart';
 import 'package:grad/views/pages/sign_up_page.dart';
@@ -81,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                   fontSize: 32,
                   fontWeight: FontWeight.bold),
             ),
-            const SizedBox(
+            SizedBox(
               height: 15,
             ),
             Expanded(
@@ -98,8 +99,8 @@ class _LoginPageState extends State<LoginPage> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Color.fromRGBO(55, 131, 88, 1),
-                        Color.fromRGBO(94, 216, 147, 0.6)
+                        SanadColors.primary,
+                        SanadColors.mint.withValues(alpha: 0.6)
                       ],
                     ),
                   ),
@@ -304,7 +305,7 @@ class _LoginPageState extends State<LoginPage> {
                                   height: 45,
                                   width: 300,
                                   decoration: BoxDecoration(
-                                    color: Colors.green,
+                                    color: SanadColors.primary,
                                     borderRadius: BorderRadius.circular(15),
                                     boxShadow: [
                                       BoxShadow(
@@ -414,7 +415,7 @@ class _LoginPageState extends State<LoginPage> {
                                       'Sign Up',
                                       style: TextStyle(
                                         letterSpacing: 1,
-                                        color: Colors.green,
+                                        color: SanadColors.primary,
                                         fontWeight: FontWeight.bold,
                                         shadows: [
                                           Shadow(

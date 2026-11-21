@@ -1,3 +1,4 @@
+import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 
 void customListModalSheet(BuildContext context, Function onSelected,
@@ -135,7 +136,7 @@ class ModalSheetButton extends StatelessWidget {
             if (selected)
               const Icon(
                 Icons.check,
-                color: Colors.green,
+                color: SanadColors.primary,
               ),
             const SizedBox(
               width: 28,

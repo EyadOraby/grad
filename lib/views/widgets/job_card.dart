@@ -1,3 +1,4 @@
+import 'package:grad/theme/sanad_colors.dart';
 
 import 'package:flutter/material.dart';
 
@@ -41,7 +42,7 @@ class JobCard extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20.0),
-              color: Color.fromARGB(255, 139, 185, 111),
+              color: SanadColors.primarySoft,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,7 +88,7 @@ class JobCard extends StatelessWidget {
                                 TextSpan(
                                   text: name,
                                   style: TextStyle(
-                                    color: Colors.grey.shade800,
+                                    color: SanadColors.ink,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 22,
                                   ),
@@ -194,7 +195,7 @@ class JobCard extends StatelessWidget {
                           height: 35,
                           width: 130,
                           decoration: BoxDecoration(
-                            color: Colors.green.shade900,
+                            color: SanadColors.primaryDark,
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: [
                               BoxShadow(
@@ -233,7 +234,7 @@ class JobCard extends StatelessWidget {
                             TextSpan(
                               text: applicants,
                               style: TextStyle(
-                                color: Colors.grey.shade800,
+                                color: SanadColors.ink,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 20,
                               ),
@@ -248,7 +249,7 @@ class JobCard extends StatelessWidget {
                             TextSpan(
                               text: "Applicants",
                               style: TextStyle(
-                                color: Colors.grey.shade800,
+                                color: SanadColors.ink,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 20,
                               ),

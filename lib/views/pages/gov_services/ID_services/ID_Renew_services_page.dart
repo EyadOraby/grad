@@ -1,3 +1,4 @@
+import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/widgets/drawer_mobile.dart';
 
@@ -44,13 +45,13 @@ class _IDServicesPageState extends State<IDServicesPage> {
                 "National ID Card \nApplications",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color.fromARGB(255, 11, 129, 62),
+                  color: SanadColors.primary,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                   // fontStyle: FontStyle.italic,
                   // decoration: TextDecoration.underline,
                   // decorationStyle: TextDecorationStyle.solid,
-                  // decorationColor: Color.fromRGBO(139, 185, 111, 0.8),
+                  // decorationColor: SanadColors.primarySoft,
                   // decorationThickness: 2.0
                 ),
               ),
@@ -92,7 +93,7 @@ class _IDServicesPageState extends State<IDServicesPage> {
                       child: Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20.0),
-                            color: Color.fromARGB(255, 139, 185, 111)),
+                            color: SanadColors.primarySoft),
                         child: InkWell(
                           onTap: () {},
                           child: Padding(
@@ -163,7 +164,7 @@ class _IDServicesPageState extends State<IDServicesPage> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
-                      color: Color.fromARGB(255, 139, 185, 111)),
+                      color: SanadColors.primarySoft),
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(20, 30, 0, 30),
                     child: Row(
@@ -270,7 +271,7 @@ class _IDServicesPageState extends State<IDServicesPage> {
                                     'Check',
                                     style: TextStyle(
                                       letterSpacing: 1,
-                                      color: Colors.green,
+                                      color: SanadColors.primary,
                                       fontWeight: FontWeight.bold,
                                       // shadows: [
                                       //   Shadow(

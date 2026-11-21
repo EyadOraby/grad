@@ -1,3 +1,4 @@
+import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppointmentsCard extends StatelessWidget {
@@ -33,7 +34,7 @@ class AppointmentsCard extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20.0),
-              color: Color.fromARGB(255, 139, 185, 111),
+              color: SanadColors.primarySoft,
             ),
             child: Row(
               children: [
@@ -49,7 +50,7 @@ class AppointmentsCard extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.0),
-                          color: Color.fromARGB(255, 54, 122, 11),
+                          color: SanadColors.primaryDark,
                         ),
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,

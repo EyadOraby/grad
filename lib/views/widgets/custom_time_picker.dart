@@ -1,3 +1,4 @@
+import 'package:grad/theme/sanad_colors.dart';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -60,14 +61,14 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
             enabledBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10)),
               borderSide: BorderSide(
-                color: Colors.green,
+                color: SanadColors.primary,
                 width: 2.0,
               ),
             ),
             focusedBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10)),
               borderSide: BorderSide(
-                color: Colors.green,
+                color: SanadColors.primary,
                 width: 2.0,
               ),
             ),
@@ -100,7 +101,7 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
                       ),
                     ),
                     colorScheme: const ColorScheme.light(
-                      primary: Colors.green,
+                      primary: SanadColors.primary,
                       onPrimary: Colors.black,
                       brightness: Brightness.light,
                     ).copyWith(secondary: Colors.black), dialogTheme: DialogThemeData(backgroundColor: Colors.white),

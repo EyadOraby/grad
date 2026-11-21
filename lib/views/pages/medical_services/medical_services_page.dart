@@ -1,3 +1,4 @@
+import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/pages/medical_services/doctors/doctors_page.dart';
 import 'package:grad/views/pages/medical_services/hospitals/hospitals_page.dart';
@@ -50,13 +51,13 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
                 "Medical Services",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color.fromARGB(255, 11, 129, 62),
+                  color: SanadColors.primary,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                   // fontStyle: FontStyle.italic,
                   // decoration: TextDecoration.underline,
                   // decorationStyle: TextDecorationStyle.solid,
-                  // decorationColor: Color.fromRGBO(139, 185, 111, 0.8),
+                  // decorationColor: SanadColors.primarySoft,
                   // decorationThickness: 2.0
                 ),
               ),
@@ -91,7 +92,7 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
                     MedicalCategoryServicesButton(
                         serviceTitle: "Doctors",
                         serviceImage: "assets/doctor-icon.png",
-                        color: Color.fromARGB(255, 118, 168, 88),
+                        color: SanadColors.primary,
                         click: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (_) => DoctorsPage()));
@@ -99,7 +100,7 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
                     MedicalCategoryServicesButton(
                         serviceTitle: "Hospitals ",
                         serviceImage: "assets/hospital-icon.png",
-                        color: Color.fromARGB(255, 139, 185, 111),
+                        color: SanadColors.primarySoft,
                         click: () {
                           Navigator.push(
                               context,
@@ -114,7 +115,7 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
                     MedicalCategoryServicesButton(
                         serviceTitle: "Radiology \nCenters",
                         serviceImage: "assets/medical-scan-icon.png",
-                        color: Color.fromARGB(255, 139, 185, 111),
+                        color: SanadColors.primarySoft,
                         click: () {
                           Navigator.push(
                               context,
@@ -124,7 +125,7 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
                     MedicalCategoryServicesButton(
                         serviceTitle: "Physiotherapy \nCenters",
                         serviceImage: "assets/pyiso-icon.png",
-                        color: Color.fromARGB(255, 118, 168, 88),
+                        color: SanadColors.primary,
                         click: () {
                           Navigator.push(
                               context,
@@ -201,7 +202,7 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
             //     child: Container(
             //       decoration: BoxDecoration(
             //         borderRadius: BorderRadius.circular(20.0),
-            //         color: Color.fromARGB(255, 139, 185, 111),
+            //         color: SanadColors.primarySoft,
             //       ),
             //       child: Row(
             //         children: [
@@ -218,7 +219,7 @@ class _MedicalServicesPageState extends State<MedicalServicesPage> {
             //                 child: Container(
             //                   decoration: BoxDecoration(
             //                     borderRadius: BorderRadius.circular(20.0),
-            //                     color: Color.fromARGB(255, 54, 122, 11),
+            //                     color: SanadColors.primaryDark,
             //                   ),
             //                   child: Column(
             //                       mainAxisAlignment: MainAxisAlignment.center,

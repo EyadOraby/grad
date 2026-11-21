@@ -1,3 +1,4 @@
+import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:future_loading_dialog/future_loading_dialog.dart';
 import 'package:grad/views/pages/gov_services/gov_services_page.dart';
@@ -25,7 +26,7 @@ class DrawerMobile extends StatelessWidget {
                   'A',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.green,
+                      color: SanadColors.primary,
                       fontSize: 30),
                 )),
             accountName: Text(

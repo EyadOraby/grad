@@ -1,3 +1,4 @@
+import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/widgets/drawer_mobile.dart';
 import 'package:grad/views/widgets/job_card.dart';
@@ -44,7 +45,7 @@ class _JobsPageState extends State<JobsPage> {
                 "Jobs Services",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color.fromARGB(255, 11, 129, 62),
+                  color: SanadColors.primary,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),

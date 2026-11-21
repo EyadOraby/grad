@@ -1,3 +1,4 @@
+import 'package:grad/theme/sanad_colors.dart';
 
 import 'package:flutter/material.dart';
 
@@ -33,11 +34,11 @@ class ICServicesButton extends StatelessWidget {
                 //   begin: Alignment.topCenter,
                 //   end: Alignment.bottomCenter,
                 //   colors: [
-                //     Color.fromRGBO(94, 216, 147, 1),
-                //     Color.fromRGBO(55, 131, 88, 1),
+                //     SanadColors.mint,
+                //     SanadColors.primary,
                 //   ],
                 // ),
-                color: Color.fromARGB(255, 139, 185, 111)),
+                color: SanadColors.primarySoft),
             child: InkWell(
               onTap: click,
               child: Padding(
@@ -99,7 +100,7 @@ class ICServicesButton extends StatelessWidget {
     //       child: Container(
     //         decoration: BoxDecoration(
     //           borderRadius: BorderRadius.circular(20.0),
-    //           color: Color.fromARGB(255, 139, 185, 111),
+    //           color: SanadColors.primarySoft,
     //         ),
     //         child: Padding(
     //           padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),

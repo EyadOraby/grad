@@ -1,3 +1,4 @@
+import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 
 class TemplatePage extends StatelessWidget {
@@ -30,28 +31,25 @@ class TemplatePage extends StatelessWidget {
             ? null
             : AppBar(
                 elevation: 0,
-                iconTheme: IconThemeData(color: Colors.black),
-                backgroundColor: Colors.grey.shade200,
-                //backgroundColor: Color.fromRGBO(55, 131, 88, 1),
-                // leading:
-                // // IconButton(
-                // //   icon: Icon(Icons.arrow_back_rounded),
-                // //   onPressed: () {},
-                // // ),
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Image.asset(
-                      'assets/sanad.JPG',
-                      fit: BoxFit.fitHeight,
-                      height: 45,
-                      colorBlendMode: BlendMode.multiply,
-                      color: Colors.grey.shade200,
+                scrolledUnderElevation: 0,
+                centerTitle: true,
+                iconTheme: const IconThemeData(color: SanadColors.ink),
+                backgroundColor: SanadColors.surface,
+                title: Image.asset('assets/sanad.JPG', height: 40, colorBlendMode: BlendMode.multiply, color: SanadColors.surface),
+                // A thin gold rule under the header, a nod to official documents.
+                bottom: PreferredSize(
+                  preferredSize: const Size.fromHeight(3),
+                  child: Container(
+                    height: 3,
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: [
+                        SanadColors.gold.withValues(alpha: 0),
+                        SanadColors.gold,
+                        SanadColors.gold.withValues(alpha: 0),
+                      ]),
                     ),
-                    SizedBox(
-                      width: 75,
-                    )
-                  ],
+                  ),
                 ),
               ),
         body: MediaQuery.of(context).size.width > 600
@@ -70,7 +68,7 @@ class TemplatePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Container(
-                            color: Colors.green.shade200,
+                            color: SanadColors.line,
                             height: 60,
                             child: Row(
                               children: [

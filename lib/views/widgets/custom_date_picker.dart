@@ -1,3 +1,4 @@
+import 'package:grad/theme/sanad_colors.dart';
 import 'dart:io';
 import 'package:cupertino_ui/cupertino_ui.dart';
 import 'package:flutter/material.dart';
@@ -59,14 +60,14 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
                 enabledBorder: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   borderSide: BorderSide(
-                    color: Colors.green,
+                    color: SanadColors.primary,
                     width: 2.0,
                   ),
                 ),
                 focusedBorder: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   borderSide: BorderSide(
-                    color: Colors.green,
+                    color: SanadColors.primary,
                     width: 2.0,
                   ),
                 ),
@@ -108,7 +109,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
                           ),
                         ),
                         colorScheme: const ColorScheme.light(
-                          primary: Colors.green,
+                          primary: SanadColors.primary,
                           onPrimary: Colors.black,
                           brightness: Brightness.light,
                         ).copyWith(secondary: Colors.black), dialogTheme: DialogThemeData(backgroundColor: Colors.white),

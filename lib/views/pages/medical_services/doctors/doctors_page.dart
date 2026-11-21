@@ -1,3 +1,4 @@
+import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:grad/views/pages/medical_services/doctors/doctors_form_page.dart';
 import 'package:grad/views/widgets/doctor_card.dart';
@@ -45,7 +46,7 @@ class _DoctorsPageState extends State<DoctorsPage> {
                 "Doctors",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color.fromARGB(255, 11, 129, 62),
+                  color: SanadColors.primary,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
