@@ -34,3 +34,7 @@ A teal tile with the Arabic letter س beside "SANAD" (or سند in Arabic) in wi
 ## Avoid
 
 Isometric stock illustrations, bright greens, playful motion and decorative fonts.
+
+## Font files
+
+The bundled fonts are trimmed for the web, where Flutter downloads every font before the first frame: variable axes are pinned to the weights the app uses and each font keeps only the script it is used for (Latin or Arabic), with fontTools. Total: 932 KB to 254 KB.
