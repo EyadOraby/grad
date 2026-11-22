@@ -1,5 +1,6 @@
 import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:grad/views/widgets/civic_emblem.dart';
 import 'package:grad/state/sanad_store.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:grad/views/widgets/booking_sheet.dart';
@@ -47,8 +48,9 @@ class ActivityPage extends StatelessWidget {
                       .where((a) => a.status == AppointmentStatus.booked)
                       .length),
               if (appointments.isEmpty)
-                _Empty(context
-                    .t('Book a doctor or hospital from Medical services.')),
+                _Empty(
+                    context.t('Book a doctor or hospital from Medical services.'),
+                    Emblem.doctor),
               for (final a in appointments)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
@@ -86,15 +88,18 @@ class ActivityPage extends StatelessWidget {
                 ),
               _Header(context.t('Government requests'), requests.length),
               if (requests.isEmpty)
-                _Empty(context.t(
-                    'Renew your ID or apply for a services card from Government.')),
+                _Empty(
+                    context.t(
+                        'Renew your ID or apply for a services card from Government.'),
+                    Emblem.government),
               for (final r in requests)
                 Padding(
                     padding: const EdgeInsets.only(bottom: 10),
                     child: RequestCard(request: r)),
               _Header(context.t('Job applications'), applications.length),
               if (applications.isEmpty)
-                _Empty(context.t('Apply to jobs that suit you from Jobs.')),
+                _Empty(context.t('Apply to jobs that suit you from Jobs.'),
+                    Emblem.jobs),
               for (final a in applications)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
@@ -233,13 +238,26 @@ class _Header extends StatelessWidget {
       );
 }
 
+/// An empty section: the section's emblem beside a hint on where to start.
 class _Empty extends StatelessWidget {
-  const _Empty(this.text);
+  const _Empty(this.text, this.emblem);
   final String text;
+  final Emblem emblem;
 
   @override
-  Widget build(BuildContext context) =>
-      Text(context.t(text), style: TextStyle(color: SanadColors.inkMuted));
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: SanadCard(
+          child: Row(children: [
+            SizedBox(width: 52, height: 52, child: CivicEmblem(emblem)),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Text(context.t(text),
+                  style: const TextStyle(color: SanadColors.inkMuted, height: 1.4)),
+            ),
+          ]),
+        ),
+      );
 }
 
 class _Badge extends StatelessWidget {
