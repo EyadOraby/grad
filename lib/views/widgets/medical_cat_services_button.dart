@@ -1,5 +1,6 @@
 import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:grad/views/widgets/civic_emblem.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:grad/views/widgets/sanad_ui.dart';
 
@@ -34,12 +35,12 @@ class MedicalCategoryServicesButton extends StatelessWidget {
             Container(
               width: 72,
               height: 72,
-              padding: const EdgeInsets.all(10),
+              padding: EdgeInsets.zero,
               decoration: BoxDecoration(
-                color: SanadColors.primary.withValues(alpha: 0.08),
+                color: Colors.transparent,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Image.asset(serviceImage, fit: BoxFit.contain),
+              child: sanadArt(serviceImage),
             ),
             const SizedBox(height: 14),
             Text(

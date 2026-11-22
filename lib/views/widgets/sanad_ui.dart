@@ -1,5 +1,6 @@
 import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:grad/views/widgets/civic_emblem.dart';
 import 'package:grad/state/sanad_store.dart';
 import 'package:grad/theme/sanad_colors.dart';
 
@@ -150,7 +151,7 @@ class ProviderCard extends StatelessWidget {
                     color: SanadColors.surface,
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: Image.asset(image, fit: BoxFit.contain),
+                  child: sanadArt(image),
                 ),
                 const Spacer(),
                 RatingChip(rating: rating),

@@ -72,9 +72,9 @@ class JobCard extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          RichText(
+                          Text.rich(
                               textAlign: TextAlign.left,
-                              text: TextSpan(children: [
+                              TextSpan(children: [
                                 TextSpan(
                                   text: jobTitle,
                                   style: TextStyle(
@@ -87,9 +87,9 @@ class JobCard extends StatelessWidget {
                           SizedBox(
                             height: 5,
                           ),
-                          RichText(
+                          Text.rich(
                               textAlign: TextAlign.left,
-                              text: TextSpan(children: [
+                              TextSpan(children: [
                                 TextSpan(
                                   text: name,
                                   style: TextStyle(
@@ -121,9 +121,9 @@ class JobCard extends StatelessWidget {
                           SizedBox(
                             width: 5,
                           ),
-                          RichText(
+                          Text.rich(
                               textAlign: TextAlign.left,
-                              text: TextSpan(children: [
+                              TextSpan(children: [
                                 TextSpan(
                                   text: location,
                                   style: TextStyle(
@@ -145,9 +145,9 @@ class JobCard extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          RichText(
+                          Text.rich(
                               textAlign: TextAlign.left,
-                              text: TextSpan(children: [
+                              TextSpan(children: [
                                 TextSpan(
                                   text: jobTime,
                                   style: TextStyle(
@@ -169,9 +169,9 @@ class JobCard extends StatelessWidget {
                           SizedBox(
                             width: 10,
                           ),
-                          RichText(
+                          Text.rich(
                               textAlign: TextAlign.left,
-                              text: TextSpan(children: [
+                              TextSpan(children: [
                                 TextSpan(
                                   text: salary,
                                   style: TextStyle(
@@ -244,9 +244,9 @@ class JobCard extends StatelessWidget {
                       SizedBox(
                         width: 35,
                       ),
-                      RichText(
+                      Text.rich(
                           textAlign: TextAlign.left,
-                          text: TextSpan(children: [
+                          TextSpan(children: [
                             TextSpan(
                               text: applicants,
                               style: TextStyle(
@@ -259,9 +259,9 @@ class JobCard extends StatelessWidget {
                       SizedBox(
                         width: 5,
                       ),
-                      RichText(
+                      Text.rich(
                           textAlign: TextAlign.left,
-                          text: TextSpan(children: [
+                          TextSpan(children: [
                             TextSpan(
                               text: context.t("Applicants"),
                               style: TextStyle(

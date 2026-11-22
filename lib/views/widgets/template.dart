@@ -49,11 +49,25 @@ class TemplatePage extends StatelessWidget {
         iconTheme: const IconThemeData(color: SanadColors.ink),
         backgroundColor: SanadColors.surface,
         actions: [_accessibilityButton(context, SanadColors.ink)],
-        title: Image.asset('assets/sanad.JPG',
-            height: 40,
-            colorBlendMode: BlendMode.multiply,
-            color: SanadColors.surface,
-            semanticLabel: context.t('SANAD')),
+        title: Semantics(
+          label: context.t('SANAD'),
+          excludeSemantics: true,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: 30,
+                height: 30,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(color: SanadColors.primary, borderRadius: BorderRadius.circular(8)),
+                child: const Text('س', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700, height: 1.1)),
+              ),
+              const SizedBox(width: 8),
+              Text(context.t('SANAD'),
+                  style: const TextStyle(color: SanadColors.primary, fontSize: 20, fontWeight: FontWeight.w700, letterSpacing: 2)),
+            ],
+          ),
+        ),
         // A thin gold rule under the header, a nod to official documents.
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(3),

@@ -14,8 +14,12 @@ import 'package:grad/views/pages/medical_services/radiology/radio_centers_page.d
 void main() {
   // Tests use a wide placeholder font by default; load the app's real font so layout matches the app.
   setUpAll(() async {
-    final font = File('assets/Montserrat-VariableFont_wght.ttf').readAsBytes().then((b) => ByteData.sublistView(b));
-    await (FontLoader('Montserrat')..addFont(font)).load();
+    Future<ByteData> load(String path) => File(path).readAsBytes().then((b) => ByteData.sublistView(b));
+    await (FontLoader('Atkinson')
+          ..addFont(load('assets/fonts/AtkinsonHyperlegible-Regular.ttf'))
+          ..addFont(load('assets/fonts/AtkinsonHyperlegible-Bold.ttf')))
+        .load();
+    await (FontLoader('NotoSansArabic')..addFont(load('assets/fonts/NotoSansArabic.ttf'))).load();
   });
 
   final screens = <String, Widget Function()>{
@@ -41,7 +45,7 @@ void main() {
           addTearDown(tester.view.reset);
 
           await tester.pumpWidget(MaterialApp(
-            theme: ThemeData(fontFamily: 'Montserrat'),
+            theme: ThemeData(fontFamily: 'Atkinson', fontFamilyFallback: const ['NotoSansArabic']),
             home: Directionality(
               textDirection: arabic ? TextDirection.rtl : TextDirection.ltr,
               child: entry.value(),

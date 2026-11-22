@@ -1,6 +1,7 @@
 import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:grad/views/widgets/civic_emblem.dart';
 import 'package:grad/views/pages/medical_services/medical_services_page.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:grad/views/widgets/drawer_mobile.dart';
@@ -25,13 +26,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext scontext) {
-    final deviceSize = MediaQuery.of(context).size;
-    var highlightsArray = [
-      "assets/e-gov_pic.png",
-      "assets/medical-service.jpeg",
-      "assets/job-services.jpg",
-      "assets/ALLY.png"
-    ];
     var highlightsTitleArray = [
       context.t("Governmental Services"),
       context.t("Medical Services"),
@@ -68,55 +62,15 @@ class _HomePageState extends State<HomePage> {
               child: CarouselSlider(
                 items: [
                   for (int i = 0; i < 4; i++)
-                    Card(
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      color: Colors.blue.shade400,
-                      elevation: 2,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Stack(
-                        children: [
-                          Container(
-                            alignment: Alignment.bottomCenter,
-                            width: deviceSize.width * 0.9,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                  fit: BoxFit.fill,
-                                  image: AssetImage(highlightsArray[i])),
-                            ),
-                            child: Container(
-                              width: deviceSize.width,
-                              height: 40,
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
-                                    bottomLeft: Radius.circular(10),
-                                    bottomRight: Radius.circular(10)),
-                                color:
-                                    SanadColors.primary.withValues(alpha: 0.85),
-                              ),
-                              child: Text(
-                                highlightsTitleArray[i],
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  height: 1,
-                                ),
-                              ),
-                            ),
-                          ),
-                          // Positioned(
-                          //   top: 10,
-                          //   right: 20,
-                          //   child: Image.asset(
-                          //     "assets/new_logo_hq-removebg-preview.png",
-                          //     width: 70,
-                          //   ),
-                          // )
-                        ],
-                      ),
+                    _HighlightCard(
+                      emblem: const [Emblem.government, Emblem.medical, Emblem.jobs, Emblem.assistant][i],
+                      title: highlightsTitleArray[i],
+                      subtitle: [
+                        context.t('ID renewal and integrated services cards, tracked end to end'),
+                        context.t('Doctors, hospitals and therapy centres you can book'),
+                        context.t('Jobs and courses matched to you'),
+                        context.t('A voice assistant for every service'),
+                      ][i],
                     )
                 ],
                 options: CarouselOptions(
@@ -188,6 +142,40 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavBar: BottomNavBar(
         index: 0,
+      ),
+    );
+  }
+}
+
+class _HighlightCard extends StatelessWidget {
+  const _HighlightCard({required this.emblem, required this.title, required this.subtitle});
+
+  final Emblem emblem;
+  final String title;
+  final String subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.fromLTRB(20, 18, 14, 18),
+      decoration: BoxDecoration(color: SanadColors.primary, borderRadius: BorderRadius.circular(16)),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(title, style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w700, height: 1.2)),
+                const SizedBox(height: 6),
+                Text(subtitle, maxLines: 3, overflow: TextOverflow.ellipsis, style: TextStyle(color: Colors.white.withValues(alpha: .82), fontSize: 14, height: 1.4)),
+              ],
+            ),
+          ),
+          const SizedBox(width: 12),
+          SizedBox(width: 92, height: 92, child: CivicEmblem(emblem)),
+        ],
       ),
     );
   }

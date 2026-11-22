@@ -1,5 +1,6 @@
 import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:grad/views/widgets/civic_emblem.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:grad/views/widgets/sanad_ui.dart';
 
@@ -32,14 +33,14 @@ class ServicesButton extends StatelessWidget {
             Container(
               width: 64,
               height: 64,
-              padding: const EdgeInsets.all(10),
+              padding: EdgeInsets.zero,
               decoration: BoxDecoration(
-                color: SanadColors.primary.withValues(alpha: 0.08),
+                color: Colors.transparent,
                 borderRadius: BorderRadius.circular(18),
               ),
               child: serviceImage == null
                   ? null
-                  : Image.asset(serviceImage!, fit: BoxFit.contain),
+                  : sanadArt(serviceImage!),
             ),
             const SizedBox(width: 14),
             Expanded(

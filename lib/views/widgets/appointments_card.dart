@@ -56,9 +56,9 @@ class AppointmentsCard extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              RichText(
+                              Text.rich(
                                   textAlign: TextAlign.left,
-                                  text: TextSpan(children: [
+                                  TextSpan(children: [
                                     TextSpan(
                                       text: dateNum,
                                       style: TextStyle(
@@ -71,9 +71,9 @@ class AppointmentsCard extends StatelessWidget {
                               SizedBox(
                                 height: 5,
                               ),
-                              RichText(
+                              Text.rich(
                                   textAlign: TextAlign.left,
-                                  text: TextSpan(children: [
+                                  TextSpan(children: [
                                     TextSpan(
                                       text: dateText,
                                       style: TextStyle(
@@ -96,9 +96,9 @@ class AppointmentsCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      RichText(
+                      Text.rich(
                           textAlign: TextAlign.left,
-                          text: TextSpan(children: [
+                          TextSpan(children: [
                             TextSpan(
                               text: time,
                               style: TextStyle(
@@ -111,9 +111,9 @@ class AppointmentsCard extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      RichText(
+                      Text.rich(
                           textAlign: TextAlign.left,
-                          text: TextSpan(children: [
+                          TextSpan(children: [
                             TextSpan(
                               text: name,
                               style: TextStyle(
@@ -126,9 +126,9 @@ class AppointmentsCard extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      RichText(
+                      Text.rich(
                           textAlign: TextAlign.left,
-                          text: TextSpan(children: [
+                          TextSpan(children: [
                             TextSpan(
                               text: description,
                               style: TextStyle(

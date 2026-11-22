@@ -95,9 +95,9 @@ class PhysioCenterCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          RichText(
+                          Text.rich(
                               textAlign: TextAlign.left,
-                              text: TextSpan(children: [
+                              TextSpan(children: [
                                 TextSpan(
                                   text: name,
                                   style: TextStyle(
@@ -124,9 +124,9 @@ class PhysioCenterCard extends StatelessWidget {
                                 width: 5,
                               ),
                               Flexible(
-                                  child: RichText(
+                                  child: Text.rich(
                                       textAlign: TextAlign.left,
-                                      text: TextSpan(children: [
+                                      TextSpan(children: [
                                         TextSpan(
                                           text: location,
                                           style: TextStyle(
@@ -194,9 +194,9 @@ class PhysioCenterCard extends StatelessWidget {
                             width: 10,
                           ),
                           Flexible(
-                              child: RichText(
+                              child: Text.rich(
                                   textAlign: TextAlign.left,
-                                  text: TextSpan(children: [
+                                  TextSpan(children: [
                                     TextSpan(
                                       text: workinDays,
                                       style: TextStyle(
@@ -224,9 +224,9 @@ class PhysioCenterCard extends StatelessWidget {
                             width: 10,
                           ),
                           Flexible(
-                              child: RichText(
+                              child: Text.rich(
                                   textAlign: TextAlign.left,
-                                  text: TextSpan(children: [
+                                  TextSpan(children: [
                                     TextSpan(
                                       text: workingHours,
                                       style: TextStyle(
@@ -288,9 +288,9 @@ class PhysioCenterCard extends StatelessWidget {
                       SizedBox(
                         width: 115,
                       ),
-                      RichText(
+                      Text.rich(
                           textAlign: TextAlign.left,
-                          text: TextSpan(children: [
+                          TextSpan(children: [
                             TextSpan(
                               text: rating,
                               style: TextStyle(

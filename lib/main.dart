@@ -64,7 +64,8 @@ class MyApp extends StatelessWidget {
       title: 'SANAD',
       theme: ThemeData(
         colorScheme: scheme,
-        fontFamily: 'Montserrat',
+        fontFamily: 'Atkinson',
+        fontFamilyFallback: const ['NotoSansArabic'],
         scaffoldBackgroundColor: hc ? Colors.white : SanadColors.surface,
         cardTheme: CardThemeData(
           color: SanadColors.card,

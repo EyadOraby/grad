@@ -233,6 +233,10 @@ const sanadArabic = <String, String>{
   'Orthopedics': 'جراحة العظام',
   'Giza, Egypt': 'الجيزة، مصر',
   'Cairo, Egypt': 'القاهرة، مصر',
+  'ID renewal and integrated services cards, tracked end to end': 'تجديد البطاقة وبطاقة الخدمات المتكاملة، مع متابعة كل خطوة',
+  'Doctors, hospitals and therapy centres you can book': 'أطباء ومستشفيات ومراكز علاج يمكنك الحجز فيها',
+  'Jobs and courses matched to you': 'وظائف ودورات تناسبك',
+  'A voice assistant for every service': 'مساعد صوتي لكل خدمة',
   'Pending Applications': 'تقديمات قيد الانتظار',
 };
 

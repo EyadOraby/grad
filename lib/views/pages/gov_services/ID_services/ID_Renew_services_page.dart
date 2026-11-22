@@ -2,6 +2,7 @@ import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/views/widgets/booking_sheet.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:grad/views/widgets/civic_emblem.dart';
 import 'package:grad/views/widgets/drawer_mobile.dart';
 
 import '../../../widgets/bottom_nav_bar_widget.dart';
@@ -107,9 +108,9 @@ class _IDServicesPageState extends State<IDServicesPage> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    RichText(
+                                    Text.rich(
                                         textAlign: TextAlign.center,
-                                        text: TextSpan(children: [
+                                        TextSpan(children: [
                                           TextSpan(
                                             text: context.t(
                                                 "National ID Card Renewal Application"),
@@ -123,13 +124,7 @@ class _IDServicesPageState extends State<IDServicesPage> {
                                     SizedBox(
                                       height: 15,
                                     ),
-                                    Image(
-                                      alignment: Alignment.center,
-                                      image:
-                                          AssetImage("assets/renew-card.png"),
-                                      height: 80,
-                                      width: 80,
-                                    ),
+                                    const SizedBox(height: 80, width: 80, child: CivicEmblem(Emblem.renewCard)),
                                   ],
                                 ),
                                 SizedBox(
@@ -177,9 +172,9 @@ class _IDServicesPageState extends State<IDServicesPage> {
                             child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            RichText(
+                            Text.rich(
                                 textAlign: TextAlign.center,
-                                text: TextSpan(children: [
+                                TextSpan(children: [
                                   TextSpan(
                                     text:
                                         "Follow up your \npending application",
@@ -195,9 +190,9 @@ class _IDServicesPageState extends State<IDServicesPage> {
                             ),
                             SizedBox(
                               width: double.infinity,
-                              child: RichText(
+                              child: Text.rich(
                                   textAlign: TextAlign.center,
-                                  text: TextSpan(children: [
+                                  TextSpan(children: [
                                     TextSpan(
                                       text: context.t(
                                           "Enter your application number to know the status of your application"),

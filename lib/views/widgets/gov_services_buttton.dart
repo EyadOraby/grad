@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grad/views/widgets/civic_emblem.dart';
 
 class GovServicesButton extends StatelessWidget {
   final String serviceTitle;
@@ -50,9 +51,9 @@ class GovServicesButton extends StatelessWidget {
                       child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      RichText(
+                      Text.rich(
                           textAlign: TextAlign.center,
-                          text: TextSpan(children: [
+                          TextSpan(children: [
                             TextSpan(
                               text: serviceTitle,
                               style: TextStyle(
@@ -67,9 +68,9 @@ class GovServicesButton extends StatelessWidget {
                       ),
                       SizedBox(
                         width: double.infinity,
-                        child: RichText(
+                        child: Text.rich(
                             textAlign: TextAlign.center,
-                            text: TextSpan(children: [
+                            TextSpan(children: [
                               TextSpan(
                                 text: serviceDescription,
                                 style: TextStyle(
@@ -83,12 +84,7 @@ class GovServicesButton extends StatelessWidget {
                       SizedBox(
                         height: 15,
                       ),
-                      Image(
-                        alignment: Alignment.center,
-                        image: AssetImage(serviceImage),
-                        height: 80,
-                        width: 80,
-                      ),
+                      SizedBox(height: 80, width: 80, child: sanadArt(serviceImage)),
                     ],
                   )),
                 ],

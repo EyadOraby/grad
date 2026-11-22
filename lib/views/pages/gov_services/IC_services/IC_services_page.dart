@@ -154,9 +154,9 @@ class _ICServicesPageState extends State<ICServicesPage> {
                             child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            RichText(
+                            Text.rich(
                                 textAlign: TextAlign.center,
-                                text: TextSpan(children: [
+                                TextSpan(children: [
                                   TextSpan(
                                     text:
                                         "Follow up your \npending application",
@@ -172,9 +172,9 @@ class _ICServicesPageState extends State<ICServicesPage> {
                             ),
                             SizedBox(
                               width: double.infinity,
-                              child: RichText(
+                              child: Text.rich(
                                   textAlign: TextAlign.center,
-                                  text: TextSpan(children: [
+                                  TextSpan(children: [
                                     TextSpan(
                                       text: context.t(
                                           "Enter your application number to know the status of your application"),
