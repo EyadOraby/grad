@@ -33,7 +33,7 @@ void main() {
   };
 
   for (final arabic in [false, true]) {
-    for (final size in [const Size(390, 844), const Size(1280, 800)]) {
+    for (final size in [const Size(390, 844), const Size(820, 1180), const Size(1280, 800)]) {
       final label = '${arabic ? 'ar' : 'en'} ${size.width.toInt()}px';
       for (final entry in screens.entries) {
         testWidgets('${entry.key} renders ($label)', (tester) async {
