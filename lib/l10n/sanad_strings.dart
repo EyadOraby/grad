@@ -287,6 +287,7 @@ const sanadArabic = <String, String>{
   'Closed': 'مغلقة',
   'All': 'الكل',
   'Nothing here.': 'لا شيء هنا.',
+  'Reset to defaults': 'استعادة الإعدادات الافتراضية',
   'Pending Applications': 'تقديمات قيد الانتظار',
 };
 

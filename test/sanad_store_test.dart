@@ -97,4 +97,13 @@ void main() {
     s.submitRequest(service: 'X');
     expect(calls, 1);
   });
+
+  test('resetting accessibility keeps the language', () {
+    final s = fresh();
+    s.updateSettings(const AccessibilitySettings(textScale: 1.4, highContrast: true, language: 'ar'));
+    s.updateSettings(AccessibilitySettings(language: s.settings.language));
+    expect(s.settings.textScale, 1);
+    expect(s.settings.highContrast, isFalse);
+    expect(s.settings.language, 'ar');
+  });
 }

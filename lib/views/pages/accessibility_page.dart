@@ -113,6 +113,15 @@ class AccessibilityPage extends StatelessWidget {
                       ),
                     ]),
               ),
+              const SizedBox(height: 12),
+              Center(
+                child: TextButton.icon(
+                  onPressed: () => sanadStore.updateSettings(AccessibilitySettings(
+                      language: sanadStore.settings.language)),
+                  icon: const Icon(Icons.restart_alt_rounded),
+                  label: Text(context.t('Reset to defaults')),
+                ),
+              ),
             ],
           );
         },
