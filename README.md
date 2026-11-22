@@ -4,6 +4,10 @@
 
 **Try it in the browser:** [eyadoraby.github.io/grad](https://eyadoraby.github.io/grad/) · [with demo activity](https://eyadoraby.github.io/grad/?demo=1&screen=activity) · [staff portal](https://eyadoraby.github.io/grad/?demo=1&screen=staff)
 
+| Home | Medical services | Staff portal |
+|---|---|---|
+| ![Home](docs/screenshots/sanad-home.png) | ![Medical services](docs/screenshots/sanad-medical.png) | ![Staff portal](docs/screenshots/sanad-staff.jpg) |
+
 ## For citizens
 
 - **Government services**: renew a national ID or apply for an integrated services card; every request gets a reference number and a status (submitted, under review, approved, ready for pickup)
@@ -28,6 +32,12 @@ flutter run -d chrome  # the web version
 ```
 
 On the web, `?screen=` opens a section directly, for example `?screen=medical`, `?screen=doctors` or `?screen=jobs`. The full list is in [`lib/deep_links.dart`](lib/deep_links.dart).
+
+## Tests and CI
+
+- `flutter test`: store logic plus smoke tests that render every screen in English and Arabic at phone (390 px) and desktop (1280 px) widths, failing on any layout overflow. 85 tests, 75% line coverage.
+- `flutter analyze` reports no errors or warnings.
+- CI runs analyze, tests and a web build on every pull request, then deploys the web demo and builds the Android app from `main`.
 
 ## Notes
 
