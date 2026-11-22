@@ -4,6 +4,8 @@
 
 **Try it in the browser:** [eyadoraby.github.io/grad](https://eyadoraby.github.io/grad/) · [with demo activity](https://eyadoraby.github.io/grad/?demo=1&screen=activity) · [staff portal](https://eyadoraby.github.io/grad/?demo=1&screen=staff)
 
+Redesigned in November 2026 in a calm civic style: deep teal and sand, Atkinson Hyperlegible (built for low-vision readers) and geometric emblems drawn in code. See [docs/BRAND.md](docs/BRAND.md).
+
 | Home | Medical services | Staff portal |
 |---|---|---|
 | ![Home](docs/screenshots/sanad-home.png) | ![Medical services](docs/screenshots/sanad-medical.png) | ![Staff portal](docs/screenshots/sanad-staff.jpg) |
