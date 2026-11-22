@@ -6,7 +6,8 @@ import 'package:grad/theme/sanad_colors.dart';
 import 'package:grad/views/pages/accessibility_page.dart';
 import 'package:grad/views/pages/home_page.dart';
 import 'package:grad/views/pages/sign_up_page.dart';
-import 'package:grad/views/pages/staff/staff_portal.dart';
+import 'package:grad/views/pages/staff/staff_portal.dart' deferred as staff;
+import 'package:grad/views/widgets/deferred_view.dart';
 import 'package:grad/views/widgets/sanad_ui.dart';
 
 /// Egyptian national IDs are 14 digits.
@@ -209,7 +210,7 @@ class _LoginPageState extends State<LoginPage> {
           icon: Icons.account_balance_outlined,
           title: 'Staff',
           note: context.t('Review requests, appointments and applications'),
-          onTap: () => _go(const StaffPortal()),
+          onTap: () => _go(DeferredView(load: staff.loadLibrary, builder: () => staff.StaffPortal())),
         ),
         const SizedBox(height: 12),
         Wrap(

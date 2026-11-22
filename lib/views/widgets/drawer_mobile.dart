@@ -9,7 +9,8 @@ import 'package:grad/views/pages/home_page.dart';
 import 'package:grad/views/pages/jobs_services/jobs_page.dart';
 import 'package:grad/views/pages/login_page.dart';
 import 'package:grad/views/pages/medical_services/medical_services_page.dart';
-import 'package:grad/views/pages/staff/staff_portal.dart';
+import 'package:grad/views/pages/staff/staff_portal.dart' deferred as staff;
+import 'package:grad/views/widgets/deferred_view.dart';
 
 /// Navigation for the citizen app: the phone drawer and the desktop side menu.
 class DrawerMobile extends StatelessWidget {
@@ -78,7 +79,7 @@ class DrawerMobile extends StatelessWidget {
         _Item(Icons.accessibility_new_rounded, context.t('Accessibility'),
             () => open(AccessibilityPage(), replace: false)),
         _Item(Icons.account_balance_outlined, context.t('Staff portal'),
-            () => open(StaffPortal(), replace: false)),
+            () => open(DeferredView(load: staff.loadLibrary, builder: () => staff.StaffPortal()), replace: false)),
         _Item(
           Icons.logout_rounded,
           context.t('Sign out'),
