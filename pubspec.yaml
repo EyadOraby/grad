@@ -43,10 +43,11 @@ dependencies:
 
   #gsform: ^0.2.0
 
-  cupertino_ui: any
+  cupertino_ui: ^1.1.7
   intl: any
   flutter_localizations:
     sdk: flutter
+  material_ui: ^1.11.1
 dev_dependencies:
   flutter_native_splash: ^2.4.6
   flutter_launcher_icons: ^0.14.4

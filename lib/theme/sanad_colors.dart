@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// SANAD's palette: a deep emerald with a gold accent, calm surfaces and
 /// clear ink, in the spirit of modern government services.

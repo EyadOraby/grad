@@ -2,7 +2,7 @@ import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/state/sanad_store.dart';
 import 'package:grad/theme/sanad_colors.dart';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class JobCard extends StatelessWidget {
   final String name;

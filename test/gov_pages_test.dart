@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:grad/state/sanad_store.dart';
 import 'package:grad/views/pages/activity_page.dart';
-import 'package:grad/views/pages/gov_services/IC_services/IC_services_page.dart';
-import 'package:grad/views/pages/gov_services/IC_services/new_IC_form_page.dart';
+import 'package:grad/views/pages/gov_services/IC_services/ic_services_page.dart';
+import 'package:grad/views/pages/gov_services/IC_services/new_ic_form_page.dart';
 
 Future<void> pump(WidgetTester tester, Widget page) async {
   tester.view.physicalSize = const Size(1280, 1600);

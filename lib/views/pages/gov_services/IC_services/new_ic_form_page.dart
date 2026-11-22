@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:grad/views/widgets/booking_sheet.dart';
@@ -39,8 +39,9 @@ class _NewICFormPageState extends State<NewICFormPage> {
     final days = <DateTime>[];
     var d = _today.add(const Duration(days: 1));
     while (days.length < 10) {
-      if (d.weekday != DateTime.friday && d.weekday != DateTime.saturday)
+      if (d.weekday != DateTime.friday && d.weekday != DateTime.saturday) {
         days.add(d);
+      }
       d = d.add(const Duration(days: 1));
     }
     return days;

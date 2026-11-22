@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:grad/views/pages/login_page.dart';
 
 class SplashPage extends StatefulWidget {

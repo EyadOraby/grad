@@ -1,6 +1,6 @@
 import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:grad/views/pages/login_page.dart';
 import 'package:grad/views/widgets/custom_text_field.dart';
 
@@ -14,7 +14,7 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   TextEditingController nationalController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController re_passwordController = TextEditingController();
+  TextEditingController rePasswordController = TextEditingController();
 
   TextEditingController emailController = TextEditingController();
 
@@ -43,7 +43,7 @@ class _SignUpPageState extends State<SignUpPage> {
     nationalController.dispose();
     passwordController.dispose();
     emailController.dispose();
-    re_passwordController.dispose();
+    rePasswordController.dispose();
     super.dispose();
   }
 
@@ -274,7 +274,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       //         onEditingComplete: () {
                                       //           node.unfocus();
                                       //         },
-                                      //         controller: re_passwordController,
+                                      //         controller: rePasswordController,
                                       //         textInputAction: TextInputAction
                                       //             .next,
                                       //         keyboardType: TextInputType
@@ -318,7 +318,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                           width: 0.95,
                                           hintText:
                                               context.t('Re-Enter Password...'),
-                                          controller: re_passwordController,
+                                          controller: rePasswordController,
                                           textInputAction: TextInputAction.next,
                                           keyboardType:
                                               TextInputType.visiblePassword,

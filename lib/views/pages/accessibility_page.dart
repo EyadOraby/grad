@@ -1,5 +1,5 @@
 import 'package:grad/l10n/sanad_strings.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:grad/state/sanad_store.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:grad/views/widgets/sanad_ui.dart';

@@ -1,6 +1,6 @@
 import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:grad/views/widgets/civic_emblem.dart';
 import 'package:grad/views/pages/medical_services/medical_services_page.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -58,31 +58,29 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 10,
             ),
-            Container(
-              child: CarouselSlider(
-                items: [
-                  for (int i = 0; i < 4; i++)
-                    _HighlightCard(
-                      emblem: const [Emblem.government, Emblem.medical, Emblem.jobs, Emblem.assistant][i],
-                      title: highlightsTitleArray[i],
-                      subtitle: [
-                        context.t('ID renewal and integrated services cards, tracked end to end'),
-                        context.t('Doctors, hospitals and therapy centres you can book'),
-                        context.t('Jobs and courses matched to you'),
-                        context.t('A voice assistant for every service'),
-                      ][i],
-                    )
-                ],
-                options: CarouselOptions(
-                  height: 160,
-                  //aspectRatio: 16 / 9,
-                  viewportFraction: 1,
-                  initialPage: 0,
-                  enableInfiniteScroll: false,
-                  autoPlay: true,
-                  enlargeCenterPage: true,
-                  scrollDirection: Axis.horizontal,
-                ),
+            CarouselSlider(
+              items: [
+                for (int i = 0; i < 4; i++)
+                  _HighlightCard(
+                    emblem: const [Emblem.government, Emblem.medical, Emblem.jobs, Emblem.assistant][i],
+                    title: highlightsTitleArray[i],
+                    subtitle: [
+                      context.t('ID renewal and integrated services cards, tracked end to end'),
+                      context.t('Doctors, hospitals and therapy centres you can book'),
+                      context.t('Jobs and courses matched to you'),
+                      context.t('A voice assistant for every service'),
+                    ][i],
+                  )
+              ],
+              options: CarouselOptions(
+                height: 160,
+                //aspectRatio: 16 / 9,
+                viewportFraction: 1,
+                initialPage: 0,
+                enableInfiniteScroll: false,
+                autoPlay: true,
+                enlargeCenterPage: true,
+                scrollDirection: Axis.horizontal,
               ),
             ),
             // if (homeViewModel.highlights.isNotEmpty)

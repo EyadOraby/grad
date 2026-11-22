@@ -1,5 +1,5 @@
 import 'package:grad/theme/sanad_colors.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class AppointmentsCard extends StatelessWidget {
   final String dateNum;

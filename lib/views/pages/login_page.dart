@@ -1,5 +1,5 @@
 import 'package:grad/l10n/sanad_strings.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:grad/views/widgets/civic_emblem.dart';
 import 'package:grad/state/sanad_store.dart';
 import 'package:grad/theme/sanad_colors.dart';
@@ -14,8 +14,9 @@ import 'package:grad/views/widgets/sanad_ui.dart';
 String? validateNationalId(String? v) {
   final digits = (v ?? '').trim();
   if (digits.isEmpty) return 'Please enter your national ID';
-  if (!RegExp(r'^\d{14}$').hasMatch(digits))
+  if (!RegExp(r'^\d{14}$').hasMatch(digits)) {
     return 'A national ID is 14 digits';
+  }
   return null;
 }
 

@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:grad/views/pages/accessibility_page.dart';
 import 'package:grad/views/pages/activity_page.dart';
-import 'package:grad/views/pages/gov_services/IC_services/IC_services_page.dart';
+import 'package:grad/views/pages/gov_services/IC_services/ic_services_page.dart';
 import 'package:grad/views/pages/staff/staff_portal.dart' deferred as staff;
 import 'package:grad/views/widgets/deferred_view.dart';
-import 'package:grad/views/pages/gov_services/ID_services/ID_Renew_services_page.dart';
+import 'package:grad/views/pages/gov_services/ID_services/id_renew_services_page.dart';
 import 'package:grad/views/pages/gov_services/gov_services_page.dart';
 import 'package:grad/views/pages/home_page.dart';
 import 'package:grad/views/pages/login_page.dart';

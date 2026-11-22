@@ -1,5 +1,5 @@
 import 'package:grad/l10n/sanad_strings.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:grad/views/widgets/civic_emblem.dart';
 import 'package:grad/state/sanad_store.dart';
 import 'package:grad/theme/sanad_colors.dart';
@@ -206,13 +206,22 @@ class RequestCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 6),
+          // Each label gets an equal share and may wrap, so large text
+          // (up to 160%) never pushes the row off the screen.
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              for (final s in steps)
-                Text(context.t(s.label),
-                    style:
-                        TextStyle(fontSize: 10.5, color: SanadColors.inkMuted))
+              for (var i = 0; i < steps.length; i++)
+                Expanded(
+                  child: Text(context.t(steps[i].label),
+                      textAlign: i == 0
+                          ? TextAlign.start
+                          : i == steps.length - 1
+                              ? TextAlign.end
+                              : TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 10.5, color: SanadColors.inkMuted)),
+                ),
             ],
           ),
         ],

@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:cupertino_ui/cupertino_ui.dart'
+    show GlobalCupertinoLocalizations;
+import 'package:flutter_localizations/flutter_localizations.dart'
+    show GlobalWidgetsLocalizations;
 import 'package:grad/deep_links.dart';
 import 'package:grad/state/sanad_store.dart';
 import 'package:grad/views/pages/accessibility_page.dart';
@@ -54,10 +57,17 @@ class MyApp extends StatelessWidget {
 
   Widget _app(AccessibilitySettings settings) {
     final hc = settings.highContrast;
-    final base = ColorScheme.fromSeed(seedColor: SanadColors.primary, primary: SanadColors.primary, secondary: SanadColors.gold);
+    final base = ColorScheme.fromSeed(
+        seedColor: SanadColors.primary,
+        primary: SanadColors.primary,
+        secondary: SanadColors.gold);
     // High contrast: darker primary, pure black text and visible outlines.
     final scheme = hc
-        ? base.copyWith(primary: const Color(0xFF003B2F), onSurface: Colors.black, outline: Colors.black, onSurfaceVariant: Colors.black)
+        ? base.copyWith(
+            primary: const Color(0xFF003B2F),
+            onSurface: Colors.black,
+            outline: Colors.black,
+            onSurfaceVariant: Colors.black)
         : base;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -70,7 +80,8 @@ class MyApp extends StatelessWidget {
         cardTheme: CardThemeData(
           color: SanadColors.card,
           elevation: 0,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.transparent,
