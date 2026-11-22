@@ -162,6 +162,13 @@ class RequestCard extends StatelessWidget {
               Text(
                   '${context.t('Ref')} ${request.reference} · ${context.t(request.citizen)}',
                   style: TextStyle(color: SanadColors.inkMuted, fontSize: 13)),
+              if (request.details.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(top: 4),
+                  child: Text(request.details,
+                      style: const TextStyle(
+                          color: SanadColors.ink, fontSize: 13, height: 1.35)),
+                ),
             ]),
           ),
           _StatusText(context.t(request.status.label),

@@ -242,14 +242,49 @@ class _Overview extends StatelessWidget {
   }
 }
 
-class _Requests extends StatelessWidget {
+class _Requests extends StatefulWidget {
   const _Requests();
 
   @override
+  State<_Requests> createState() => _RequestsState();
+}
+
+class _RequestsState extends State<_Requests> {
+  /// null = all, true = still open, false = closed (ready, approved or rejected).
+  bool? _open = true;
+
+  bool _isOpen(ServiceRequest r) => r.status.next != null;
+
+  Future<void> _reject(ServiceRequest r) async {
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(context.t('Reject this request?')),
+        content: Text('${context.t(r.service)} · ${r.reference}'),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context, false), child: Text(context.t('Cancel'))),
+          FilledButton(onPressed: () => Navigator.pop(context, true), child: Text(context.t('Reject'))),
+        ],
+      ),
+    );
+    if (ok == true) sanadStore.rejectRequest(r.reference);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final list = [...sanadStore.requests]
-      ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
-    return Column(children: [
+    final all = [...sanadStore.requests]..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+    final list = _open == null ? all : all.where((r) => _isOpen(r) == _open).toList();
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Wrap(spacing: 8, children: [
+        for (final (value, label) in [(true, 'Open'), (false, 'Closed'), (null, 'All')])
+          ChoiceChip(
+            label: Text('${context.t(label)} (${value == null ? all.length : all.where((r) => _isOpen(r) == value).length})'),
+            selected: _open == value,
+            onSelected: (_) => setState(() => _open = value),
+          ),
+      ]),
+      const SizedBox(height: 12),
+      if (list.isEmpty) Text(context.t('Nothing here.')),
       for (final r in list)
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
@@ -262,12 +297,12 @@ class _Requests extends StatelessWidget {
                       onPressed: () => sanadStore.advanceRequest(r.reference),
                       child: Text(switch (r.status.next!) {
                         RequestStatus.underReview => context.t('Start review'),
-                        RequestStatus.approved => 'Approve',
+                        RequestStatus.approved => context.t('Approve'),
                         _ => context.t('Mark ready for pickup'),
                       }),
                     ),
                     OutlinedButton(
-                      onPressed: () => sanadStore.rejectRequest(r.reference),
+                      onPressed: () => _reject(r),
                       child: Text(context.t('Reject')),
                     ),
                   ]),

@@ -282,6 +282,11 @@ const sanadArabic = <String, String>{
   'Fri': 'الجمعة',
   'Sat': 'السبت',
   'Sun': 'الأحد',
+  'Reject this request?': 'رفض هذا الطلب؟',
+  'Open': 'مفتوحة',
+  'Closed': 'مغلقة',
+  'All': 'الكل',
+  'Nothing here.': 'لا شيء هنا.',
   'Pending Applications': 'تقديمات قيد الانتظار',
 };
 
