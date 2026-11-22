@@ -48,6 +48,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 dev_dependencies:
+  flutter_native_splash: ^2.4.6
   flutter_launcher_icons: ^0.14.4
   flutter_test:
     sdk: flutter
@@ -122,3 +123,13 @@ flutter_launcher_icons:
     image_path: "assets/app_icon.png"
     background_color: "#0E4E5C"
     theme_color: "#0E4E5C"
+
+# Splash screen: `dart run flutter_native_splash:create` regenerates it for Android, iOS and the web.
+flutter_native_splash:
+  color: "#0E4E5C"
+  image: assets/app_icon.png
+  android_12:
+    color: "#0E4E5C"
+    image: assets/app_icon.png
+  web: true
+  fullscreen: false

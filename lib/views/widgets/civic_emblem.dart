@@ -178,3 +178,44 @@ class _EmblemPainter extends CustomPainter {
   @override
   bool shouldRepaint(_EmblemPainter old) => old.emblem != emblem;
 }
+
+/// The SANAD wordmark: a teal tile with the Arabic letter س beside the name.
+class SanadWordmark extends StatelessWidget {
+  const SanadWordmark({super.key, this.size = 30, this.name = 'SANAD', this.light = false});
+
+  /// Height of the tile; the name scales with it.
+  final double size;
+  final String name;
+
+  /// White name, for dark backgrounds.
+  final bool light;
+
+  @override
+  Widget build(BuildContext context) => Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: size,
+            height: size,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: light ? Colors.white : SanadColors.primary,
+              borderRadius: BorderRadius.circular(size * .27),
+            ),
+            child: Text('س',
+                style: TextStyle(
+                    color: light ? SanadColors.primary : Colors.white,
+                    fontSize: size * .6,
+                    fontWeight: FontWeight.w700,
+                    height: 1.1)),
+          ),
+          SizedBox(width: size * .27),
+          Text(name,
+              style: TextStyle(
+                  color: light ? Colors.white : SanadColors.primary,
+                  fontSize: size * .67,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: size * .067)),
+        ],
+      );
+}

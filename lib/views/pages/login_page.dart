@@ -1,5 +1,6 @@
 import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:grad/views/widgets/civic_emblem.dart';
 import 'package:grad/state/sanad_store.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:grad/views/pages/accessibility_page.dart';
@@ -66,8 +67,14 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.fromLTRB(22, 20, 22, 28),
                     child: Center(
                       child: Column(children: [
-                        Image.asset('assets/new_logo_hq-removebg-preview.png',
-                            height: 130, semanticLabel: context.t('SANAD')),
+                        Semantics(
+                          label: context.t('SANAD'),
+                          excludeSemantics: true,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 18),
+                            child: SanadWordmark(size: 52, name: context.t('SANAD')),
+                          ),
+                        ),
                         const SizedBox(height: 6),
                         form,
                       ]),
@@ -277,12 +284,10 @@ class _Hero extends StatelessWidget {
           ),
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Container(
-            padding: EdgeInsets.all(14),
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(20)),
-            child: Image.asset('assets/new_logo_hq-removebg-preview.png',
-                height: 70, semanticLabel: context.t('SANAD')),
+          Semantics(
+            label: context.t('SANAD'),
+            excludeSemantics: true,
+            child: SanadWordmark(size: 44, name: context.t('SANAD'), light: true),
           ),
           Spacer(),
           Text(context.t('More than a\nhelping hand.'),
