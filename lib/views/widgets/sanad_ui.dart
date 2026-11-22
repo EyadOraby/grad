@@ -116,7 +116,11 @@ class ProviderCard extends StatelessWidget {
     required this.hours,
     required this.rating,
     required this.onBook,
+    this.onOpen,
   });
+
+  /// Opens the provider's page (tapping anywhere on the card).
+  final VoidCallback? onOpen;
 
   final String image;
   final String title;
@@ -136,6 +140,7 @@ class ProviderCard extends StatelessWidget {
       width: width,
       padding: const EdgeInsets.all(6),
       child: SanadCard(
+        onTap: onOpen,
         padding: const EdgeInsets.fromLTRB(14, 14, 14, 12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

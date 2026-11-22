@@ -1,7 +1,6 @@
 import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:grad/views/pages/medical_services/physiotherapy/physio_center_form_page.dart';
 import 'package:grad/views/widgets/drawer_mobile.dart';
 import 'package:grad/views/widgets/physio_center_card.dart';
 
@@ -62,29 +61,16 @@ class _PhysioCentersPageState extends State<PhysioCentersPage> {
                 ),
               ),
             ),
-            Column(
+            Wrap(
+              alignment: WrapAlignment.center,
               children: [
                 PhysioCenterCard(
-                    location: "Cairo, Egypt",
-                    name: "Cairo Physiotherapy",
-                    workinDays: context.t("Sun / Tues / Thu / Sat"),
-                    workingHours: "10 AM - 10 PM",
-                    rating: "4.6",
-                    click: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => PhysioCenterFormPage(
-                                    name: 'Cairo Physiotherapy',
-                                    about: context.t(
-                                        'A general hospital with emergency, outpatient and rehabilitation services.'),
-                                    address: context
-                                        .t('Physiotherapy Center Address'),
-                                    workinDays:
-                                        context.t('Sun / Tues / Thu / Sat'),
-                                    workingHours: '10 AM - 10 PM',
-                                  )));
-                    })
+                  location: "Cairo, Egypt",
+                  name: "Cairo Physiotherapy",
+                  workinDays: context.t("Sun / Tues / Thu / Sat"),
+                  workingHours: "10 AM - 10 PM",
+                  rating: "4.6",
+                )
               ],
             ),
           ],

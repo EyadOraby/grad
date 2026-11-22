@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grad/views/pages/medical_services/provider_page.dart';
 import 'package:grad/views/widgets/booking_sheet.dart';
 import 'package:grad/views/widgets/sanad_ui.dart';
 
@@ -11,7 +12,9 @@ class DoctorCard extends StatelessWidget {
   final String workingHours;
   final String rating;
   final String? gender;
-  final VoidCallback click;
+
+  /// Kept for older call sites; the card opens the provider page itself.
+  final VoidCallback? click;
 
   const DoctorCard({
     super.key,
@@ -22,7 +25,7 @@ class DoctorCard extends StatelessWidget {
     required this.workinDays,
     required this.workingHours,
     required this.rating,
-    required this.click,
+    this.click,
     this.gender,
   });
 
@@ -40,6 +43,17 @@ class DoctorCard extends StatelessWidget {
       rating: rating,
       onBook: () => showBookingSheet(context,
           provider: 'Dr. $firstName $lastName', kind: 'Doctor'),
+      onOpen: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (_) => ProviderPage(
+                kind: 'Doctor',
+                name: 'Dr. $firstName $lastName',
+                subtitle: specialization,
+                about:
+                    'A specialist seeing patients by appointment, with step-free access to the clinic.',
+                address: location,
+                workingDays: workinDays,
+                workingHours: workingHours,
+              ))),
     );
   }
 }

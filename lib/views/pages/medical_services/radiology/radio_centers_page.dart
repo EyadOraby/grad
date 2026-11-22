@@ -1,7 +1,6 @@
 import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:grad/views/pages/medical_services/radiology/radio_center_form_page.dart';
 import 'package:grad/views/widgets/drawer_mobile.dart';
 import 'package:grad/views/widgets/radio_center_card.dart';
 
@@ -62,28 +61,16 @@ class _RadioCentersPageState extends State<RadioCentersPage> {
                 ),
               ),
             ),
-            Column(
+            Wrap(
+              alignment: WrapAlignment.center,
               children: [
                 RadioCenterCard(
-                    location: "Alexandria, Egypt",
-                    name: "Alexandria Radiology",
-                    workinDays: context.t("Sun / Tues / Thu / Sat"),
-                    workingHours: "10 AM - 10 PM",
-                    rating: "4.6",
-                    click: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => RadioCenterFormPage(
-                                    name: 'Alexandria, Egypt',
-                                    about: context.t(
-                                        'A general hospital with emergency, outpatient and rehabilitation services.'),
-                                    address: context.t('Hospital Address'),
-                                    workinDays:
-                                        context.t('Sun / Tues / Thu / Sat'),
-                                    workingHours: '10 AM - 10 PM',
-                                  )));
-                    })
+                  location: "Alexandria, Egypt",
+                  name: "Alexandria Radiology",
+                  workinDays: context.t("Sun / Tues / Thu / Sat"),
+                  workingHours: "10 AM - 10 PM",
+                  rating: "4.6",
+                )
               ],
             ),
           ],

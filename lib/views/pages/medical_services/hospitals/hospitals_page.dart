@@ -1,7 +1,6 @@
 import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:grad/views/pages/medical_services/hospitals/hospitals_form_page.dart';
 import 'package:grad/views/widgets/drawer_mobile.dart';
 import 'package:grad/views/widgets/hospital_card.dart';
 
@@ -73,19 +72,6 @@ class _HospitalsPageState extends State<HospitalsPage> {
                       workinDays: context.t("All Week"),
                       workingHours: context.t('All Day'),
                       rating: "4.6",
-                      click: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => HospitalsFormPage(
-                                      name: 'Dar El-Fouad',
-                                      about: context.t(
-                                          'A general hospital with emergency, outpatient and rehabilitation services.'),
-                                      address: context.t('Hospital Address'),
-                                      workinDays: 'Sun / ',
-                                      workingHours: '',
-                                    )));
-                      },
                     ),
                     HospitalCard(
                       location: "Cairo, Egypt",
@@ -93,7 +79,6 @@ class _HospitalsPageState extends State<HospitalsPage> {
                       workinDays: context.t("All Week"),
                       workingHours: context.t('All Day'),
                       rating: "3.7",
-                      click: () {},
                     ),
                   ],
                 ),
@@ -106,7 +91,6 @@ class _HospitalsPageState extends State<HospitalsPage> {
                       workinDays: context.t("Sun - Thu"),
                       workingHours: context.t('All Day'),
                       rating: "4.0",
-                      click: () {},
                     ),
                     HospitalCard(
                       location: "Cairo, Egypt",
@@ -114,7 +98,6 @@ class _HospitalsPageState extends State<HospitalsPage> {
                       workinDays: context.t("All Week"),
                       workingHours: '7 AM - 2 AM',
                       rating: "4.2",
-                      click: () {},
                     ),
                   ],
                 ),

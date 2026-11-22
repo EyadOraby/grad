@@ -1,5 +1,6 @@
 import 'package:grad/l10n/sanad_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:grad/views/pages/medical_services/provider_page.dart';
 import 'package:grad/views/widgets/booking_sheet.dart';
 import 'package:grad/views/widgets/sanad_ui.dart';
 
@@ -9,7 +10,9 @@ class HospitalCard extends StatelessWidget {
   final String workinDays;
   final String workingHours;
   final String rating;
-  final VoidCallback click;
+
+  /// Kept for older call sites; the card opens the provider page itself.
+  final VoidCallback? click;
 
   const HospitalCard({
     super.key,
@@ -18,7 +21,7 @@ class HospitalCard extends StatelessWidget {
     required this.workinDays,
     required this.workingHours,
     required this.rating,
-    required this.click,
+    this.click,
   });
 
   @override
@@ -32,6 +35,16 @@ class HospitalCard extends StatelessWidget {
       hours: workingHours,
       rating: rating,
       onBook: () => showBookingSheet(context, provider: name, kind: 'Hospital'),
+      onOpen: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (_) => ProviderPage(
+                kind: 'Hospital',
+                name: name,
+                about:
+                    'A general hospital with emergency, outpatient and rehabilitation services.',
+                address: location,
+                workingDays: workinDays,
+                workingHours: workingHours,
+              ))),
     );
   }
 }

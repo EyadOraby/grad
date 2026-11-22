@@ -1,325 +1,51 @@
-import 'package:grad/l10n/sanad_strings.dart';
-import 'package:grad/theme/sanad_colors.dart';
-
 import 'package:flutter/material.dart';
+import 'package:grad/views/pages/medical_services/provider_page.dart';
+import 'package:grad/views/widgets/booking_sheet.dart';
+import 'package:grad/views/widgets/sanad_ui.dart';
 
+/// A radiology centre in the shared provider-card style.
 class RadioCenterCard extends StatelessWidget {
+  const RadioCenterCard({
+    super.key,
+    required this.name,
+    required this.location,
+    required this.workinDays,
+    required this.workingHours,
+    required this.rating,
+    this.click,
+  });
+
   final String name;
   final String location;
   final String workinDays;
   final String workingHours;
   final String rating;
-  final VoidCallback click;
 
-  const RadioCenterCard({
-    super.key,
-    required this.location,
-    required this.name,
-    required this.workinDays,
-    required this.workingHours,
-    required this.rating,
-    required this.click,
-  });
+  /// Kept for older call sites; the card opens the provider page itself.
+  final VoidCallback? click;
 
   @override
   Widget build(BuildContext context) {
-    final deviceSize = MediaQuery.of(context).size;
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
-      child: SizedBox(
-        width: deviceSize.width * 0.92,
-        child: Card(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20))),
-          elevation: 5,
-          shadowColor: Colors.black87,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20.0),
-              color: SanadColors.primarySoft,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                        margin: EdgeInsets.all(5),
-                        // width: deviceSize.width * 0.25,
-                        height: deviceSize.height * 0.12,
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          elevation: 5,
-                          shadowColor: Colors.black87,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20.0),
-                              color:
-                                  // SanadColors.primarySoft,
-                                  SanadColors.primaryDark,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      height: 3,
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.all(5),
-                                      child: Image(
-                                        alignment: Alignment.center,
-                                        image: AssetImage(
-                                            "assets/medical-scan-icon.png"),
-                                        height: 60,
-                                        width: 60,
-                                      ),
-                                    ),
-                                  ]),
-                            ),
-                          ),
-                        )),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Expanded(
-                        child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 25, 0, 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text.rich(
-                              textAlign: TextAlign.left,
-                              TextSpan(children: [
-                                TextSpan(
-                                  text: name,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ])),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Image(
-                                alignment: Alignment.center,
-                                image:
-                                    AssetImage("assets/location-pin-icon.png"),
-                                height: 18,
-                                width: 18,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Flexible(
-                                  child: Text.rich(
-                                      textAlign: TextAlign.left,
-                                      TextSpan(children: [
-                                        TextSpan(
-                                          text: location,
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 19,
-                                          ),
-                                        ),
-                                      ]))),
-                            ],
-                          ),
-                          // SizedBox(
-                          //   height: 10,
-                          // ),
-                          // RichText(
-                          //     textAlign: TextAlign.left,
-                          //     text: TextSpan(children: [
-                          //       TextSpan(
-                          //         text: context.t("Working Days"),
-                          //         style: TextStyle(
-                          //           color: Colors.white,
-                          //           fontWeight: FontWeight.w400,
-                          //           fontSize: 17,
-                          //         ),
-                          //       ),
-                          //     ])),
-                          // SizedBox(
-                          //   height: 10,
-                          // ),
-                          // RichText(
-                          //     textAlign: TextAlign.left,
-                          //     text: TextSpan(children: [
-                          //       TextSpan(
-                          //         text: context.t("Working Hours"),
-                          //         style: TextStyle(
-                          //           color: Colors.white,
-                          //           fontWeight: FontWeight.bold,
-                          //           fontSize: 19,
-                          //         ),
-                          //       ),
-                          //     ])),
-                        ],
-                      ),
-                    )),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Image(
-                            alignment: Alignment.center,
-                            image: AssetImage("assets/calendar-icon.png"),
-                            height: 18,
-                            width: 18,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Flexible(
-                              child: Text.rich(
-                                  textAlign: TextAlign.left,
-                                  TextSpan(children: [
-                                    TextSpan(
-                                      text: workinDays,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 19,
-                                      ),
-                                    ),
-                                  ]))),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Image(
-                            alignment: Alignment.center,
-                            image: AssetImage("assets/clock-icon.png"),
-                            height: 18,
-                            width: 18,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Flexible(
-                              child: Text.rich(
-                                  textAlign: TextAlign.left,
-                                  TextSpan(children: [
-                                    TextSpan(
-                                      text: workingHours,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 19,
-                                      ),
-                                    ),
-                                  ]))),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 8, 0, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      InkWell(
-                        onTap: click,
-                        child: Container(
-                          height: 35,
-                          width: 130,
-                          decoration: BoxDecoration(
-                            color: SanadColors.primaryDark,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black.withValues(alpha: 0.3),
-                                  offset: Offset(0, -2),
-                                  blurRadius: 8,
-                                  blurStyle: BlurStyle.inner,
-                                  spreadRadius: 1),
-                              BoxShadow(
-                                  color: Colors.black.withValues(alpha: 0.3),
-                                  offset: Offset(0, -2),
-                                  blurRadius: 8,
-                                  blurStyle: BlurStyle.inner,
-                                  spreadRadius: 1),
-                            ],
-                          ),
-                          child: Center(
-                            child: Text(
-                              context.t('Book'),
-                              style: TextStyle(
-                                letterSpacing: 1,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 115,
-                      ),
-                      Text.rich(
-                          textAlign: TextAlign.left,
-                          TextSpan(children: [
-                            TextSpan(
-                              text: rating,
-                              style: TextStyle(
-                                color: SanadColors.ink,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 22,
-                              ),
-                            ),
-                          ])),
-                      SizedBox(
-                        width: 3,
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(bottom: 3),
-                        child: Image(
-                          alignment: Alignment.center,
-                          image: AssetImage("assets/star-icon.png"),
-                          height: 18,
-                          width: 18,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+    return ProviderCard(
+      image: 'assets/medical-scan-icon.png',
+      title: name,
+      subtitle: 'Radiology center',
+      location: location,
+      days: workinDays,
+      hours: workingHours,
+      rating: rating,
+      onBook: () =>
+          showBookingSheet(context, provider: name, kind: 'Radiology'),
+      onOpen: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (_) => ProviderPage(
+                kind: 'Radiology',
+                name: name,
+                about:
+                    'Scans and imaging by appointment, with results shared with your doctor.',
+                address: location,
+                workingDays: workinDays,
+                workingHours: workingHours,
+              ))),
     );
   }
 }

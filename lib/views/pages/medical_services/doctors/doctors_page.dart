@@ -1,7 +1,6 @@
 import 'package:grad/l10n/sanad_strings.dart';
 import 'package:grad/theme/sanad_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:grad/views/pages/medical_services/doctors/doctors_form_page.dart';
 import 'package:grad/views/widgets/doctor_card.dart';
 import 'package:grad/views/widgets/drawer_mobile.dart';
 
@@ -76,12 +75,6 @@ class _DoctorsPageState extends State<DoctorsPage> {
                       workingHours: "6 - 10 PM",
                       rating: "4.2",
                       gender: "Male",
-                      click: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => DoctorsFormPage()));
-                      },
                     ),
                     DoctorCard(
                       firstName: "Hassan",
@@ -92,12 +85,6 @@ class _DoctorsPageState extends State<DoctorsPage> {
                       workingHours: "8 - 12 AM",
                       rating: "4.0",
                       gender: "Male",
-                      click: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => DoctorsFormPage()));
-                      },
                     ),
                   ],
                 ),
@@ -113,12 +100,6 @@ class _DoctorsPageState extends State<DoctorsPage> {
                       workingHours: "2 - 7 PM",
                       rating: "5.0",
                       gender: "Male",
-                      click: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => DoctorsFormPage()));
-                      },
                     ),
                     DoctorCard(
                       firstName: "Hana",
@@ -129,12 +110,6 @@ class _DoctorsPageState extends State<DoctorsPage> {
                       workingHours: "1 - 5 PM",
                       rating: "4.6",
                       gender: "Female",
-                      click: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => DoctorsFormPage()));
-                      },
                     ),
                   ],
                 ),
